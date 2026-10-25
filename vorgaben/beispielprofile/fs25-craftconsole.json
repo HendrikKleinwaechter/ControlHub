@@ -1,0 +1,621 @@
+{
+  "_hinweis": "Beispielprofile für die CraftConsole in Farming Simulator 25 (Hendrik 24.10.2026). Tastennummern wie in ControlHub (1-basiert, Stick laut Firmware: 21 links, 22 rechts, 23 hoch, 24 runter). Je Taste [Aktion des Spiels, Name]; „AKTION-“ = Gegenrichtung (Funktion func-fs-<aktion>-minus). „gemeinsam“ gilt in allen Profilen, die Profile ergänzen bzw. überschreiben. Achsen übernimmt ControlHub beim Hinzufügen aus dem aktiven Profil. „nachtraege“: Änderungen für schon angelegte Profile, je Stand einmal (s. server/beispielprofile.js); eine Taste wird nur gesetzt, wenn sie frei ist oder noch die frühere Beispielbelegung („vorher“) trägt.",
+  "spiel": "fs25",
+  "controller": "craftconsole",
+  "gemeinsam": {
+    "1": [
+      "LOWER_IMPLEMENT",
+      "Gerät heben/senken"
+    ],
+    "2": [
+      "IMPLEMENT_EXTRA",
+      "Gerät ein/aus"
+    ],
+    "3": [
+      "DIRECTION_CHANGE",
+      "Fahrtrichtung wechseln"
+    ],
+    "4": [
+      "TOGGLE_CRUISE_CONTROL",
+      "Tempomat ein/aus"
+    ],
+    "5": [
+      "IMPLEMENT_EXTRA2",
+      "Ein-/Ausklappen"
+    ],
+    "6": [
+      "IMPLEMENT_EXTRA3",
+      "Zusatzfunktion 3"
+    ],
+    "7": [
+      "LOWER_ALL_IMPLEMENTS",
+      "Alle Geräte heben/senken"
+    ],
+    "8": [
+      "TURN_ON_ALL_IMPLEMENTS",
+      "Alle Geräte ein/aus"
+    ],
+    "10": [
+      "AXIS_CRUISE_CONTROL",
+      "Tempomat schneller"
+    ],
+    "11": [
+      "AXIS_CRUISE_CONTROL-",
+      "Tempomat langsamer"
+    ],
+    "12": [
+      "TOGGLE_AI",
+      "Helfer ein/aus"
+    ],
+    "13": [
+      "ATTACH",
+      "Anhängen"
+    ],
+    "14": [
+      "DETACH",
+      "Abhängen"
+    ],
+    "15": [
+      "FOLD_ALL_IMPLEMENTS",
+      "Alle Geräte klappen"
+    ],
+    "16": [
+      "SWITCH_IMPLEMENT",
+      "Gerät wechseln"
+    ],
+    "30": [
+      "SWITCH_IMPLEMENT",
+      "Gerät wechseln"
+    ],
+    "31": [
+      "SWITCH_IMPLEMENT_BACK",
+      "Vorheriges Gerät"
+    ],
+    "32": [
+      "SWITCH_VEHICLE",
+      "Fahrzeug wechseln"
+    ],
+    "33": [
+      "SWITCH_VEHICLE_BACK",
+      "Vorheriges Fahrzeug"
+    ],
+    "34": [
+      "TOGGLE_WORKMODE",
+      "Arbeitsmodus wechseln"
+    ],
+    "35": [
+      "TOGGLE_AI_STEERING_LINES",
+      "Lenklinien ein/aus"
+    ],
+    "36": [
+      "CAMERA_SWITCH",
+      "Kamera wechseln"
+    ],
+    "37": [
+      "TOGGLE_MOTOR_STATE",
+      "Motor an/aus"
+    ],
+    "54": [
+      "SHIFT_GEAR_UP",
+      "Gang hoch"
+    ],
+    "55": [
+      "SHIFT_GEAR_DOWN",
+      "Gang runter"
+    ],
+    "56": [
+      "SHIFT_GROUP_UP",
+      "Gruppe hoch"
+    ],
+    "57": [
+      "SHIFT_GROUP_DOWN",
+      "Gruppe runter"
+    ],
+    "58": [
+      "TOGGLE_CRABSTEERING",
+      "Hundegang"
+    ],
+    "59": [
+      "LIFTABLE_AXLE",
+      "Hubachse"
+    ],
+    "60": [
+      "RADIO_TOGGLE",
+      "Radio ein/aus"
+    ],
+    "61": [
+      "RADIO_NEXT_CHANNEL",
+      "Nächster Sender"
+    ],
+    "70": [
+      "MOTOR_STATE_OFF",
+      "Motor aus (Zündschloss)"
+    ],
+    "71": [
+      "MOTOR_STATE_IGNITION",
+      "Zündung (Zündschloss)"
+    ],
+    "72": [
+      "MOTOR_STATE_ON",
+      "Motor an (Zündschloss)"
+    ],
+    "73": [
+      "TOGGLE_LIGHTS",
+      "Beleuchtung"
+    ],
+    "74": [
+      "TOGGLE_HIGH_BEAM_LIGHT",
+      "Fernlicht"
+    ],
+    "75": [
+      "TOGGLE_BEACON_LIGHTS",
+      "Rundumleuchte"
+    ],
+    "76": [
+      "TOGGLE_WORK_LIGHT_FRONT",
+      "Arbeitsscheinwerfer vorne"
+    ],
+    "77": [
+      "TOGGLE_WORK_LIGHT_BACK",
+      "Arbeitsscheinwerfer hinten"
+    ],
+    "78": [
+      "TOGGLE_TURNLIGHT_HAZARD",
+      "Warnblinker"
+    ],
+    "79": [
+      "TOGGLE_TURNLIGHT_LEFT",
+      "Blinker links"
+    ],
+    "80": [
+      "TOGGLE_TURNLIGHT_RIGHT",
+      "Blinker rechts"
+    ],
+    "81": [
+      "HONK",
+      "Hupe"
+    ],
+    "82": [
+      "TOGGLE_LIGHTS_BACK",
+      "Rückbeleuchtung"
+    ],
+    "110": [
+      "CAMERA_SWITCH",
+      "Kamera wechseln"
+    ],
+    "111": [
+      "HONK",
+      "Hupe"
+    ],
+    "112": [
+      "TOGGLE_CRUISE_CONTROL",
+      "Tempomat ein/aus"
+    ]
+  },
+  "profile": {
+    "Bodenbearbeitung": {
+      "beschreibung": "Pflug, Grubber, Scheibenegge: heben/senken, Pflug drehen, Arbeitsbreite, Klappen.",
+      "tasten": {
+        "9": [
+          "IMPLEMENT_EXTRA3",
+          "Pflug drehen"
+        ],
+        "21": [
+          "AXIS_HYDRAULICATTACHER2-",
+          "Hydraulik 2 −"
+        ],
+        "22": [
+          "AXIS_HYDRAULICATTACHER2",
+          "Hydraulik 2 +"
+        ],
+        "23": [
+          "AXIS_HYDRAULICATTACHER1",
+          "Hydraulik 1 +"
+        ],
+        "24": [
+          "AXIS_HYDRAULICATTACHER1-",
+          "Hydraulik 1 −"
+        ],
+        "38": [
+          "WORKMODE_LEFT",
+          "Arbeitsmodus links"
+        ],
+        "39": [
+          "WORKMODE_MIDDLE",
+          "Arbeitsmodus Mitte"
+        ],
+        "40": [
+          "WORKMODE_RIGHT",
+          "Arbeitsmodus rechts"
+        ],
+        "41": [
+          "IMPLEMENT_EXTRA4",
+          "Zusatzfunktion 4"
+        ],
+        "42": [
+          "VEHICLE_ACTION_CONTROL",
+          "Fahrzeugaktion"
+        ],
+        "46": [
+          "AXIS_HYDRAULICATTACHER1-",
+          "Hydraulik 1 −"
+        ],
+        "47": [
+          "AXIS_HYDRAULICATTACHER1",
+          "Hydraulik 1 +"
+        ],
+        "48": [
+          "AXIS_HYDRAULICATTACHER2-",
+          "Hydraulik 2 −"
+        ],
+        "49": [
+          "AXIS_HYDRAULICATTACHER2",
+          "Hydraulik 2 +"
+        ],
+        "50": [
+          "AXIS_DRAWBAR-",
+          "Deichsel −"
+        ],
+        "51": [
+          "AXIS_DRAWBAR",
+          "Deichsel +"
+        ],
+        "52": [
+          "AXIS_WHEEL_BASE-",
+          "Radstand −"
+        ],
+        "53": [
+          "AXIS_WHEEL_BASE",
+          "Radstand +"
+        ]
+      }
+    },
+    "Säen": {
+      "beschreibung": "Sämaschine, Pflanz- und Legemaschine: Teilbreiten, Saat wechseln, Saatstärke (Precision Farming).",
+      "tasten": {
+        "9": [
+          "VARIABLE_WORK_WIDTH_TOGGLE",
+          "Arbeitsbreite ändern"
+        ],
+        "21": [
+          "VARIABLE_WORK_WIDTH_RIGHT",
+          "Teilbreite rechts aus"
+        ],
+        "22": [
+          "VARIABLE_WORK_WIDTH_RIGHT-",
+          "Teilbreite rechts an"
+        ],
+        "23": [
+          "VARIABLE_WORK_WIDTH_LEFT-",
+          "Teilbreite links an"
+        ],
+        "24": [
+          "VARIABLE_WORK_WIDTH_LEFT",
+          "Teilbreite links aus"
+        ],
+        "38": [
+          "TOGGLE_SEEDS",
+          "Saat ändern"
+        ],
+        "39": [
+          "TOGGLE_SEEDS_BACK",
+          "Saat ändern (umgekehrt)"
+        ],
+        "40": [
+          "PRECISIONFARMING_SEED_RATE_MODE",
+          "Automatische Saatstärke (Precision Farming)"
+        ],
+        "41": [
+          "VARIABLE_WORK_WIDTH_LEFT",
+          "Teilbreite links aus"
+        ],
+        "42": [
+          "VARIABLE_WORK_WIDTH_LEFT-",
+          "Teilbreite links an"
+        ],
+        "43": [
+          "VARIABLE_WORK_WIDTH_RIGHT-",
+          "Teilbreite rechts an"
+        ],
+        "44": [
+          "VARIABLE_WORK_WIDTH_RIGHT",
+          "Teilbreite rechts aus"
+        ],
+        "46": [
+          "AXIS_HYDRAULICATTACHER1-",
+          "Hydraulik 1 −"
+        ],
+        "47": [
+          "AXIS_HYDRAULICATTACHER1",
+          "Hydraulik 1 +"
+        ],
+        "48": [
+          "AXIS_HYDRAULICATTACHER2-",
+          "Hydraulik 2 −"
+        ],
+        "49": [
+          "AXIS_HYDRAULICATTACHER2",
+          "Hydraulik 2 +"
+        ],
+        "50": [
+          "AXIS_DRAWBAR-",
+          "Deichsel −"
+        ],
+        "51": [
+          "AXIS_DRAWBAR",
+          "Deichsel +"
+        ],
+        "52": [
+          "PRECISIONFARMING_SEED_RATE",
+          "Saatstärke senken (Precision Farming)"
+        ],
+        "53": [
+          "PRECISIONFARMING_SEED_RATE-",
+          "Saatstärke erhöhen (Precision Farming)"
+        ]
+      }
+    },
+    "Spritzen & Düngen": {
+      "beschreibung": "Feldspritze, Düngerstreuer, Güllefass: Teilbreiten, Gestänge, Ausbringmenge (auch Precision Farming).",
+      "tasten": {
+        "9": [
+          "VARIABLE_WORK_WIDTH_TOGGLE",
+          "Arbeitsbreite ändern"
+        ],
+        "21": [
+          "VARIABLE_WORK_WIDTH_RIGHT",
+          "Teilbreite rechts aus"
+        ],
+        "22": [
+          "VARIABLE_WORK_WIDTH_RIGHT-",
+          "Teilbreite rechts an"
+        ],
+        "23": [
+          "VARIABLE_WORK_WIDTH_LEFT-",
+          "Teilbreite links an"
+        ],
+        "24": [
+          "VARIABLE_WORK_WIDTH_LEFT",
+          "Teilbreite links aus"
+        ],
+        "38": [
+          "DOUBLED_SPRAY_AMOUNT",
+          "Ausbringmenge ändern"
+        ],
+        "39": [
+          "PRECISIONFARMING_SPRAY_AMOUNT_MODE",
+          "Automatische Ausbringmenge (Precision Farming)"
+        ],
+        "40": [
+          "PRECISIONFARMING_TOGGLE_CROP_SENSOR",
+          "Pflanzensensor (Precision Farming)"
+        ],
+        "41": [
+          "VARIABLE_WORK_WIDTH_LEFT",
+          "Teilbreite links aus"
+        ],
+        "42": [
+          "VARIABLE_WORK_WIDTH_LEFT-",
+          "Teilbreite links an"
+        ],
+        "43": [
+          "VARIABLE_WORK_WIDTH_RIGHT-",
+          "Teilbreite rechts an"
+        ],
+        "44": [
+          "VARIABLE_WORK_WIDTH_RIGHT",
+          "Teilbreite rechts aus"
+        ],
+        "46": [
+          "AXIS_SPRAYER_ARM-",
+          "Gestänge senken"
+        ],
+        "47": [
+          "AXIS_SPRAYER_ARM",
+          "Gestänge heben"
+        ],
+        "48": [
+          "AXIS_HYDRAULICATTACHER1-",
+          "Hydraulik 1 −"
+        ],
+        "49": [
+          "AXIS_HYDRAULICATTACHER1",
+          "Hydraulik 1 +"
+        ],
+        "50": [
+          "AXIS_DRAWBAR-",
+          "Deichsel −"
+        ],
+        "51": [
+          "AXIS_DRAWBAR",
+          "Deichsel +"
+        ],
+        "52": [
+          "PRECISIONFARMING_SPRAY_AMOUNT-",
+          "Ausbringmenge verringern (Precision Farming)"
+        ],
+        "53": [
+          "PRECISIONFARMING_SPRAY_AMOUNT",
+          "Ausbringmenge erhöhen (Precision Farming)"
+        ]
+      }
+    },
+    "Ernte": {
+      "beschreibung": "Mähdrescher: Entladerohr, Haspel, Häcksler/Schwad, Abdeckung, Entladen.",
+      "tasten": {
+        "9": [
+          "TOGGLE_PIPE",
+          "Entladerohr ein/aus"
+        ],
+        "21": [
+          "AXIS_CUTTER_REEL2-",
+          "Haspel zurück"
+        ],
+        "22": [
+          "AXIS_CUTTER_REEL2",
+          "Haspel vor"
+        ],
+        "23": [
+          "AXIS_CUTTER_REEL",
+          "Haspel hoch"
+        ],
+        "24": [
+          "AXIS_CUTTER_REEL-",
+          "Haspel runter"
+        ],
+        "38": [
+          "TOGGLE_CHOPPER",
+          "Häcksler/Schwad"
+        ],
+        "39": [
+          "TOGGLE_COVER",
+          "Abdeckung"
+        ],
+        "40": [
+          "UNLOAD",
+          "Entladen"
+        ],
+        "41": [
+          "TOGGLE_CUT_LENGTH_BACK",
+          "Schnittlänge"
+        ],
+        "42": [
+          "TOGGLE_PIPE",
+          "Entladerohr ein/aus"
+        ],
+        "46": [
+          "AXIS_PIPE-",
+          "Entladerohr −"
+        ],
+        "47": [
+          "AXIS_PIPE",
+          "Entladerohr +"
+        ],
+        "48": [
+          "AXIS_PIPE2-",
+          "Entladerohr 2 −"
+        ],
+        "49": [
+          "AXIS_PIPE2",
+          "Entladerohr 2 +"
+        ],
+        "50": [
+          "AXIS_CUTTER_REEL-",
+          "Haspel runter"
+        ],
+        "51": [
+          "AXIS_CUTTER_REEL",
+          "Haspel hoch"
+        ],
+        "52": [
+          "AXIS_CUTTER_REEL2-",
+          "Haspel zurück"
+        ],
+        "53": [
+          "AXIS_CUTTER_REEL2",
+          "Haspel vor"
+        ]
+      }
+    },
+    "Frontlader": {
+      "beschreibung": "Frontlader und Teleskoplader: Arm, Werkzeug, Teleskop, 3. Steuerkreis.",
+      "tasten": {
+        "9": [
+          "ATTACH",
+          "Werkzeug ankuppeln"
+        ],
+        "21": [
+          "AXIS_FRONTLOADER_TOOL-",
+          "Werkzeug ankippen"
+        ],
+        "22": [
+          "AXIS_FRONTLOADER_TOOL",
+          "Werkzeug auskippen"
+        ],
+        "23": [
+          "AXIS_FRONTLOADER_ARM",
+          "Arm heben"
+        ],
+        "24": [
+          "AXIS_FRONTLOADER_ARM-",
+          "Arm senken"
+        ],
+        "38": [
+          "AXIS_FRONTLOADER_TOOL3",
+          "Werkzeug 3 +"
+        ],
+        "39": [
+          "AXIS_FRONTLOADER_TOOL3-",
+          "Werkzeug 3 −"
+        ],
+        "40": [
+          "AXIS_FRONTLOADER_TOOL4",
+          "Werkzeug 4 +"
+        ],
+        "41": [
+          "AXIS_FRONTLOADER_TOOL4-",
+          "Werkzeug 4 −"
+        ],
+        "42": [
+          "DETACH",
+          "Werkzeug abkuppeln"
+        ],
+        "46": [
+          "AXIS_FRONTLOADER_ARM-",
+          "Arm senken"
+        ],
+        "47": [
+          "AXIS_FRONTLOADER_ARM",
+          "Arm heben"
+        ],
+        "48": [
+          "AXIS_FRONTLOADER_TOOL-",
+          "Werkzeug ankippen"
+        ],
+        "49": [
+          "AXIS_FRONTLOADER_TOOL",
+          "Werkzeug auskippen"
+        ],
+        "50": [
+          "AXIS_FRONTLOADER_ARM2-",
+          "Teleskop einfahren"
+        ],
+        "51": [
+          "AXIS_FRONTLOADER_ARM2",
+          "Teleskop ausfahren"
+        ],
+        "52": [
+          "AXIS_FRONTLOADER_TOOL2-",
+          "Werkzeug 2 −"
+        ],
+        "53": [
+          "AXIS_FRONTLOADER_TOOL2",
+          "Werkzeug 2 +"
+        ]
+      }
+    }
+  },
+  "nachtraege": [
+    {
+      "stand": 2,
+      "was": "Zündschloss am CraftDeck: Motor aus / Zündung / Motor an (Hendrik 25.10.2026), vorher Motor an/aus auf 72",
+      "tasten": {
+        "70": [
+          "MOTOR_STATE_OFF",
+          "Motor aus (Zündschloss)"
+        ],
+        "71": [
+          "MOTOR_STATE_IGNITION",
+          "Zündung (Zündschloss)"
+        ],
+        "72": [
+          "MOTOR_STATE_ON",
+          "Motor an (Zündschloss)"
+        ]
+      },
+      "vorher": {
+        "72": "TOGGLE_MOTOR_STATE"
+      }
+    }
+  ]
+}

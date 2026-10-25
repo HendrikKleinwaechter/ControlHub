@@ -1,0 +1,1044 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ControlHub</title>
+  <link rel="icon" type="image/png" sizes="64x64" href="img/favicon-64.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32.png">
+  <!-- Als App auf den Startbildschirm (21.10.2026): Manifest für Android/Chrome, Meta-Tags für iPad/iPhone
+       (dort startet ControlHub vom Home-Bildschirm aus ohne Browserleisten) -->
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="ControlHub">
+  <meta name="theme-color" content="#0d0f13">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <!-- Terminal-Look: sehr dezente Scanline-/Vignetten-Textur über der GANZEN Ansicht (Sidebar +
+       Inhalt), s. Konzept-Runde. pointer-events:none, damit nichts darunter blockiert wird. -->
+  <div class="scanlines-overlay"></div>
+
+  <!-- Kopfleiste (Mockup „Navigation und Seiten“, Hendrik 22.10.2026): links fest ‹ Zurück · ⌂ Start · ☰ Menü,
+       Mitte „wo bin ich“ mit Umschalter (Seiten der Startseite bzw. Unterseiten eines Bereichs, s. appNav.js),
+       rechts ein Statusknopf (Armlehne · Profil · Uhrzeit), der das Statusfenster öffnet (statusMenus.js).
+       Die Elemente mit den alten IDs füllen app.js/games.js weiter wie bisher. -->
+  <header class="top-statusbar topbar">
+    <div class="tb-nav" role="group" aria-label="Navigation">
+      <button type="button" class="tb-nav-btn" id="tb-back" aria-label="Zurück" onclick="window.appNav.back()"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"></path></svg></button>
+      <button type="button" class="tb-nav-btn" id="tb-home" aria-label="Startseite" onclick="window.appNav.home()"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11l9-8 9 8"></path><path d="M5 10v10h14V10"></path></svg></button>
+      <button type="button" class="tb-nav-btn tb-nav-menu" id="tb-menu" onclick="window.appNav.toggleMenu()"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"></path></svg>Menü</button>
+    </div>
+    <div class="tb-center" id="tb-center"></div>
+    <div class="tb-right">
+      <!-- Makro-Anzeige nur, solange ein Makro läuft (macroStatusIndicator.js) -->
+      <div id="macro-status-slot"></div>
+      <button type="button" class="tb-status" id="tb-status" aria-label="Status: Controller, Profil, Uhrzeit" onclick="window.statusMenus.toggle('status', this)">
+        <span id="connection-status" class="status disconnected">Getrennt</span>
+        <span class="tb-status-label">Controller</span>
+        <span class="tb-sep"></span>
+        <span id="current-profile"></span>
+        <span class="tb-sep"></span>
+        <span id="clock-label">Uhrzeit:</span><span id="sidebar-clock">--:--:--</span>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg>
+      </button>
+    </div>
+    <!-- Werden von app.js/games.js weiter gepflegt und im Statusfenster gelesen (Spiel, Auto-Wechsel); das
+         Zahnrad bleibt als unsichtbarer Einstieg „Einstellungen“ für showNavLevel2() -->
+    <div hidden>
+      <span id="active-game-badge"></span>
+      <span id="auto-switch-status" class="status disconnected">Aus</span>
+      <button type="button" class="main-tab-btn" id="nav-settings-btn" data-section="einstellungen"><span>Einstellungen</span></button>
+    </div>
+  </header>
+
+  <div class="container">
+    <!-- Seitenleiste: nur noch Navigation (fest, immer sichtbar, kein Mitscrollen) -->
+    <nav class="main-tabs">
+      <!-- Wurzel-Ebene: immer sichtbar, kein Zwischenschritt mehr nötig (vormals "Ebene 1" mit
+           Funktionsbelegung/Dashboard getrennt -- vereint, weil es vorher ohnehin nichts anderes zur
+           Auswahl gab). Einstellungen sitzt bewusst separat oben rechts in der Statusleiste, s.
+           #nav-settings-btn dort. -->
+      <div class="nav-level" id="nav-level-root" style="display: none;">
+        <button class="main-tab-btn active" data-tab="overview" data-title="Tastenbelegung" data-icon="list">Übersicht</button>
+        <button type="button" class="main-tab-btn" data-section="dashboard" data-icon="gauge">Dashboard</button>
+        <!-- Anzeigename jetzt "Bedienpanel" (Hendriks Feedback) -- intern (data-section, Dateien,
+             Routen server-seitig) bewusst weiter "steuerungsmenues" genannt, um nicht unnötig Dateien/
+             Routen umzubenennen für eine reine Anzeigetext-Änderung. -->
+        <button type="button" class="main-tab-btn" data-section="steuerungsmenues" data-icon="panel">Eigene Kacheln</button>
+        <!-- Konfiguration (bis eben "Grundeinstellungen" -- Hendriks Feedback: Name unpassend, Namens-
+             Alternativen zur Wahl gestellt): einmal eingerichtet, im laufenden Spielbetrieb kaum noch
+             angefasst, deshalb optisch abgesetzt -- hier bewusst OHNE Beschriftung an der Trennlinie
+             (anders als "System" unter Einstellungen, das passte hier laut Hendrik nicht). -->
+        <div class="rail-divider-plain"></div>
+        <button type="button" class="main-tab-btn" data-section="konfiguration" data-icon="toolbox">Konfiguration</button>
+        <!-- Bleibt erreichbar über den Profil-Klick oben in .top-statusbar (navigateToTab('profiles')) --
+             kein eigener sichtbarer Menüpunkt mehr nötig. -->
+        <button class="main-tab-btn nav-hidden" data-tab="profiles" data-title="Profile" data-icon="stack">Profile</button>
+      </div>
+
+      <!-- Ebene 2 (Wurzel): Konfiguration -->
+      <div class="nav-level" id="nav-level-konfiguration" style="display: none;">
+        <button class="main-tab-btn" data-tab="functions" data-title="Funktionen" data-icon="grid">Funktionen</button>
+        <button class="main-tab-btn" data-tab="axis-assignment" data-title="Achsen-Zuordnung" data-icon="axis">Achsen-Zuordnung</button>
+        <button class="main-tab-btn" data-tab="vorgewende" data-title="Makros" data-icon="uturn">Makros</button>
+        <button class="main-tab-btn" data-tab="backup" data-title="Sichern &amp; Teilen" data-icon="archive">Sichern &amp; Teilen</button>
+      </div>
+
+      <!-- Ebene 2 (Wurzel): Dashboard -- anders als Steuerungsmenüs/Bedienpanel unten FEST vorgegeben
+           (nicht nutzergeneriert), deshalb statisch wie nav-level-konfiguration statt zur Laufzeit
+           befüllt. -->
+      <div class="nav-level" id="nav-level-dashboard" style="display: none;">
+        <button class="main-tab-btn" data-tab="dashboard-tiles" data-title="Kachelseiten" data-icon="grid">Kachelseiten</button>
+        <button class="main-tab-btn" data-feature="map" data-tab="dashboard-map" data-title="Karte" data-icon="map-pin">Karte</button>
+        <!-- GPS, Reiter „Aktuelles Gerät“ (bis 24.10.2026 „GPS-Menü“; Paket I, s. public/js/gpsMenu.js): Gerätespeicher, Arbeitsposition, Vorgewende-Auslöser -->
+        <button class="main-tab-btn" data-feature="map" data-tab="gps" data-title="GPS" data-icon="target">GPS</button>
+        <!-- GPS, Reiter „Geräte verwalten“ (bis 24.10.2026 eigener Menüpunkt „GPS-Geräte“; Anmerkung 21, s. public/js/gpsGeraete.js) -->
+        <button class="main-tab-btn" data-feature="map" data-tab="gps-geraete" data-title="GPS" data-icon="target">GPS · Geräte verwalten</button>
+        <button class="main-tab-btn" data-feature="planner" data-tab="dashboard-planner" data-title="Arbeitsplaner" data-icon="calendar">Arbeitsplaner</button>
+        <!-- Nur bei Spielen ohne Spieldaten (eigene Spiele) sichtbar, s. games.js applyFeatures() -->
+        <p class="setting-hint nav-feature-hint" data-feature-off="telemetry">Cockpit, Karte, Wetter und Streckenzähler gibt es nur bei Spielen mit Spieldaten (z. B. Farming Simulator 25 mit Mod).</p>
+      </div>
+
+      <!-- Ebene 2 (Wurzel): Steuerungsmenüs -- Inhalt wird zur Laufzeit von steuerungsmenues.js gefüllt
+           (Seiten sind nutzergeneriert, können nicht vorab feststehen). -->
+      <div class="nav-level" id="nav-level-steuerungsmenues" style="display: none;"></div>
+
+      <!-- Ebene 2 (Bedienpanel-Editor): ersetzt während des Bearbeitens einer Bedienpanel-Seite die
+           Wurzel-Ebene komplett -- alle Bearbeitungs-Werkzeuge (Taste/Seite-Einstellungen, +Taste,
+           Fertig) sitzen hier links, damit der Inhalt rechts (die Bedienpanel-Fläche selbst) die volle
+           Breite und Höhe bekommt. Inhalt wird zur Laufzeit von steuerungsmenues.js renderEditorSidebar()
+           gefüllt, s. dort. -->
+      <div class="nav-level" id="nav-level-sm-editor" style="display: none;"></div>
+
+      <!-- Ebene 2: Einstellungen -->
+      <div class="nav-level" id="nav-level-einstellungen" style="display: none;">
+        <button class="main-tab-btn" data-tab="status" data-title="Allgemein" data-icon="sliders">Allgemein</button>
+        <button class="main-tab-btn" data-tab="karte-einstellungen" data-title="Karte" data-icon="map">Karte</button>
+        <button class="main-tab-btn" data-tab="connection" data-title="Verbindung" data-icon="plug">Verbindung</button>
+        <!-- Ersteinrichtung + Entwicklertools: eigene Untergruppen (Ebene 3), optisch abgesetzt --
+             beides Dinge, die man einmalig einrichtet bzw. nur zur Diagnose braucht, keine normalen
+             Menüpunkte für den laufenden Betrieb. -->
+        <div class="rail-divider"><span>System</span></div>
+        <button type="button" class="main-tab-btn" data-section="ersteinrichtung" data-icon="power">Ersteinrichtung</button>
+        <button type="button" class="main-tab-btn" data-section="entwicklungstools" data-icon="terminal">Entwicklertools</button>
+      </div>
+
+      <!-- Ebene 3: Ersteinrichtung (Unterpunkt von Einstellungen -- Zurück führt zu Einstellungen,
+           nicht bis ganz nach oben, s. NAV_PARENT in app.js) -->
+      <div class="nav-level" id="nav-level-ersteinrichtung" style="display: none;">
+        <button class="main-tab-btn" data-tab="controller-geraet" data-title="Gerät" data-icon="plug">Gerät</button>
+        <button class="main-tab-btn" data-tab="armlehnen-setup" data-ctrl-kann="module" data-title="Module" data-icon="toolbox">Module</button>
+        <button class="main-tab-btn" data-tab="axis-calibration" data-ctrl-kann="kalibrierung" data-title="Achsen-Kalibrierung" data-icon="target">Achsen-Kalibrierung</button>
+        <button class="main-tab-btn" data-tab="settings" data-ctrl-kann="einstellungen" data-title="Geräte-Einstellungen" data-icon="wrench">Geräte-Einstellungen</button>
+      </div>
+
+      <!-- Ebene 3: Entwicklertools (Unterpunkt von Einstellungen -- Zurück führt zu Einstellungen,
+           nicht bis ganz nach oben, s. NAV_PARENT in app.js) -->
+      <div class="nav-level" id="nav-level-entwicklungstools" style="display: none;">
+        <button class="main-tab-btn" data-tab="module-status" data-ctrl-kann="einstellungen" data-title="Modul-Erkennung" data-icon="radar">Modul-Erkennung</button>
+        <button class="main-tab-btn" data-tab="live-diagnose" data-title="Live-Diagnose" data-icon="pulse">Live-Diagnose</button>
+        <button class="main-tab-btn" data-tab="controller-editor" data-title="Eigene Controller" data-icon="toolbox">Eigene Controller</button>
+        <button class="main-tab-btn" data-tab="calibration-tool" data-title="Modul-Kalibrierung" data-icon="crosshair">Modul-Kalibrierung</button>
+        <button class="main-tab-btn" data-tab="button-test" data-title="Tasten-Test" data-icon="check">Tasten-Test</button>
+        <button class="main-tab-btn" data-tab="reset" data-title="Zurücksetzen" data-icon="trash">Zurücksetzen</button>
+      </div>
+
+      <div class="sidebar-bottom">
+        <button type="button" class="nav-back-btn" id="nav-back-btn" style="display: none;">← Zurück</button>
+      </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main>
+      <!-- Reiter innerhalb einer Unterseite (z. B. Armlehne einrichten: Setup · Kalibrierung · Geräte), s. appNav.js -->
+      <div id="page-tabs" class="page-tabs" hidden></div>
+      <!-- ÜBERSICHT TAB -->
+      <div id="tab-overview" class="tab-content active">
+        <!-- Bearbeiten-Flow: Modul -> Taste -> Funktion. Wischen (links/rechts) und die Pfeiltasten
+             mittig links/rechts neben dem Bild (‹/›) wechseln zwischen den Modulen (Endlos-Rotation).
+             Keine eigene "Gesamtübersicht"-Seite mehr (Hendriks Wunsch 21.08.2026: war überflüssig,
+             das Wisch-Karussell reicht) -- der Indikator-Streifen zeigt stattdessen die Position im
+             Karussell + erlaubt Direktsprung per Antippen, s. moduleFlow.js renderSwipeIndicator().
+             Sichtbarkeit hängt ausschließlich an #tab-overview.active. -->
+        <section class="card" id="module-flow-swipe-area">
+          <div id="module-swipe-indicator" class="module-swipe-indicator">
+            <!-- Wird dynamisch von moduleFlow.js gefüllt: alle Module in Wisch-Reihenfolge, aktives hervorgehoben -->
+          </div>
+          <div class="module-flow-row">
+            <button type="button" class="module-nav-arrow" onclick="window.moduleFlow.swipePrevious()" title="Vorheriges Modul">‹</button>
+            <div class="module-flow-content">
+              <div id="module-detail-view">
+                <!-- Kein eigener Titel mehr hier (Hendriks Wunsch 21.08.2026: der Indikator-Streifen
+                     oben zeigt schon, wo man ist) -- nur noch die Ebenen-Toolbar, falls relevant. -->
+                <div style="display: flex; justify-content: flex-end; align-items: center; flex-wrap: wrap; gap: 10px;">
+                  <!-- Funktionen als Liste neben dem Bild oder in den Tasten (moduleFlow.js renderAnsichtSchalter, 24.10.2026) -->
+                  <div id="tb-ansicht" class="tb-ansicht"></div>
+                  <!-- Nur für CraftSlot 1/2 sichtbar, s. moduleFlow.js CraftSlotLayerToolbar -->
+                  <div id="craftslot-layer-toolbar" style="display: none;"></div>
+                </div>
+                <div id="module-detail-body">
+                  <!-- Wird dynamisch gefüllt: Bild+Hotspots oder Tastenliste -->
+                </div>
+              </div>
+            </div>
+            <button type="button" class="module-nav-arrow" onclick="window.moduleFlow.swipeNext()" title="Nächstes Modul">›</button>
+          </div>
+        </section>
+
+      </div>
+
+      <!-- PROFILE TAB -- im Stil der Funktionen (Durchsicht B10, 24.10.2026): Antippen aktiviert, alles andere über „⋯“
+           ohne das Profil zu laden (app.js renderProfileList/openProfileMenu), Reihenfolge per Ziehen am Griff ≡ -->
+      <div id="tab-profiles" class="tab-content">
+        <div class="ov-page">
+          <div class="ov-head">
+            <h1 class="ov-title">Profile</h1>
+            <span class="ov-count" id="pf-total"></span>
+            <div class="ov-spacer"></div>
+            <button type="button" id="pf-more" class="ov-btn" aria-haspopup="menu">Mehr <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg></button>
+            <button type="button" id="new-profile" class="ov-btn ov-btn--primary"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"></path></svg>Neues Profil</button>
+          </div>
+          <p class="ov-intro">Ein Profil ist eine vollständige Tastenbelegung. Das aktive gilt im Spiel; mit „Fahrzeug zuordnen“ wechselt ControlHub von selbst, wenn du in ein Fahrzeug steigst.</p>
+          <section class="ov-panel" aria-label="Profilliste">
+            <div class="ov-panel-head"><h2>Alle Profile</h2><div class="ov-spacer"></div><span class="ov-hint">Antippen zum Aktivieren · ≡ ziehen zum Sortieren</span></div>
+            <div id="profile-list" class="fn-list"></div>
+          </section>
+        </div>
+      </div>
+
+      <!-- FUNKTIONEN TAB -->
+      <!-- Funktionen-Übersicht (23.10.2026, Hendriks freigegebener Entwurf): Gruppen links, Liste rechts, Suche oben.
+           Eine Funktion kann mehreren Gruppen angehören; „Ohne Gruppe“ ist die feste Auffanggruppe (functionGroups.js). -->
+      <div id="tab-functions" class="tab-content">
+        <div class="ov-page">
+          <div class="ov-head">
+            <h1 class="ov-title">Funktionen</h1>
+            <span class="ov-count" id="fn-total"></span>
+            <div class="ov-spacer"></div>
+            <label class="ov-search">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="M20 20l-3.5-3.5"></path></svg>
+              <span class="visually-hidden">Funktion suchen</span>
+              <input type="search" id="fn-search" placeholder="Funktion suchen" autocomplete="off">
+            </label>
+            <button type="button" id="fn-more" class="ov-btn" aria-haspopup="menu">Mehr <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg></button>
+            <button type="button" id="new-function" class="ov-btn ov-btn--primary"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"></path></svg>Neue Funktion</button>
+            <input type="file" id="input-binding-file" accept=".xml,text/xml" style="display: none;">
+          </div>
+          <div class="ov-body" id="fn-body">
+            <nav class="fn-groups" id="fn-groups" aria-label="Gruppen"></nav>
+            <section class="ov-panel" aria-label="Funktionsliste">
+              <div class="ov-panel-head">
+                <h2 id="fn-list-title">Alle Funktionen</h2>
+                <span id="fn-list-count"></span>
+                <div class="ov-spacer"></div>
+                <span class="ov-hint">Antippen zum Bearbeiten</span>
+              </div>
+              <div id="functions-list" class="fn-list"></div>
+            </section>
+          </div>
+        </div>
+      </div>
+
+      <div id="tab-dashboard-tiles" class="tab-content">
+        <div id="tiles-body"></div>
+      </div>
+
+      <!-- ARBEITSPLANER (Paket E, 21.10.2026, s. public/js/planner.js; Aufträge am 22.10.2026 entfernt) -->
+      <div id="tab-dashboard-planner" class="tab-content">
+        <section class="card">
+          <div id="planner-body"></div>
+        </section>
+      </div>
+
+      <!-- GPS-MENÜ (Paket I): Inhalt baut gpsMenu.js -->
+      <div id="tab-gps" class="tab-content"><div id="gps-menu" class="gps-menu"></div></div>
+      <!-- GPS-GERÄTE: Inhalt baut gpsGeraete.js -->
+      <div id="tab-gps-geraete" class="tab-content"><div id="gps-geraete-body" class="gps-menu"></div></div>
+
+      <div id="tab-dashboard-map" class="tab-content">
+        <section class="card">
+          <!-- Vollbild (23.08.2026, Hendriks Wunsch): In-App-Umschalter statt eigener Seite/eigenem
+               Fenster -- die Fullscreen-API kann auch nur DIESEN Wrapper (statt des ganzen Dokuments)
+               füllen, Sidebar/Header bleiben dabei einfach unsichtbar im Hintergrund, ein zweiter Klick
+               (oder Escape) holt alles zurück, ohne dass die Seite neu geladen wird. Für ein zweites,
+               dauerhaft auf die Karte fixiertes Tablet reicht es, dort dieselbe App zu öffnen und den
+               Knopf zu drücken -- jeder Browser-Tab hat seine eigene Socket.IO-Verbindung, läuft also
+               unabhängig live mit. Der Knopf muss INNERHALB des Fullscreen-Wrappers liegen, sonst wäre
+               er im Vollbild-Zustand unsichtbar (Fullscreen-API zeigt nur das angeforderte Element +
+               Nachfahren). -->
+          <div id="dashboard-map-fullscreen-target" class="dashboard-map-fullscreen-target">
+            <button type="button" class="vollbild-toggle" id="dashboard-map-fullscreen-btn" title="Karte im Vollbild anzeigen">⛶ Vollbild</button>
+            <div id="dashboard-map-body">
+              <!-- Wird dynamisch von dashboardMap.js gefüllt -->
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <!-- VORGEWENDEMANAGEMENT TAB: Makro-Verwaltung (Liste + Editor), s. public/js/vorgewende.js -->
+      <div id="tab-vorgewende" class="tab-content">
+        <!-- Wird dynamisch von vorgewende.js gefüllt -->
+      </div>
+
+      <!-- SICHERN & TEILEN TAB (Phase D, 21.08.2026): kombinierter Export/Import über mehrere Bereiche
+           in einer Datei (Funktionen/Profile/Bedienpanel-Seiten), mit granularer Auswahl + Konflikt-
+           prüfung vor dem Import. Die vier bestehenden Einzel-Export-Buttons (Profile/Funktionen/
+           Makros/je-eine-Bedienpanel-Seite) bleiben unverändert für schnelle Einzel-Exporte -- dies
+           hier ist zusätzlich für "alles zusammen sichern/teilen". s. public/js/backup.js. -->
+      <div id="tab-backup" class="tab-content">
+        <section class="card">
+          <p style="color: var(--text-dim); margin-bottom: 14px;">
+            Mehrere Bereiche zusammen in einer Datei sichern oder teilen – z. B. um eine komplette
+            Einrichtung an ein anderes Gerät zu übertragen. Einzelne Teile exportierst du auch direkt auf
+            ihrer Seite (Profile, Funktionen, Makros, Kacheln und Kachelseiten).
+          </p>
+          <div class="form-group">
+            <div class="button-group" style="justify-content: space-between; align-items: baseline;">
+              <label>Funktionen</label>
+              <div class="button-group">
+                <button type="button" class="btn-secondary" style="padding: 2px 10px; font-size: 0.8rem;" onclick="window.backupManagerUI.selectAll('functions')">Alle</button>
+                <button type="button" class="btn-secondary" style="padding: 2px 10px; font-size: 0.8rem;" onclick="window.backupManagerUI.selectNone('functions')">Keine</button>
+              </div>
+            </div>
+            <div id="backup-functions-list" class="backup-checklist">
+              <!-- Wird dynamisch von backup.js gefüllt -->
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="button-group" style="justify-content: space-between; align-items: baseline;">
+              <label>Profile</label>
+              <div class="button-group">
+                <button type="button" class="btn-secondary" style="padding: 2px 10px; font-size: 0.8rem;" onclick="window.backupManagerUI.selectAll('profiles')">Alle</button>
+                <button type="button" class="btn-secondary" style="padding: 2px 10px; font-size: 0.8rem;" onclick="window.backupManagerUI.selectNone('profiles')">Keine</button>
+              </div>
+            </div>
+            <div id="backup-profiles-list" class="backup-checklist">
+              <!-- Wird dynamisch von backup.js gefüllt -->
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="button-group" style="justify-content: space-between; align-items: baseline;">
+              <label>Eigene Kacheln</label>
+              <div class="button-group">
+                <button type="button" class="btn-secondary" style="padding: 2px 10px; font-size: 0.8rem;" onclick="window.backupManagerUI.selectAll('pages')">Alle</button>
+                <button type="button" class="btn-secondary" style="padding: 2px 10px; font-size: 0.8rem;" onclick="window.backupManagerUI.selectNone('pages')">Keine</button>
+              </div>
+            </div>
+            <div id="backup-pages-list" class="backup-checklist">
+              <!-- Wird dynamisch von backup.js gefüllt -->
+            </div>
+          </div>
+          <div class="button-group" style="margin-top: 8px;">
+            <button id="backup-export" class="btn-primary">Auswahl exportieren</button>
+            <button id="backup-import" class="btn-secondary">Sicherung importieren</button>
+          </div>
+        </section>
+      </div>
+
+      <!-- BEDIENPANEL VERWALTEN TAB: Liste aller Bedienpanel-Seiten (Bearbeiten/Exportieren/Löschen),
+           s. public/js/steuerungsmenues.js renderManagePage(). Fest (nicht nutzergeneriert wie die
+           einzelnen Bedienpanel-Seiten selbst), deshalb hier statisch statt via ensureTabContainers(). -->
+      <div id="tab-sm-manage" class="tab-content">
+        <!-- Wird dynamisch von steuerungsmenues.js gefüllt -->
+      </div>
+
+      <!-- ACHSEN-ZUORDNUNG TAB: welche physische Achse -> welcher Gamepad-Ausgabe-Platz, s.
+           public/js/axisAssignment.js. Getrennt von der Hardware-Kalibrierung (Einstellungen). -->
+      <div id="tab-axis-assignment" class="tab-content">
+        <section class="card">
+          <div id="axis-assignment-body">
+            <!-- Wird dynamisch von axisAssignment.js gefüllt -->
+          </div>
+        </section>
+      </div>
+
+      <!-- STATUS TAB (Standardseite von "Einstellungen") -->
+      <div id="tab-status" class="tab-content">
+        <!-- Einrichtungs-Assistent und Tour (23.10.2026, s. public/js/einrichtung.js) -->
+        <section class="card" id="einrichtung-card">
+          <h3 style="margin-top: 0;">Einrichtung &amp; Tour</h3>
+          <p class="setting-hint" style="margin-top: 0;">Der <b>Einrichtungs-Assistent</b> führt Schritt für Schritt durch Spiel, Controller, Module,
+            Kalibrierung und Tablet. Die <b>Tour</b> zeigt in zwei Minuten, wo was ist – mit zwei kleinen Übungen.</p>
+          <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+            <button type="button" class="btn-primary btn-small" onclick="window.einrichtung.start('alles')">Einrichtung starten</button>
+            <button type="button" class="btn-secondary btn-small" onclick="window.einrichtung.tour()">Tour starten</button>
+          </div>
+        </section>
+        <!-- Version, Datenordner, „Nach Updates suchen“ nur auf Knopfdruck (23.10.2026, s. public/js/updates.js) -->
+        <section class="card" id="update-card">
+          <h3 style="margin-top: 0;">Version &amp; Updates</h3>
+          <div id="update-body"><!-- updates.js --></div>
+        </section>
+        <!-- Diagnose (25.10.2026, s. public/js/diagnose.js + server/diagnose.js): was ControlHub und die Armlehne zuletzt
+             gemeldet haben, Diagnosedatei für den Support -->
+        <section class="card" id="diagnose-card">
+          <h3 style="margin-top: 0;">Diagnose</h3>
+          <p class="setting-hint" style="margin-top: 0;">Läuft etwas nicht rund, steht hier, was ControlHub und die Armlehne zuletzt gemeldet haben,
+            auch warum die Armlehne zuletzt neu gestartet ist. Die <b>Diagnosedatei</b> kannst du dem Support schicken: Sie enthält Versionen,
+            den Zustand der Armlehne und die Meldungen der letzten Tage, aber keine Funktionen, Profile oder anderen persönlichen Inhalte.</p>
+          <div id="diagnose-body"><!-- diagnose.js --></div>
+          <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px;">
+            <button type="button" class="btn-secondary btn-small" onclick="window.diagnose.abfragen()">Armlehne neu abfragen</button>
+            <button type="button" class="btn-primary btn-small" onclick="window.diagnose.datei()">Diagnosedatei speichern</button>
+          </div>
+        </section>
+        <!-- Spiel (Phase 2, 21.10.2026, s. public/js/games.js + server/gameManager.js): jedes Spiel hat eigene
+             Profile, Funktionen, Makros, Bedienpanel-Seiten, Auto-Wechsel und Ebenentaster. Für alle Spiele
+             gleich bleiben Kalibrierung, Tastenlage der Module, Widgets und die USB-Verbindung. -->
+        <section class="card" id="game-settings-card">
+          <h3 style="margin-top: 0;">Spiel</h3>
+          <div class="input-group">
+            <label for="game-select">Aktives Spiel:</label>
+            <select id="game-select"></select>
+            <button class="btn-primary btn-small" id="game-switch-btn" onclick="window.gameSwitcher.switchToSelected()">Wechseln</button>
+          </div>
+          <p id="game-info" style="color: var(--text-dim); margin: 6px 0 12px;"></p>
+          <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+            <button class="btn-secondary btn-small" onclick="window.gameSwitcher.addCustom()">Eigenes Spiel hinzufügen …</button>
+            <button class="btn-secondary btn-small" id="game-rename-btn" onclick="window.gameSwitcher.renameSelected()">Umbenennen …</button>
+            <button class="btn-danger btn-small" id="game-remove-btn" onclick="window.gameSwitcher.removeSelected()">Entfernen …</button>
+            <span style="flex: 1;"></span>
+            <button class="btn-secondary btn-small" onclick="window.gameSwitcher.exportSelected()">Spiel sichern</button>
+            <button class="btn-secondary btn-small" onclick="document.getElementById('game-import-file').click()">Spiel wiederherstellen …</button>
+            <input type="file" id="game-import-file" accept=".json,application/json" style="display: none;" onchange="window.gameSwitcher.importFile(this)">
+          </div>
+          <p style="color: var(--text-dim); margin: 12px 0 0;">
+            Jedes Spiel hat eigene Profile, Belegungen, Makros, eigene Kacheln und Ebenentaster – zwischen den Spielen
+            wird nichts übernommen. Für alle Spiele gleich bleiben Kalibrierung, Modulbilder (Tastenlage, Kappenfarben) und die
+            USB-Verbindung. „Spiel sichern“ speichert das ausgewählte Spiel komplett in einer Datei.
+          </p>
+        </section>
+        <section class="card">
+          <div class="input-group">
+            <label for="function-icons-select">Funktions-Icons:</label>
+            <select id="function-icons-select" onchange="window.app.setShowFunctionIcons(this.value)">
+              <option value="show">Anzeigen</option>
+              <option value="hide">Ausblenden</option>
+            </select>
+          </div>
+          <p class="setting-hint">Zeigt die Symbole der Funktionen in Listen und auf Tasten. Ausblenden spart Platz.</p>
+          <div class="input-group">
+            <label for="theme-select">Darstellung:</label>
+            <select id="theme-select" onchange="window.app.setTheme(this.value)">
+              <option value="dark">Dunkel</option>
+              <option value="light">Hell</option>
+            </select>
+          </div>
+          <p class="setting-hint">Hell für helle Räume, Dunkel für abends. Richtet sich nach deinem Raum, nicht nach dem Spiel.</p>
+          <div class="input-group">
+            <label for="clock-mode-select">Angezeigte Uhrzeit:</label>
+            <select id="clock-mode-select" onchange="window.app.setClockMode(this.value)">
+              <option value="real">Echtzeit</option>
+              <option value="ingame">Ingame-Uhrzeit (FS25)</option>
+            </select>
+          </div>
+          <p class="setting-hint">Welche Uhrzeit oben in der Statusleiste steht: die echte Uhrzeit oder die Uhrzeit im Spiel.</p>
+          <div class="input-group">
+            <label for="scanline-select">Scanline-Textur:</label>
+            <select id="scanline-select" onchange="window.app.setScanlineEnabled(this.value)">
+              <option value="off">Aus</option>
+              <option value="on">An</option>
+            </select>
+          </div>
+          <p class="setting-hint">Feine Linien-Textur im Terminal-Stil. Rein optisch, ohne Einfluss auf die Funktion.</p>
+          <!-- Tablet-Komfort (21.10.2026, s. public/js/appScreen.js) -- gilt je Gerät (localStorage) -->
+          <div class="input-group">
+            <label for="wake-select">Bildschirm wach halten:</label>
+            <select id="wake-select" onchange="window.appScreen.setWake(this.value)">
+              <option value="on">An (Tablet geht nicht in den Ruhezustand)</option>
+              <option value="off">Aus (Geräteeinstellung)</option>
+            </select>
+          </div>
+          <p class="setting-hint">Verhindert, dass das Tablet während des Spielens in den Ruhezustand geht. Gilt nur für dieses Gerät.</p>
+          <div class="input-group">
+            <label for="fullscreen-select">Vollbild:</label>
+            <select id="fullscreen-select" onchange="window.appScreen.setFullscreen(this.value)">
+              <option value="off">Aus</option>
+              <option value="on">An (Browserleisten ausblenden)</option>
+            </select>
+          </div>
+          <p class="setting-hint">Blendet die Leisten des Browsers aus, damit mehr Platz für ControlHub bleibt. Gilt nur für dieses Gerät.</p>
+          <p id="app-screen-hint" style="color: var(--text-dim); margin: 6px 0 0;"></p>
+        </section>
+      </div>
+
+      <!-- KARTE (Test 23.10.2026, Anmerkung 11): alle Karten-Einstellungen, die nicht zur Kachel oder zum Gerät gehören --
+           s. public/js/karteEinstellungen.js und server/routes/karte.js -->
+      <div id="tab-karte-einstellungen" class="tab-content">
+        <section class="card">
+          <h3 style="margin-top: 0;">Fahrzeug auf der Karte</h3>
+          <div class="input-group">
+            <label for="karte-glaetten">Glättung:</label>
+            <select id="karte-glaetten" onchange="window.karteEinstellungen.set({ glaetten: this.value })">
+              <option value="aus">Aus – genau wie vom Spiel gemeldet</option>
+              <option value="wenig">Wenig – leicht beruhigt</option>
+              <option value="mittel">Mittel – ruhiger, folgt etwas verzögert</option>
+              <option value="stark">Stark – sehr ruhig, hängt in Kurven nach</option>
+            </select>
+          </div>
+          <p class="setting-hint">Beruhigt Position und Richtung des Fahrzeugs auf der Karte. Gilt für alle Geräte und alle Kartenkacheln.</p>
+          <div class="input-group">
+            <label for="karte-strassen">Straßen zeigen:</label>
+            <select id="karte-strassen" onchange="window.karteEinstellungen.set({ strassen: this.value === 'an' })">
+              <option value="an">An</option>
+              <option value="aus">Aus</option>
+            </select>
+          </div>
+          <p class="setting-hint">Zeichnet das Straßennetz der Karte als Hintergrund (ab Mod 0.6, nur im Einzelspiel und beim Gastgeber eines Mehrspieler-Spiels).</p>
+          <div class="input-group">
+            <label>Bearbeitete Fläche:</label>
+            <button type="button" class="btn-danger btn-small" onclick="window.karteEinstellungen.alleFlaechenLoeschen()">Alle Flächen dieses Spielstands löschen …</button>
+          </div>
+          <p class="setting-hint">ControlHub merkt sich die bearbeitete Fläche je Spielstand und Fahrzeug, bis du sie löschst. Die Fläche des Fahrzeugs, in dem du sitzt, löschst du an der Kartenkachel (Zahnrad).</p>
+          <div class="input-group">
+            <label for="map-fps-select">Karte zeichnen:</label>
+            <select id="map-fps-select" onchange="window.dashboardMapView.setFpsMode(this.value)">
+              <option value="maximal">Maximal (so oft wie der Bildschirm, meist 60 Bilder pro Sekunde, Standard)</option>
+              <option value="flussig">Flüssig (30 Bilder pro Sekunde)</option>
+              <option value="sparsam">Sparsam (so oft wie Spieldaten kommen, mindestens 10)</option>
+            </select>
+          </div>
+          <p class="setting-hint">Die Karte zeichnet nur, solange sie zu sehen ist. „Flüssig“ oder „Sparsam“ schonen ältere Tablets. Gilt nur für dieses Gerät.</p>
+        </section>
+        <section class="card">
+          <h3 style="margin-top: 0;">Vorgewende</h3>
+          <div class="input-group">
+            <label for="karte-beep">Vorgewende-Ton über:</label>
+            <select id="karte-beep" onchange="window.karteEinstellungen.set({ beep: this.value })">
+              <option value="tablet">Tablet</option>
+              <option value="armlehne">Armlehne</option>
+              <option value="beide">Tablet und Armlehne</option>
+              <option value="aus">Aus (stumm)</option>
+            </select>
+          </div>
+          <p class="setting-hint">Ob ein Gerät überhaupt piept und wann (beim Einfahren, beim Ausfahren oder beides), stellst du je Gerät unter GPS ein. Eine Armlehnen-Taste kann den Ton mit „Vorgewende-Ton an/aus“ schnell stumm schalten.</p>
+        </section>
+        <!-- Telemetrie-Rate (Phase 1, 21.10.2026): gilt für den ganzen ControlHub, nicht pro Browser --
+             wird im Server gespeichert (server/config/app.json) und per craftConsoleSettings.xml an die Mod
+             gegeben. Ohne verbundenen Browser spart die Mod selbst auf 2/s. -->
+        <section class="card">
+          <div class="input-group">
+            <label for="telemetry-rate-select">Spieldaten aktualisieren:</label>
+            <select id="telemetry-rate-select" onchange="window.app.setTelemetryRate(this.value)">
+              <option value="4">4× pro Sekunde (sparsam)</option>
+              <option value="10">10× pro Sekunde</option>
+              <option value="20">20× pro Sekunde</option>
+              <option value="25">25× pro Sekunde (Standard, braucht am meisten Leistung)</option>
+            </select>
+          </div>
+          <p style="color: var(--text-dim); margin: 6px 0 0;">
+            Gilt für alle Geräte. So oft erneuern sich auch die Anzeigen auf dem Tablet (die Karte mit mindestens 10 Bildern pro Sekunde, damit sie weich läuft). Mehr wirkt flüssiger und macht Makros genauer, kostet im Spiel und auf dem Tablet aber etwas Leistung.
+            Wie viel, schreibt die Mod alle 30 Sekunden ins log.txt des Spiels. Ist kein Tablet oder Browser verbunden,
+            schaltet die Mod von selbst auf 2× pro Sekunde herunter.
+          </p>
+        </section>
+      </div>
+
+      <!-- MODUL-ERKENNUNG TAB: zeigt, welche Module/Bauteile die Firmware per STATUS meldet
+           (s. public/js/moduleStatus.js) -->
+      <div id="tab-module-status" class="tab-content">
+        <section class="card">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 10px;">
+            <p style="color: var(--text-dim); margin: 0;">
+              Zeigt, welche Module und Bauteile die Firmware gerade über die USB-Verbindung erkennt --
+              praktisch zum schnellen Eingrenzen, ob ein Problem an der Verkabelung oder woanders liegt.
+            </p>
+            <button class="btn-secondary btn-small" onclick="window.moduleStatus.refresh()">Neu prüfen</button>
+          </div>
+          <div id="module-status-body">
+            <!-- Wird dynamisch gefüllt -->
+          </div>
+        </section>
+
+        <!-- Boot-/Absturz-Log (WebSerial-Konfig-Protokoll DIAG, 25.08.2026) -- eigener Kasten statt Teil
+             von #module-status-body, da der oben beim "Neu prüfen" komplett neu aufgebaut wird und ein
+             hier geladenes Log sonst dabei verschwinden würde. Bisher nur in der eigenständigen
+             Controller-Konfig.html abrufbar, jetzt auch hier (server/index.js GET /api/device-diag
+             gab es serverseitig schon, nur noch kein Knopf im Frontend). -->
+        <section class="card">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 10px;">
+            <p style="color: var(--text-dim); margin: 0;">
+              Ereignis-Log der Firmware (u. a. Boot-Zeile + – falls der Pico sich per 4-Sekunden-Watchdog
+              selbst neu gestartet hat – in welcher Phase der Steuerungslogik das zuletzt passiert ist.
+              Praktisch zum Eingrenzen von Aufhängern/Resets.
+            </p>
+            <button class="btn-secondary btn-small" onclick="window.moduleStatus.loadDiag()">Diagnose-Log laden</button>
+          </div>
+          <div id="diag-log-body">
+            <!-- Wird dynamisch gefüllt -->
+          </div>
+        </section>
+      </div>
+
+      <!-- LIVE-DIAGNOSE TAB: zeigt in Echtzeit rohe physische Tastendruecke und die daraus
+           resultierenden ausgehenden Tastatur-/Gamepad-Signale nebeneinander (s. public/js/liveDiagnostics.js) -->
+      <div id="tab-live-diagnose" class="tab-content">
+        <section class="card">
+          <p style="color: var(--text-dim); margin-top: 0;">
+            Zeigt live, was tatsächlich ankommt und was ControlHub daraus zurück an den Controller schickt --
+            praktisch um zu sehen, ob eine Taste überhaupt physisch erkannt wird und ob die zugeordnete
+            Funktion korrekt aufgelöst wird, bevor man prüft, ob es im Spiel ankommt.
+          </p>
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+            <div>
+              <h4 style="margin: 0 0 10px;">Physisch gedrückt (Eingang)</h4>
+              <div id="live-diag-input" class="mapping-card" style="min-height: 60px;"></div>
+            </div>
+            <div>
+              <h4 style="margin: 0 0 10px;">Ausgehende Signale (an den Controller)</h4>
+              <div id="live-diag-output" class="mapping-card" style="min-height: 60px;"></div>
+            </div>
+          </div>
+        </section>
+
+        <section class="card">
+          <h4 style="margin: 0 0 10px;">Piezo-Buzzer testen</h4>
+          <p style="color: var(--text-dim); margin-top: 0;">
+            Sendet den <code>BEEP &lt;ms&gt;</code>-Befehl direkt an den Controller (GP15, s.
+            CraftConsolePro_Pico.ino) – praktisch um den Piezo ohne Spiel oder Firmware-Flash zu testen.
+          </p>
+          <div style="display: flex; align-items: center; gap: 10px;">
+            <label>Dauer (ms): <input type="number" id="piezo-test-ms" min="20" max="5000" value="300" style="width: 90px;"></label>
+            <button type="button" class="btn-primary" id="piezo-test-btn">Piep abspielen</button>
+            <span id="piezo-test-status" style="color: var(--text-dim); font-size: 0.85rem;"></span>
+          </div>
+        </section>
+      </div>
+
+      <!-- ACHSEN-KALIBRIERUNG TAB -->
+      <div id="tab-axis-calibration" class="tab-content">
+        <section class="card">
+          <p style="color: var(--text-dim);">
+            Kalibriere hier Thumbstick, Hebel, Fingertip-Modul und Poti-Rad. Jede Kalibrierung wird
+            beim Speichern sofort im Flash abgelegt – genauso wie in der eigenständigen Konfig-Seite.
+          </p>
+          <div class="button-group" style="margin-top: 12px;">
+            <button class="btn-secondary btn-small" onclick="window.axisCalibration.centerAll()">Alle Achsen zentrieren</button>
+            <button class="btn-danger btn-small" onclick="window.axisCalibration.factoryReset()">Werkseinstellung (alles zurücksetzen)</button>
+          </div>
+          <div id="axis-calibration-body" style="margin-top: 16px;">
+            <!-- Wird dynamisch gefüllt -->
+          </div>
+        </section>
+      </div>
+
+      <!-- VERBINDUNG TAB -->
+      <div id="tab-connection" class="tab-content">
+        <section class="card">
+          <div class="connection-controls">
+            <div class="input-group">
+              <label for="port-select">Port:</label>
+              <select id="port-select">
+                <option value="">Port wählen...</option>
+              </select>
+              <button id="refresh-ports" class="btn-secondary">Aktualisieren</button>
+            </div>
+            <div class="button-group">
+              <button id="auto-detect" class="btn-primary">Controller automatisch erkennen</button>
+              <button id="connect" class="btn-success">Verbinden</button>
+              <button id="disconnect" class="btn-danger" disabled>Trennen</button>
+            </div>
+          </div>
+          <p class="setting-hint" style="margin-top: 12px;">„Automatisch erkennen“ findet deinen Controller (CraftConsole, CraftLink …) beim
+            Ab- und Wiederanstecken. Nach einem Neustart verbindet sich ControlHub von selbst wieder mit dem zuletzt genutzten Anschluss
+            und erkennt, welcher Controller es ist. Ist der Controller länger als 3 Sekunden getrennt, erscheint eine große Meldung –
+            er arbeitet dann allein weiter (die CraftConsole mit ihrer Standardbelegung).</p>
+        </section>
+      </div>
+
+      <!-- CONTROLLER → GERÄT (Geräteprofile, 23.10.2026, s. controller.js): erkannter Controller, Geräteprofil wählen -->
+      <div id="tab-controller-geraet" class="tab-content">
+        <section class="card">
+          <div id="controller-geraet-body"><!-- controller.js --></div>
+        </section>
+      </div>
+
+      <!-- CONTROLLER → MODULE (Modul-Baukasten, 23.10.2026, s. controller.js; ersetzt das frühere Armlehnen-Setup mit
+           Version/Unterbau/Griff in der Firmware -- die Werte dort sind nur Metadaten und werden einmal übernommen).
+           Die Tab-ID bleibt, damit Sprünge aus anderen Seiten weiter passen. -->
+      <div id="tab-armlehnen-setup" class="tab-content">
+        <section class="card">
+          <h3 style="margin-top: 0;">Welche Module hat dein Controller?</h3>
+          <div id="armlehnen-setup-body"><!-- controller.js --></div>
+        </section>
+        <!-- Kappenfarben am Fingertip-Modul (23.10.2026): nur Anzeige in ControlHub, braucht kein verbundenes Gerät -->
+        <section class="card" id="kappenfarben-card">
+          <h3 style="margin-top: 0;">Kappenfarben am Fingertip-Modul</h3>
+          <p style="color: var(--text-dim);">
+            Welche Kappe sitzt auf welchem Fingertip? Im Modulbild (Tastenbelegung und Steuerungsübersicht) bekommen
+            seine Tasten einen Ring in dieser Farbe. Am Controller selbst ändert sich nichts.
+          </p>
+          <div id="kappenfarben-body"></div>
+        </section>
+      </div>
+
+      <!-- EINSTELLUNGEN TAB (spricht dasselbe GETALL/SET-Protokoll wie die eigenständige Controller-Konfig.html) -->
+      <div id="tab-settings" class="tab-content">
+        <section class="card">
+          <p style="color: var(--text-dim);">
+            Jede Änderung wird sofort ans Gerät gesendet und dort im Flash gespeichert – genauso wie in der
+            eigenständigen Konfig-Seite. Die serielle Verbindung kann immer nur von einem Programm gleichzeitig
+            geöffnet werden (ControlHub oder die eigenständige Seite, nicht beides zugleich).
+          </p>
+          <button class="btn-secondary btn-small" onclick="window.deviceSettings.load()">Neu laden</button>
+          <div id="device-settings-body" style="margin-top: 16px;">
+            <!-- Wird dynamisch gefüllt -->
+          </div>
+        </section>
+      </div>
+
+      <!-- FÜR ENTWICKLER → EIGENE CONTROLLER (Geräteprofile G3/G4, 23.10.2026, s. controllerEditor.js): Selbstbau-Controller
+           mit Modulen, Tasten/Achsen anlernen, Namen, Bild mit Tastenlage -->
+      <div id="tab-controller-editor" class="tab-content">
+        <section class="card">
+          <div id="controller-editor-body"><!-- controllerEditor.js --></div>
+        </section>
+      </div>
+
+      <!-- MODUL-KALIBRIERUNG TAB (Werkzeug: Tasten-Hotspots auf einem Modulbild setzen) -->
+      <div id="tab-calibration-tool" class="tab-content">
+        <section class="card">
+          <p style="color: var(--text-dim);">
+            Bild pro Modul hochladen und danach nacheinander auf jede Taste im Bild klicken, um ihre Position zu speichern.
+            Das wird für die Detailansicht in "Tastenbelegung" gebraucht. Über "Gesamtübersicht" lässt sich
+            zusätzlich ein Komplettübersichtsbild mit einem Hotspot pro Modul hinterlegen.
+          </p>
+          <div class="input-group">
+            <label for="calibration-module-select">Modul:</label>
+            <select id="calibration-module-select" onchange="window.layoutCalibrator.selectModule(this.value)">
+              <option value="">Modul wählen...</option>
+            </select>
+          </div>
+          <div id="calibration-body" style="margin-top: 16px;">
+            <!-- Wird dynamisch gefüllt -->
+          </div>
+        </section>
+        <!-- Positions-/Form-Regler der Modul-Kalibrierung: schwebend rechts unten über dem Bild (23.10.2026 -- vorher in der
+             alten Seitenleiste, die seit der Kopfleiste unsichtbar ist; Hendriks Wunsch 25.08.2026 bleibt: das Bild wird
+             dadurch nicht kleiner). Gefüllt von moduleFlow.js LayoutCalibrator.renderSliderSidebar(). -->
+        <div id="calibration-slider-slot"></div>
+      </div>
+
+      <!-- TASTEN-TEST TAB (23.08.2026, Hendriks Wunsch): Soll/Ist-Abgleich der physischen
+           Tastennummern automatisiert statt Live-Diagnose manuell mitzuschreiben -- pro Zeile
+           "Testen" klicken, am Gerät die gemeinte Taste drücken, Tool erkennt automatisch, welche
+           Nummer ankam, und vergleicht mit dem Soll-Wert. s. public/js/buttonTest.js. -->
+      <div id="tab-button-test" class="tab-content">
+        <!-- Wird dynamisch von buttonTest.js gefüllt -->
+      </div>
+
+      <!-- ZURÜCKSETZEN TAB (Entwicklertools, 30.09.2026): Sammelplatz für Aktionen, die Daten
+           unwiderruflich verwerfen. Bewusst hier statt bei den Funktionen -- dieser Bereich liegt
+           ohnehin hinter der Entwickler-Code-Hürde (DEV_TOOLS_CODE, s. app.js), man landet also nur
+           absichtlich hier. -->
+      <div id="tab-reset" class="tab-content">
+        <section class="card">
+          <h2>Zurücksetzen</h2>
+          <p>Aktionen auf dieser Seite verwerfen Daten endgültig. Für die normale Bedienung wird hier nichts gebraucht.</p>
+
+          <div class="card" style="border-left: 4px solid var(--danger, #c62828);">
+            <h3>Alle Funktionen löschen</h3>
+            <p>Löscht <strong>sämtliche Funktionen</strong> und setzt die Gruppen auf die Startbelegung
+               zurück. Gedacht, um einen Import an einem sauberen Stand zu prüfen.</p>
+            <p><strong>Nicht betroffen:</strong> Profile, Tastenbelegungen, Makros, eigene Kacheln und
+               Geräte-Einstellungen. Tasten, die auf eine gelöschte Funktion zeigen, sind danach aber
+               unbelegt.</p>
+            <p>Zum Bestätigen <code>LÖSCHEN</code> eintippen:</p>
+            <div class="button-group">
+              <input type="text" id="delete-all-functions-confirm" placeholder="LÖSCHEN" autocomplete="off" spellcheck="false">
+              <button id="delete-all-functions" class="btn-danger" disabled>Alle Funktionen löschen</button>
+            </div>
+            <p id="delete-all-functions-status" class="hint"></p>
+          </div>
+        </section>
+      </div>
+    </main>
+  </div>
+
+  <!-- Ein-/Ausstecken-Assistent zum automatischen Erkennen der Armlehne (25.08.2026, s. connectionWizard.js) -->
+  <div id="connection-wizard-modal" class="modal" style="display: none;">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3>Controller automatisch erkennen</h3>
+        <button class="modal-close" onclick="window.connectionWizard.close()">&times;</button>
+      </div>
+      <div class="modal-body" id="connection-wizard-body">
+        <!-- Wird dynamisch gefüllt -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Function Editor Modal -->
+  <div id="function-modal" class="modal" style="display: none;">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 id="function-modal-title">Funktion bearbeiten</h3>
+        <button class="modal-close" onclick="window.functionEditor.close()">&times;</button>
+      </div>
+      <div class="modal-body" id="function-modal-body">
+        <!-- Wird dynamisch gefüllt -->
+      </div>
+      <div class="modal-footer fe-foot" id="function-modal-footer">
+        <!-- Wird vom Funktions-Editor gefüllt (Löschen/Duplizieren, Abbrechen, Speichern) -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Gruppen-Verwaltung -->
+  <div id="category-modal" class="modal" style="display: none;">
+    <div class="modal-content" style="width: 94%; max-width: 720px; max-height: 88vh;">
+      <div class="modal-header">
+        <h3>Gruppen verwalten</h3>
+        <button class="modal-close" onclick="window.categoryManager.close()">&times;</button>
+      </div>
+      <div class="modal-body" id="category-modal-body">
+        <!-- Wird dynamisch gefüllt -->
+      </div>
+      <div class="modal-footer cm-foot" id="category-modal-footer">
+        <!-- categoryManager.js: + Neue Gruppe, Schließen -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Achsen-Konfigurations-Popup (Modus/Auslöseweg + Gamepad-Achsen-Zuordnung), von einem
+       Achsen-Hotspot in der Modulübersicht aus erreichbar, s. axisConfigModal.js -->
+  <div id="axis-config-modal" class="modal" style="display: none;">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 id="axis-config-modal-title">Achse konfigurieren</h3>
+        <button class="modal-close" onclick="window.axisConfigModal.close()">&times;</button>
+      </div>
+      <div class="modal-body" id="axis-config-modal-body">
+        <!-- Wird dynamisch gefüllt -->
+      </div>
+      <div class="modal-footer">
+        <button class="btn-secondary" onclick="window.axisConfigModal.close()">Schließen</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- "Auch für andere Profile übernehmen"-Popup nach dem Speichern einer Tastenbelegung (Phase C,
+       21.08.2026), s. crossProfileApply.js -->
+  <div id="cross-profile-apply-modal" class="modal" style="display: none;">
+    <div class="modal-content" style="max-width: 420px;">
+      <div class="modal-header">
+        <h3>Auch für andere Profile?</h3>
+        <button class="modal-close" onclick="window.crossProfileApply.close()">&times;</button>
+      </div>
+      <div class="modal-body" id="cross-profile-apply-body">
+        <!-- Wird dynamisch gefüllt -->
+      </div>
+      <div class="modal-footer">
+        <button class="btn-success" onclick="window.crossProfileApply.apply()">Übernehmen</button>
+        <button class="btn-secondary" onclick="window.crossProfileApply.close()">Nur dieses Profil</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Profil-Import (30.09.2026): Quellenwahl Datei/Profil, danach je nach Zweig Modus-Auswahl bzw.
+       Modul- und Tastenauswahl. Siehe public/js/profileImport.js. -->
+  <div id="profile-import-modal" class="modal" style="display: none;">
+    <div class="modal-content" style="max-width: 760px;">
+      <div class="modal-header">
+        <h3 id="profile-import-title">Importieren</h3>
+        <button class="modal-close" onclick="window.profileImport.close()">&times;</button>
+      </div>
+      <div class="modal-body" id="profile-import-body">
+        <!-- Wird dynamisch gefüllt -->
+      </div>
+      <div class="modal-footer" id="profile-import-footer"></div>
+    </div>
+  </div>
+  <input type="file" id="profile-import-file" accept="application/json" style="display: none;">
+
+  <!-- Modul-Kalibrierung importieren (25.08.2026): Tastennummern-Remapping vor dem eigentlichen
+       Import, s. moduleFlow.js LayoutCalibrator.openImportRemap(). -->
+  <div id="module-import-modal" class="modal" style="display: none;">
+    <div class="modal-content" style="max-width: 640px;">
+      <div class="modal-header">
+        <h3>Modul-Kalibrierung importieren</h3>
+        <button class="modal-close" onclick="window.layoutCalibrator.closeImportModal()">&times;</button>
+      </div>
+      <div class="modal-body" id="module-import-body">
+        <!-- Wird dynamisch gefüllt -->
+      </div>
+      <div class="modal-footer">
+        <button id="module-import-confirm" class="btn-success" onclick="window.layoutCalibrator.confirmImport()">Importieren</button>
+        <button class="btn-secondary" onclick="window.layoutCalibrator.closeImportModal()">Abbrechen</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Sammel-Import-Popup (Phase D, 21.08.2026): Import-Modus je Bereich wählen + Konfliktbericht vor
+       dem eigentlichen Import anzeigen, s. backup.js -->
+  <div id="backup-import-modal" class="modal" style="display: none;">
+    <div class="modal-content" style="max-width: 520px;">
+      <div class="modal-header">
+        <h3>Sicherung importieren</h3>
+        <button class="modal-close" onclick="window.backupManagerUI.closeImport()">&times;</button>
+      </div>
+      <div class="modal-body" id="backup-import-body">
+        <!-- Wird dynamisch gefüllt -->
+      </div>
+      <div class="modal-footer">
+        <button id="backup-import-confirm" class="btn-success" onclick="window.backupManagerUI.confirmImport()">Importieren</button>
+        <button class="btn-secondary" onclick="window.backupManagerUI.closeImport()">Abbrechen</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Erster Start (Phase 2): einmalig fragen, welches Spiel gespielt wird (s. public/js/games.js) -->
+  <div id="game-first-start-modal" class="modal" style="display: none;">
+    <div class="modal-content" style="max-width: 520px;">
+      <div class="modal-header">
+        <h3>Welches Spiel spielst du?</h3>
+      </div>
+      <div class="modal-body">
+        <p style="color: var(--text-dim); margin-top: 0;">
+          ControlHub legt für jedes Spiel eigene Profile und Belegungen an. Wechseln kannst du später jederzeit
+          unter Einstellungen → Allgemein → Spiel.
+        </p>
+        <div id="game-first-start-list" style="display: flex; flex-direction: column; gap: 8px;"></div>
+        <div class="rail-divider-plain" style="margin: 16px 0;"></div>
+        <button class="btn-secondary" onclick="window.gameSwitcher.addCustom({ fromFirstStart: true })">Anderes Spiel (eigenes anlegen) …</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- "Fahrzeug zuordnen" (s. public/js/vehicleAssignment.js) -- Zuordnung von Fahrzeugen/Anbaugeräten
+       zum aktuell aktiven Profil für den automatischen Profilwechsel. -->
+  <div id="vehicle-assignment-modal" class="modal" style="display: none;">
+    <div class="modal-content" style="max-width: 560px;">
+      <div class="modal-header">
+        <h3>Fahrzeug zuordnen – <span id="vehicle-assignment-profile-name"></span></h3>
+        <button class="modal-close" onclick="window.vehicleAssignmentModal.close()">&times;</button>
+      </div>
+      <div class="modal-body">
+        <h4>Aktuelles Fahrzeug &amp; Anbaugeräte</h4>
+        <div id="vehicle-assignment-current-list"></div>
+        <div class="rail-divider-plain" style="margin: 16px 0;"></div>
+        <h4>Automatisch aktiviert bei</h4>
+        <div id="vehicle-assignment-triggers-list"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Aktion für eine Bedienpanel-Taste ODER einen Makro-Schritt zuordnen (s. public/js/actionPicker.js) --
+       erst ein Modus-Menü (Funktion/Achse/Taste), danach der passende Bildschirm. Jeder Bildschirm
+       rendert seine eigenen kontextuellen Buttons direkt im Body, deshalb kein statisches Footer. -->
+  <div id="action-picker-modal" class="modal" style="display: none;">
+    <div class="modal-content" style="width: 90%; max-width: 1400px; max-height: 90vh;">
+      <div class="modal-header">
+        <h3 id="action-picker-title">Aktion zuordnen</h3>
+        <button class="modal-close" onclick="window.actionPicker.close()">&times;</button>
+      </div>
+      <div class="modal-body" id="action-picker-body">
+        <!-- Wird dynamisch gefüllt -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Bild-Zuschneiden (Kalibrierungs-Werkzeug) -->
+  <div id="crop-dialog" class="modal" style="display: none;">
+    <div class="modal-content" style="max-width: 700px;">
+      <div class="modal-header">
+        <h3>Bild zuschneiden</h3>
+      </div>
+      <div class="modal-body">
+        <div id="crop-image-wrap" class="crop-image-wrap">
+          <img id="crop-image" src="" alt="Zuschneiden">
+          <div id="crop-rect" class="crop-rect">
+            <div class="crop-handle" data-handle="nw"></div>
+            <div class="crop-handle" data-handle="ne"></div>
+            <div class="crop-handle" data-handle="sw"></div>
+            <div class="crop-handle" data-handle="se"></div>
+          </div>
+        </div>
+        <div class="size-row" style="margin-top: 14px;">
+          <label>Drehung</label>
+          <input type="range" id="crop-rotation" min="-45" max="45" step="0.5" value="0"
+            oninput="window.imageCropper.setRotation(this.value)">
+          <span id="crop-rotation-readout">0°</span>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn-success" id="crop-dialog-apply">Übernehmen</button>
+        <button class="btn-secondary" id="crop-dialog-cancel">Abbrechen</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast (kurze Erfolgsmeldung nach dem Speichern) -->
+  <div id="toast-container"></div>
+
+  <!-- Automatischer Profilwechsel: Konflikt-Meldungen (s. public/js/vehicleAssignment.js
+       AutoSwitchNotifier) -- eigener Container statt #toast-container, da hier Buttons statt reinem
+       Text gebraucht werden. -->
+  <div id="auto-switch-notice-container"></div>
+
+  <!-- Socket.IO Client -->
+  <script src="/socket.io/socket.io.js"></script>
+  <!-- eine gemeinsame Verbindung für alle Teile der Seite (Durchsicht B4, 23.10.2026) -->
+  <!-- Gemeinsame Helfer (escapeHtml, Tastenfarben) vor allen anderen App-Skripten (24.10.2026) -->
+  <script src="js/basis.js"></script>
+  <script src="js/hubSocket.js"></script>
+  <!-- Eigene Dialoge statt alert/confirm/prompt -- muss vor allen anderen App-Skripten stehen -->
+  <script src="js/dialogs.js"></script>
+  <script src="js/appScreen.js"></script>
+  <!-- App Logic -->
+  <script src="js/functionGroups.js"></script>
+  <script src="js/bildschirmtastatur.js"></script>
+  <script src="js/zahlenblock.js"></script>
+  <!-- Paket J: Werteliste (auch im Server genutzt) + Anzeige-Bausteine/Werteliste-Fenster, vor allen Nutzern -->
+  <script src="js/werteliste.js"></script>
+  <script src="js/anzeigen.js"></script>
+  <script src="js/hubActions.js"></script>
+  <!-- Menüführung ohne Seitenleiste: Menü mit Untermenüs + untere Leiste auf allen Seiten (Hendrik 22.10.2026) -->
+  <script src="js/appNav.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/mappingModal.js"></script>
+  <script src="js/functionEditor.js"></script>
+  <script src="js/games.js"></script>
+  <script src="js/crossProfileApply.js"></script>
+  <script src="js/backup.js"></script>
+  <script src="js/moduleFlow.js"></script>
+  <script src="js/deviceSettings.js"></script>
+  <script src="js/armlehnenSetup.js"></script>
+  <script src="js/axisCalibration.js"></script>
+  <script src="js/axisAssignment.js"></script>
+  <script src="js/axisConfigModal.js"></script>
+  <script src="js/profileImport.js"></script>
+  <script src="js/categoryManager.js"></script>
+  <script src="js/vorgewende.js"></script>
+  <script src="js/moduleStatus.js"></script>
+  <script src="js/liveDiagnostics.js"></script>
+  <script src="js/actionPicker.js"></script>
+  <script src="js/vehicleAssignment.js"></script>
+  <script src="js/steuerungsmenues.js"></script>
+  <script src="js/teilbreiten.js"></script>
+  <script src="js/kartenFahrzeuge.js"></script>
+  <script src="js/dashboardMap.js"></script>
+  <script src="js/plannerLogic.js"></script>
+  <script src="js/planner.js"></script>
+  <script src="js/tileGrid.js"></script>
+  <script src="js/tiles.js"></script>
+  <script src="js/kachelEditor.js"></script>
+  <script src="js/macroStatusIndicator.js"></script>
+  <script src="js/statusMenus.js"></script>
+  <script src="js/modInstallieren.js"></script>
+  <script src="js/diagnose.js"></script>
+  <script src="js/gpsMenu.js"></script>
+  <script src="js/gpsGeraete.js"></script>
+  <script src="js/karteEinstellungen.js"></script>
+  <script src="js/buttonTest.js"></script>
+  <script src="js/connectionWizard.js"></script>
+  <script src="js/controller.js"></script>
+  <script src="js/controllerEditor.js"></script>
+  <script src="js/einrichtung.js"></script>
+  <script src="js/updates.js"></script>
+</body>
+</html>

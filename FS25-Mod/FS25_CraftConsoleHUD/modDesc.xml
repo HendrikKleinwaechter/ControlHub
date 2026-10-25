@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" standalone="no" ?>
+<modDesc descVersion="92">
+    <author>ControlCraft</author>
+    <version>0.7.9.0</version>
+    <title>
+        <en>CraftConsole HUD Interface</en>
+        <de>CraftConsole HUD Schnittstelle</de>
+    </title>
+    <description>
+        <en><![CDATA[Reads vehicle data (speed, direction, fill level, and more) and writes it to a file, so the CraftConsole ControlHub app (running on the same PC) can show it on its Dashboard.]]></en>
+        <de><![CDATA[Liest Fahrzeugdaten (Geschwindigkeit, Fahrtrichtung, Füllstand u.v.m.) und schreibt sie in eine Datei, damit die CraftConsole-ControlHub-App (läuft auf demselben PC) sie im Dashboard anzeigen kann.]]></de>
+    </description>
+    <iconFilename>icon_craftConsole.dds</iconFilename>
+    <multiplayer supported="true" />
+    <extraSourceFiles>
+        <sourceFile filename="CraftConsoleHud.lua"/>
+    </extraSourceFiles>
+</modDesc>

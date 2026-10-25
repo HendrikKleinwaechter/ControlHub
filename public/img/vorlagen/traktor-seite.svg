@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900">
+  <!-- Eigene Traktor-Silhouette, Seitenansicht (Front rechts), Hintergrund der Kachel „Beleuchtung“ (ControlHub,
+       24.10.2026). Proportionen eines Großtraktors der 300-kW-Klasse (Hendrik: „Die Motorhaube … etwas lang … Fendt 939“):
+       Radstand 3050 mm, Länge 5655 mm, Höhe 3372 mm, Räder 710/75 R42 hinten und 600/70 R34 vorne, gezeichnet mit
+       0,2 Pixel je mm, Boden bei y = 800. Neutrales Grau wie traktor-oben.svg, hier deckend. Die Leuchten sitzen dort, wo die Tasten
+       liegen: Rundumleuchte auf dem Dach, Arbeitsscheinwerfer an den Dachecken, Scheinwerfer vorn in der Haube. -->
+  <defs>
+    <linearGradient id="kegel-r" x1="0" x2="1" y1="0" y2="0">
+      <stop offset="0" stop-color="#fff3b0" stop-opacity="0.22"/>
+      <stop offset="1" stop-color="#fff3b0" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="kegel-l" x1="1" x2="0" y1="0" y2="0">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.16"/>
+      <stop offset="1" stop-color="#ffffff" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+  <!-- Lichtkegel: Scheinwerfer und Arbeitsscheinwerfer vorne nach rechts, Arbeitsscheinwerfer hinten nach links -->
+  <path d="M 1350 440 L 1600 370 L 1600 670 L 1350 565 Z" fill="url(#kegel-r)"/>
+  <path d="M 850 150 L 1180 100 L 1260 320 Z" fill="url(#kegel-r)" opacity="0.7"/>
+  <path d="M 365 150 L 0 100 L 0 350 Z" fill="url(#kegel-l)"/>
+  <!-- Boden -->
+  <path d="M 150 802 H 1480" stroke="#5f6773" stroke-width="4" stroke-linecap="round" opacity="0.5"/>
+  <!-- hinten liegend: Rahmen, Kabine, Haube (deckend, damit Überlappungen nicht heller durchscheinen) -->
+  <g fill="#646b75" stroke="#5f6773" stroke-width="4" stroke-linejoin="round">
+    <!-- Zugpendel hinten -->
+    <rect x="240" y="596" width="90" height="26" rx="8"/>
+    <!-- Rahmen -->
+    <rect x="300" y="520" width="1040" height="80" rx="14"/>
+    <!-- Kabine -->
+    <path d="M 405 520 L 420 166 L 800 166 L 828 380 L 828 520 Z"/>
+    <!-- Dach -->
+    <rect x="378" y="126" width="460" height="42" rx="16"/>
+    <!-- Auspuff an der vorderen Kabinenecke -->
+    <rect x="836" y="186" width="18" height="196" rx="6"/>
+    <!-- Haube, vorne abgerundet -->
+    <path d="M 805 378 L 1270 390 Q 1336 394 1344 450 L 1350 578 Q 1350 600 1326 600 L 805 600 Z"/>
+    <!-- Frontgewicht -->
+    <rect x="1338" y="572" width="62" height="88" rx="12"/>
+  </g>
+  <!-- Fenster der Kabine (heller) -->
+  <path d="M 433 455 L 443 192 L 782 192 L 806 455 Z" fill="#c9d1db" fill-opacity="0.18" stroke="#5f6773" stroke-width="3"/>
+  <path d="M 610 192 L 612 455" stroke="#5f6773" stroke-width="5"/>
+  <!-- Kühlergrill und Lüftungsschlitze der Haube -->
+  <g stroke="#5f6773" stroke-width="4" stroke-linecap="round" opacity="0.7">
+    <path d="M 980 425 H 1230 M 980 455 H 1230 M 980 485 H 1230"/>
+    <path d="M 1318 470 V 580 M 1332 470 V 580"/>
+  </g>
+  <!-- Räder -->
+  <g stroke="#5f6773" stroke-width="4">
+    <circle cx="525" cy="587" r="213" fill="#4d545e"/>
+    <circle cx="525" cy="587" r="107" fill="#8a929d"/>
+    <circle cx="525" cy="587" r="40" fill="#5f6773"/>
+    <circle cx="1135" cy="630" r="170" fill="#4d545e"/>
+    <circle cx="1135" cy="630" r="86" fill="#8a929d"/>
+    <circle cx="1135" cy="630" r="30" fill="#5f6773"/>
+  </g>
+  <!-- Stollen angedeutet -->
+  <g stroke="#3d434b" stroke-width="10" stroke-linecap="round">
+    <path d="M 525 380 V 402 M 671 441 L 656 456 M 732 587 H 710 M 671 733 L 656 718 M 525 794 V 772 M 379 733 L 394 718 M 318 587 H 340 M 379 441 L 394 456"/>
+    <path d="M 1135 466 V 484 M 1251 514 L 1238 527 M 1299 630 H 1281 M 1251 746 L 1238 733 M 1135 794 V 776 M 1019 746 L 1032 733 M 971 630 H 989 M 1019 514 L 1032 527"/>
+  </g>
+  <!-- Kotflügel über den Rädern -->
+  <g fill="#8f98a4" stroke="#5f6773" stroke-width="4" stroke-linejoin="round">
+    <path d="M 276 560 A 250 250 0 0 1 774 560 L 744 566 A 220 220 0 0 0 306 566 Z"/>
+    <path d="M 946 600 A 192 192 0 0 1 1324 600 L 1309 604 A 176 176 0 0 0 961 604 Z"/>
+  </g>
+</svg>

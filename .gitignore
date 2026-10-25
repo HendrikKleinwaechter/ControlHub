@@ -1,0 +1,58 @@
+# Dependencies
+node_modules/
+
+# Log files
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+*.log
+
+# OS
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# Build outputs
+dist/
+build/
+
+# Temporary files
+*.tmp
+*.temp
+
+# Persönliche Daten (seit 21.10.2026 nicht mehr im Repo) -- ControlHub legt Standardwerte selbst an.
+# Seit 23.10.2026 liegen die Daten ohnehin im Datenordner außerhalb des Programms (server/paths.js); server/config und
+# server/assets im Programmordner sind nur noch der alte Ort (Umzug, server/datenOrdner.js). Im Repo bleiben nur
+# Produktdaten: server/config/modules.js und die Vorgaben in vorgaben/ (Tastenlage und Bilder der Module).
+server/config/*.json
+server/config/games/
+server/config/_sicherung/
+server/config/_geloescht/
+# Sicherungen von server/jsonStore.js (23.10.2026): vorige Fassung (.bak), Zwischenstand beim Schreiben (.tmp-*);
+# kaputte Dateien (<name>.defekt-<Zeit>.json) fallen schon unter server/config/*.json
+server/config/*.bak
+server/config/*.tmp-*
+server/logs/
+server/assets/steuerungsmenue-bg/
+server/assets/steuerungsmenue-graphics/
+
+# Nur Code ins Repo (Hendrik 21.10.2026): keine KI-/Planungsdateien, keine persönlichen Spieldateien
+.claude/
+CLAUDE.md
+inputBinding.xml

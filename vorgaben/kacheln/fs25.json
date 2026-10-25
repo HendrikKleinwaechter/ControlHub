@@ -1,0 +1,40 @@
+{
+  "beschreibung": "Kachelseiten ab Werk für den LS25, von Hendrik am 24.10.2026 gestaltet (wie die Seitenvorlagen Feld und Transport in public/js/tiles.js)",
+  "pages": [
+    {
+      "id": "k-feld",
+      "name": "Feld",
+      "cells": [
+        "panel:sm-v-cockpit",
+        "karte",
+        "karte",
+        "panel:sm-v-steuerung",
+        "panel:sm-v-geraete",
+        "panel:sm-v-planer"
+      ],
+      "settings": {
+        "karte": {
+          "north": false,
+          "tilt": false,
+          "cov": true,
+          "color": "blau",
+          "sym": "traktor",
+          "ahead": "vg",
+          "btns": true
+        }
+      }
+    },
+    {
+      "id": "k-strasse",
+      "name": "Transport",
+      "cells": [
+        "panel:sm-v-cockpit",
+        "panel:sm-v-steuerung",
+        "panel:sm-v-planer",
+        "panel:sm-v-cockpit",
+        "panel:sm-v-geraete",
+        "panel:sm-v-strecke"
+      ]
+    }
+  ]
+}

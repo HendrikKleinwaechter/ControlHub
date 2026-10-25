@@ -1,0 +1,1151 @@
+{
+  "craftslot1": {
+    "image": null,
+    "hotspots": [],
+    "disabledButtons": []
+  },
+  "craftslot2": {
+    "image": null,
+    "hotspots": [],
+    "disabledButtons": []
+  },
+  "fingertip": {
+    "image": "/module-layouts/fingertip.png",
+    "hotspots": [
+      {
+        "button": 46,
+        "x": 14,
+        "y": 77,
+        "shape": "rect",
+        "width": 22,
+        "height": 19,
+        "rotation": 0
+      },
+      {
+        "button": 47,
+        "x": 14,
+        "y": 13,
+        "shape": "rect",
+        "width": 22,
+        "height": 19,
+        "rotation": 0
+      },
+      {
+        "button": 48,
+        "x": 38,
+        "y": 77,
+        "shape": "rect",
+        "width": 22,
+        "height": 19,
+        "rotation": 0
+      },
+      {
+        "button": 49,
+        "x": 38,
+        "y": 13,
+        "shape": "rect",
+        "width": 22,
+        "height": 19,
+        "rotation": 0
+      },
+      {
+        "button": 50,
+        "x": 62,
+        "y": 77,
+        "shape": "rect",
+        "width": 22,
+        "height": 19,
+        "rotation": 0
+      },
+      {
+        "button": 51,
+        "x": 62,
+        "y": 13,
+        "shape": "rect",
+        "width": 22,
+        "height": 19,
+        "rotation": 0
+      },
+      {
+        "button": 52,
+        "x": 86,
+        "y": 77,
+        "shape": "rect",
+        "width": 22,
+        "height": 19,
+        "rotation": 0
+      },
+      {
+        "button": 53,
+        "x": 86,
+        "y": 13,
+        "shape": "rect",
+        "width": 22,
+        "height": 19,
+        "rotation": 0
+      },
+      {
+        "axisKey": "finger1",
+        "x": 14,
+        "y": 13,
+        "shape": "rect",
+        "width": 22,
+        "height": 19,
+        "rotation": 0
+      },
+      {
+        "axisKey": "finger2",
+        "x": 38,
+        "y": 13,
+        "shape": "rect",
+        "width": 22,
+        "height": 19,
+        "rotation": 0
+      },
+      {
+        "axisKey": "finger3",
+        "x": 62,
+        "y": 13,
+        "shape": "rect",
+        "width": 22,
+        "height": 19,
+        "rotation": 0
+      },
+      {
+        "axisKey": "finger4",
+        "x": 86,
+        "y": 13,
+        "shape": "rect",
+        "width": 22,
+        "height": 19,
+        "rotation": 0
+      },
+      {
+        "modeToggleKey": "finger1",
+        "x": 14,
+        "y": 46,
+        "shape": "rect",
+        "width": 13,
+        "height": 15,
+        "rotation": 0
+      },
+      {
+        "modeToggleKey": "finger2",
+        "x": 38,
+        "y": 46,
+        "shape": "rect",
+        "width": 13,
+        "height": 15,
+        "rotation": 0
+      },
+      {
+        "modeToggleKey": "finger3",
+        "x": 62,
+        "y": 46,
+        "shape": "rect",
+        "width": 13,
+        "height": 15,
+        "rotation": 0
+      },
+      {
+        "modeToggleKey": "finger4",
+        "x": 86,
+        "y": 46,
+        "shape": "rect",
+        "width": 13,
+        "height": 15,
+        "rotation": 0
+      }
+    ],
+    "disabledButtons": []
+  },
+  "einschub1": {
+    "image": "/module-layouts/einschub1.png",
+    "hotspots": [
+      {
+        "button": 30,
+        "x": 14.5,
+        "y": 26.4,
+        "shape": "circle",
+        "width": 8.1,
+        "height": 24.4,
+        "rotation": 0
+      },
+      {
+        "button": 31,
+        "x": 24.6,
+        "y": 26.4,
+        "shape": "circle",
+        "width": 7.9,
+        "height": 23.7,
+        "rotation": 0
+      },
+      {
+        "button": 32,
+        "x": 34.7,
+        "y": 26.4,
+        "shape": "circle",
+        "width": 7.9,
+        "height": 23.7,
+        "rotation": 0
+      },
+      {
+        "button": 33,
+        "x": 44.8,
+        "y": 26.4,
+        "shape": "circle",
+        "width": 7.9,
+        "height": 23.7,
+        "rotation": 0
+      },
+      {
+        "button": 34,
+        "x": 54.9,
+        "y": 26.4,
+        "shape": "circle",
+        "width": 7.9,
+        "height": 23.7,
+        "rotation": 0
+      },
+      {
+        "button": 35,
+        "x": 65.0,
+        "y": 26.3,
+        "shape": "circle",
+        "width": 7.9,
+        "height": 23.7,
+        "rotation": 0
+      },
+      {
+        "button": 36,
+        "x": 75.1,
+        "y": 26.4,
+        "shape": "circle",
+        "width": 7.9,
+        "height": 23.7,
+        "rotation": 0
+      },
+      {
+        "button": 37,
+        "x": 85.2,
+        "y": 26.4,
+        "shape": "circle",
+        "width": 7.9,
+        "height": 23.7,
+        "rotation": 0
+      },
+      {
+        "button": 38,
+        "x": 19.7,
+        "y": 59.8,
+        "shape": "circle",
+        "width": 7.9,
+        "height": 23.7,
+        "rotation": 0
+      },
+      {
+        "button": 39,
+        "x": 29.7,
+        "y": 59.8,
+        "shape": "circle",
+        "width": 8.1,
+        "height": 24.4,
+        "rotation": 0
+      },
+      {
+        "button": 40,
+        "x": 39.8,
+        "y": 59.7,
+        "shape": "circle",
+        "width": 7.9,
+        "height": 23.7,
+        "rotation": 0
+      },
+      {
+        "button": 41,
+        "x": 49.9,
+        "y": 59.7,
+        "shape": "circle",
+        "width": 7.9,
+        "height": 23.7,
+        "rotation": 0
+      },
+      {
+        "button": 42,
+        "x": 60.0,
+        "y": 59.7,
+        "shape": "circle",
+        "width": 7.9,
+        "height": 23.7,
+        "rotation": 0
+      },
+      {
+        "button": 43,
+        "x": 70.2,
+        "y": 59.7,
+        "shape": "circle",
+        "width": 7.9,
+        "height": 23.7,
+        "rotation": 0
+      },
+      {
+        "button": 44,
+        "x": 80.3,
+        "y": 59.7,
+        "shape": "circle",
+        "width": 8.1,
+        "height": 24.4,
+        "rotation": 0
+      },
+      {
+        "button": 45,
+        "x": 92.8,
+        "y": 84.5,
+        "shape": "circle",
+        "width": 8.4,
+        "height": 24.0,
+        "rotation": 0
+      }
+    ],
+    "disabledButtons": [
+      45
+    ]
+  },
+  "einschub2": {
+    "image": "/module-layouts/einschub2.png",
+    "hotspots": [
+      {
+        "button": 54,
+        "x": 14.5,
+        "y": 28.2,
+        "shape": "circle",
+        "width": 8.1,
+        "height": 26.1,
+        "rotation": 0
+      },
+      {
+        "button": 55,
+        "x": 24.6,
+        "y": 28.2,
+        "shape": "circle",
+        "width": 7.9,
+        "height": 25.4,
+        "rotation": 0
+      },
+      {
+        "button": 56,
+        "x": 34.7,
+        "y": 28.2,
+        "shape": "circle",
+        "width": 7.9,
+        "height": 25.4,
+        "rotation": 0
+      },
+      {
+        "button": 57,
+        "x": 44.8,
+        "y": 28.2,
+        "shape": "circle",
+        "width": 7.9,
+        "height": 25.4,
+        "rotation": 0
+      },
+      {
+        "button": 58,
+        "x": 54.9,
+        "y": 28.2,
+        "shape": "circle",
+        "width": 7.9,
+        "height": 25.4,
+        "rotation": 0
+      },
+      {
+        "button": 59,
+        "x": 65.0,
+        "y": 28.1,
+        "shape": "circle",
+        "width": 7.9,
+        "height": 25.4,
+        "rotation": 0
+      },
+      {
+        "button": 60,
+        "x": 75.1,
+        "y": 28.2,
+        "shape": "circle",
+        "width": 7.9,
+        "height": 25.4,
+        "rotation": 0
+      },
+      {
+        "button": 61,
+        "x": 85.2,
+        "y": 28.2,
+        "shape": "circle",
+        "width": 7.9,
+        "height": 25.4,
+        "rotation": 0
+      },
+      {
+        "button": 62,
+        "x": 19.7,
+        "y": 63.9,
+        "shape": "circle",
+        "width": 7.9,
+        "height": 25.4,
+        "rotation": 0
+      },
+      {
+        "button": 63,
+        "x": 29.7,
+        "y": 63.9,
+        "shape": "circle",
+        "width": 8.1,
+        "height": 26.1,
+        "rotation": 0
+      },
+      {
+        "button": 64,
+        "x": 39.8,
+        "y": 63.9,
+        "shape": "circle",
+        "width": 7.9,
+        "height": 25.4,
+        "rotation": 0
+      },
+      {
+        "button": 65,
+        "x": 49.9,
+        "y": 63.9,
+        "shape": "circle",
+        "width": 7.9,
+        "height": 25.4,
+        "rotation": 0
+      },
+      {
+        "button": 66,
+        "x": 60.0,
+        "y": 63.9,
+        "shape": "circle",
+        "width": 7.9,
+        "height": 25.4,
+        "rotation": 0
+      },
+      {
+        "button": 67,
+        "x": 70.2,
+        "y": 63.9,
+        "shape": "circle",
+        "width": 7.9,
+        "height": 25.4,
+        "rotation": 0
+      },
+      {
+        "button": 68,
+        "x": 80.3,
+        "y": 63.9,
+        "shape": "circle",
+        "width": 8.1,
+        "height": 26.1,
+        "rotation": 0
+      },
+      {
+        "button": 69,
+        "x": 92.2,
+        "y": 84.0,
+        "shape": "circle",
+        "width": 8.0,
+        "height": 24.2,
+        "rotation": 0
+      }
+    ],
+    "disabledButtons": [
+      69
+    ]
+  },
+  "bedienteil": {
+    "image": "/module-layouts/bedienteil.png",
+    "hotspots": [
+      {
+        "button": 70,
+        "x": 6.2,
+        "y": 14.6,
+        "shape": "circle",
+        "width": 6.1,
+        "height": 6,
+        "rotation": 0
+      },
+      {
+        "button": 71,
+        "x": 17.9,
+        "y": 7.7,
+        "shape": "circle",
+        "width": 6.1,
+        "height": 6,
+        "rotation": 0
+      },
+      {
+        "button": 72,
+        "x": 30.5,
+        "y": 12.7,
+        "shape": "circle",
+        "width": 6.1,
+        "height": 6,
+        "rotation": 0
+      },
+      {
+        "button": 74,
+        "x": 24.6,
+        "y": 48,
+        "shape": "circle",
+        "width": 8.3,
+        "height": 7.9,
+        "rotation": 0
+      },
+      {
+        "button": 73,
+        "x": 9.9,
+        "y": 41.6,
+        "shape": "circle",
+        "width": 8.5,
+        "height": 8.1,
+        "rotation": 0
+      },
+      {
+        "button": 75,
+        "x": 40.6,
+        "y": 49.9,
+        "shape": "circle",
+        "width": 8.3,
+        "height": 7.9,
+        "rotation": 0
+      },
+      {
+        "button": 76,
+        "x": 11.3,
+        "y": 55.1,
+        "shape": "circle",
+        "width": 8.5,
+        "height": 8.1,
+        "rotation": 0
+      },
+      {
+        "button": 77,
+        "x": 21.6,
+        "y": 57.9,
+        "shape": "circle",
+        "width": 8.3,
+        "height": 7.9,
+        "rotation": 0
+      },
+      {
+        "button": 78,
+        "x": 32,
+        "y": 60.7,
+        "shape": "circle",
+        "width": 8.3,
+        "height": 7.9,
+        "rotation": 0
+      },
+      {
+        "button": 79,
+        "x": 18.7,
+        "y": 67.7,
+        "shape": "circle",
+        "width": 8.5,
+        "height": 8.1,
+        "rotation": 0
+      },
+      {
+        "button": 80,
+        "x": 29.7,
+        "y": 72,
+        "shape": "circle",
+        "width": 8.5,
+        "height": 8.1,
+        "rotation": 0
+      },
+      {
+        "button": 81,
+        "x": 10.5,
+        "y": 77.8,
+        "shape": "circle",
+        "width": 8.6,
+        "height": 8.2,
+        "rotation": 0
+      },
+      {
+        "button": 82,
+        "x": 19.9,
+        "y": 80.4,
+        "shape": "circle",
+        "width": 8.5,
+        "height": 8.1,
+        "rotation": 0
+      },
+      {
+        "axisKey": "poti",
+        "x": 60.4,
+        "y": 26.9,
+        "shape": "circle",
+        "width": 12,
+        "height": 11.4,
+        "rotation": 0
+      }
+    ],
+    "disabledButtons": [
+      85,
+      84,
+      83
+    ]
+  },
+  "overview": {
+    "image": "/module-layouts/overview.png",
+    "hotspots": [
+      {
+        "moduleId": "craftslot1",
+        "x": 37.1,
+        "y": 29.2,
+        "shape": "rect",
+        "width": 24,
+        "height": 37,
+        "rotation": -23.5
+      },
+      {
+        "moduleId": "craftslot2",
+        "x": 60.1,
+        "y": 19.2,
+        "shape": "rect",
+        "width": 23,
+        "height": 33,
+        "rotation": -20
+      },
+      {
+        "moduleId": "fingertip",
+        "x": 55.3,
+        "y": 58.1,
+        "shape": "rect",
+        "width": 21.5,
+        "height": 6.5,
+        "rotation": -32
+      },
+      {
+        "moduleId": "einschub1",
+        "x": 48.2,
+        "y": 51.9,
+        "shape": "rect",
+        "width": 22,
+        "height": 8.5,
+        "rotation": -28.5
+      },
+      {
+        "moduleId": "einschub2",
+        "x": 69.8,
+        "y": 40.3,
+        "shape": "rect",
+        "width": 21.5,
+        "height": 7.5,
+        "rotation": -21.5
+      },
+      {
+        "moduleId": "bedienteil",
+        "x": 77.4,
+        "y": 53.7,
+        "shape": "rect",
+        "width": 20,
+        "height": 21.5,
+        "rotation": -22.5
+      }
+    ],
+    "disabledButtons": []
+  },
+  "griff-directus": {
+    "image": "/module-layouts/griff-directus.png",
+    "hotspots": [
+      {
+        "button": 1,
+        "x": 30.3,
+        "y": 39.8,
+        "shape": "circle",
+        "width": 5.9,
+        "height": 7.6,
+        "rotation": 0
+      },
+      {
+        "button": 2,
+        "x": 22.7,
+        "y": 39.4,
+        "shape": "circle",
+        "width": 6.0,
+        "height": 7.8,
+        "rotation": 0
+      },
+      {
+        "button": 3,
+        "x": 26.0,
+        "y": 31.7,
+        "shape": "circle",
+        "width": 5.9,
+        "height": 7.6,
+        "rotation": 0
+      },
+      {
+        "button": 4,
+        "x": 32.0,
+        "y": 29.5,
+        "shape": "circle",
+        "width": 5.8,
+        "height": 7.4,
+        "rotation": 0
+      },
+      {
+        "button": 5,
+        "x": 15.9,
+        "y": 40.4,
+        "shape": "circle",
+        "width": 6.0,
+        "height": 7.8,
+        "rotation": 0
+      },
+      {
+        "button": 6,
+        "x": 18.0,
+        "y": 31.2,
+        "shape": "circle",
+        "width": 6.2,
+        "height": 7.9,
+        "rotation": 0
+      },
+      {
+        "button": 7,
+        "x": 21.6,
+        "y": 23.2,
+        "shape": "circle",
+        "width": 6.0,
+        "height": 7.8,
+        "rotation": 0
+      },
+      {
+        "button": 8,
+        "x": 27.6,
+        "y": 19.6,
+        "shape": "circle",
+        "width": 5.9,
+        "height": 7.6,
+        "rotation": 0
+      },
+      {
+        "button": 9,
+        "x": 36.3,
+        "y": 18.3,
+        "shape": "circle",
+        "width": 5.9,
+        "height": 7.6,
+        "rotation": 0
+      },
+      {
+        "button": 10,
+        "x": 19.9,
+        "y": 74.2,
+        "shape": "circle",
+        "width": 6.2,
+        "height": 7.9,
+        "rotation": 0
+      },
+      {
+        "button": 11,
+        "x": 26.6,
+        "y": 79.0,
+        "shape": "circle",
+        "width": 5.8,
+        "height": 7.4,
+        "rotation": 0
+      },
+      {
+        "button": 12,
+        "x": 18.2,
+        "y": 82.6,
+        "shape": "circle",
+        "width": 6.3,
+        "height": 8.1,
+        "rotation": 0
+      },
+      {
+        "button": 13,
+        "x": 24.2,
+        "y": 85.6,
+        "shape": "circle",
+        "width": 5.9,
+        "height": 7.6,
+        "rotation": 0
+      },
+      {
+        "button": 14,
+        "x": 30.0,
+        "y": 88.2,
+        "shape": "circle",
+        "width": 5.8,
+        "height": 7.4,
+        "rotation": 0
+      },
+      {
+        "button": 15,
+        "x": 36.3,
+        "y": 91.1,
+        "shape": "circle",
+        "width": 6.3,
+        "height": 8.1,
+        "rotation": 0
+      },
+      {
+        "button": 16,
+        "x": 31.1,
+        "y": 57.8,
+        "shape": "circle",
+        "width": 5.7,
+        "height": 6.7,
+        "rotation": 0
+      },
+      {
+        "button": 23,
+        "x": 66.0,
+        "y": 17.0,
+        "shape": "circle",
+        "width": 6.5,
+        "height": 7.9,
+        "rotation": 0
+      },
+      {
+        "button": 24,
+        "x": 66.0,
+        "y": 29.7,
+        "shape": "circle",
+        "width": 6.5,
+        "height": 7.9,
+        "rotation": 0
+      },
+      {
+        "button": 21,
+        "x": 60.0,
+        "y": 23.3,
+        "shape": "circle",
+        "width": 6.5,
+        "height": 7.9,
+        "rotation": 0
+      },
+      {
+        "button": 22,
+        "x": 72.0,
+        "y": 23.3,
+        "shape": "circle",
+        "width": 6.5,
+        "height": 7.9,
+        "rotation": 0
+      },
+      {
+        "axisKey": "thumbX",
+        "x": 60.0,
+        "y": 23.3,
+        "shape": "circle",
+        "width": 6.5,
+        "height": 7.9,
+        "rotation": 0
+      },
+      {
+        "axisKey": "thumbY",
+        "x": 66.0,
+        "y": 17.0,
+        "shape": "circle",
+        "width": 6.5,
+        "height": 7.9,
+        "rotation": 0
+      },
+      {
+        "modeToggleKey": "thumbX",
+        "x": 52.0,
+        "y": 23.3,
+        "shape": "circle",
+        "width": 6.5,
+        "height": 7.9,
+        "rotation": 0
+      },
+      {
+        "modeToggleKey": "thumbY",
+        "x": 66.0,
+        "y": 7.6,
+        "shape": "circle",
+        "width": 6.5,
+        "height": 7.9,
+        "rotation": 0
+      }
+    ],
+    "disabledButtons": []
+  },
+  "griff-polaris": {
+    "image": "/module-layouts/griff-polaris.png",
+    "hotspots": [
+      {
+        "button": 23,
+        "x": 62.0,
+        "y": 14.4,
+        "shape": "circle",
+        "width": 6.8,
+        "height": 8.9,
+        "rotation": 0
+      },
+      {
+        "button": 24,
+        "x": 62.0,
+        "y": 29.8,
+        "shape": "circle",
+        "width": 6.8,
+        "height": 8.9,
+        "rotation": 0
+      },
+      {
+        "button": 21,
+        "x": 56.4,
+        "y": 21.9,
+        "shape": "circle",
+        "width": 6.8,
+        "height": 8.9,
+        "rotation": 0
+      },
+      {
+        "button": 22,
+        "x": 67.7,
+        "y": 21.9,
+        "shape": "circle",
+        "width": 6.8,
+        "height": 8.9,
+        "rotation": 0
+      },
+      {
+        "button": 25,
+        "x": 34.9,
+        "y": 23.5,
+        "shape": "circle",
+        "width": 8.3,
+        "height": 10.9,
+        "rotation": 0
+      },
+      {
+        "button": 26,
+        "x": 32.5,
+        "y": 51.9,
+        "shape": "circle",
+        "width": 8.3,
+        "height": 10.9,
+        "rotation": 0
+      },
+      {
+        "button": 27,
+        "x": 37.3,
+        "y": 64.5,
+        "shape": "circle",
+        "width": 8.3,
+        "height": 10.9,
+        "rotation": 0
+      },
+      {
+        "axisKey": "thumbX",
+        "x": 56.4,
+        "y": 21.9,
+        "shape": "circle",
+        "width": 6.8,
+        "height": 8.9,
+        "rotation": 0
+      },
+      {
+        "axisKey": "thumbY",
+        "x": 62.0,
+        "y": 14.4,
+        "shape": "circle",
+        "width": 6.8,
+        "height": 8.9,
+        "rotation": 0
+      },
+      {
+        "modeToggleKey": "thumbX",
+        "x": 48.8,
+        "y": 21.9,
+        "shape": "circle",
+        "width": 6.8,
+        "height": 8.9,
+        "rotation": 0
+      },
+      {
+        "modeToggleKey": "thumbY",
+        "x": 62.0,
+        "y": 5.0,
+        "shape": "circle",
+        "width": 6.8,
+        "height": 8.9,
+        "rotation": 0
+      }
+    ],
+    "disabledButtons": []
+  },
+  "unterbau-fahrhebel": {
+    "image": "/module-layouts/unterbau-bereich.png",
+    "hotspots": [
+      {
+        "button": 17,
+        "x": 80.0,
+        "y": 64.6,
+        "shape": "circle",
+        "width": 6.5,
+        "height": 7.9,
+        "rotation": 0
+      },
+      {
+        "button": 18,
+        "x": 80.0,
+        "y": 78.4,
+        "shape": "circle",
+        "width": 6.5,
+        "height": 7.9,
+        "rotation": 0
+      },
+      {
+        "button": 19,
+        "x": 74.0,
+        "y": 71.5,
+        "shape": "circle",
+        "width": 6.5,
+        "height": 7.9,
+        "rotation": 0
+      },
+      {
+        "button": 20,
+        "x": 86.0,
+        "y": 71.5,
+        "shape": "circle",
+        "width": 6.5,
+        "height": 7.9,
+        "rotation": 0
+      },
+      {
+        "axisKey": "leverA",
+        "x": 80.0,
+        "y": 64.6,
+        "shape": "circle",
+        "width": 6.5,
+        "height": 7.9,
+        "rotation": 0
+      },
+      {
+        "axisKey": "leverB",
+        "x": 74.0,
+        "y": 71.5,
+        "shape": "circle",
+        "width": 6.5,
+        "height": 7.9,
+        "rotation": 0
+      },
+      {
+        "modeToggleKey": "leverA",
+        "x": 80.0,
+        "y": 55.3,
+        "shape": "circle",
+        "width": 6.5,
+        "height": 7.9,
+        "rotation": 0
+      },
+      {
+        "modeToggleKey": "leverB",
+        "x": 66.0,
+        "y": 71.5,
+        "shape": "circle",
+        "width": 6.5,
+        "height": 7.9,
+        "rotation": 0
+      }
+    ],
+    "disabledButtons": []
+  },
+  "unterbau-schubhebel": {
+    "image": "/module-layouts/unterbau-bereich.png",
+    "hotspots": [
+      {
+        "button": 17,
+        "x": 80.0,
+        "y": 64.6,
+        "shape": "circle",
+        "width": 6.5,
+        "height": 7.9,
+        "rotation": 0
+      },
+      {
+        "button": 18,
+        "x": 80.0,
+        "y": 78.4,
+        "shape": "circle",
+        "width": 6.5,
+        "height": 7.9,
+        "rotation": 0
+      },
+      {
+        "axisKey": "leverA",
+        "x": 80.0,
+        "y": 64.6,
+        "shape": "circle",
+        "width": 6.5,
+        "height": 7.9,
+        "rotation": 0
+      },
+      {
+        "modeToggleKey": "leverA",
+        "x": 80.0,
+        "y": 55.3,
+        "shape": "circle",
+        "width": 6.5,
+        "height": 7.9,
+        "rotation": 0
+      }
+    ],
+    "disabledButtons": []
+  },
+  "unterbau-lenkjoystick": {
+    "image": "/module-layouts/unterbau-bereich.png",
+    "hotspots": [
+      {
+        "button": 17,
+        "x": 74.0,
+        "y": 71.5,
+        "shape": "circle",
+        "width": 6.5,
+        "height": 7.9,
+        "rotation": 0
+      },
+      {
+        "button": 18,
+        "x": 86.0,
+        "y": 71.5,
+        "shape": "circle",
+        "width": 6.5,
+        "height": 7.9,
+        "rotation": 0
+      },
+      {
+        "axisKey": "leverA",
+        "x": 74.0,
+        "y": 71.5,
+        "shape": "circle",
+        "width": 6.5,
+        "height": 7.9,
+        "rotation": 0
+      },
+      {
+        "modeToggleKey": "leverA",
+        "x": 66.0,
+        "y": 71.5,
+        "shape": "circle",
+        "width": 6.5,
+        "height": 7.9,
+        "rotation": 0
+      }
+    ],
+    "disabledButtons": []
+  }
+}

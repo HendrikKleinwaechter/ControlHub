@@ -1,0 +1,3665 @@
+{
+  "beschreibung": "Funktionen ab Werk für den LS25, wenn ControlHub beim ersten Start keine inputBinding.xml findet (Tastenbelegung des Spiels; ohne Mods und ohne Aktionen, die keiner Gruppe des Spiels zugeordnet sind)",
+  "functions": {
+    "func-fs-jump": {
+      "id": "func-fs-jump",
+      "name": "Springen",
+      "categories": [
+        "Zu Fuß › Bewegung"
+      ],
+      "icon": null,
+      "actions": [
+        {
+          "type": "keyboard",
+          "key": "SPACE"
+        }
+      ]
+    },
+    "func-fs-activate-handtool": {
+      "id": "func-fs-activate-handtool",
+      "name": "Werkzeug aktivieren",
+      "categories": [
+        "Zu Fuß › Interaktion"
+      ],
+      "icon": null,
+      "actions": [
+        {
+          "type": "keyboard",
+          "key": "X"
+        }
+      ]
+    },
+    "func-fs-activate-handtool-secondary": {
+      "id": "func-fs-activate-handtool-secondary",
+      "name": "Werkzeug aktivieren (sekundär)",
+      "categories": [
+        "Zu Fuß › Interaktion"
+      ],
+      "icon": null,
+      "actions": [
+        {
+          "type": "keyboard",
+          "key": "X"
+        }
+      ]
+    },
+    "func-fs-interact": {
+      "id": "func-fs-interact",
+      "name": "Interagieren",
+      "categories": [
+        "Zu Fuß › Interaktion"
+      ],
+      "icon": null,
+      "actions": []
+    },
+    "func-fs-rotate-object-left-right": {
+      "id": "func-fs-rotate-object-left-right",
+      "name": "Objekt drehen links/rechts",
+      "categories": [
+        "Zu Fuß › Interaktion"
+      ],
+      "icon": null,
+      "actions": []
+    },
+    "func-fs-rotate-object-up-down": {
+      "id": "func-fs-rotate-object-up-down",
+      "name": "Objekt drehen auf/ab",
+      "categories": [
+        "Zu Fuß › Interaktion"
+      ],
+      "icon": null,
+      "actions": []
+    },
+    "func-fs-throw-object": {
+      "id": "func-fs-throw-object",
+      "name": "Objekt werfen",
+      "categories": [
+        "Zu Fuß › Interaktion"
+      ],
+      "icon": null,
+      "actions": []
+    },
+    "func-fs-hands-level": {
+      "id": "func-fs-hands-level",
+      "name": "Hände ausrichten",
+      "categories": [
+        "Zu Fuß › Bewegung"
+      ],
+      "icon": null,
+      "actions": [
+        {
+          "type": "keyboard",
+          "key": "G"
+        }
+      ]
+    },
+    "func-fs-enter": {
+      "id": "func-fs-enter",
+      "name": "Einsteigen",
+      "categories": [
+        "Zu Fuß › Interaktion"
+      ],
+      "icon": null,
+      "actions": [
+        {
+          "type": "keyboard",
+          "key": "E"
+        }
+      ]
+    },
+    "func-fs-switch-seat": {
+      "id": "func-fs-switch-seat",
+      "name": "Sitzplatz wechseln",
+      "categories": [
+        "Zu Fuß › Interaktion"
+      ],
+      "icon": null,
+      "actions": [
+        {
+          "type": "keyboard",
+          "key": "LCTRL"
+        },
+        {
+          "type": "keyboard",
+          "key": "G"
+        }
+      ]
+    },
+    "func-fs-crouch": {
+      "id": "func-fs-crouch",
+      "name": "Ducken",
+      "categories": [
+        "Zu Fuß › Bewegung"
+      ],
+      "icon": null,
+      "actions": [
+        {
+          "type": "keyboard",
+          "key": "LCTRL"
+        }
+      ]
+    },
+    "func-fs-toggle-lights-fps": {
+      "id": "func-fs-toggle-lights-fps",
+      "name": "Taschenlampe ein/aus",
+      "categories": [
+        "Fahrzeug › Beleuchtung"
+      ],
+      "icon": null,
+      "actions": [
+        {
+          "type": "keyboard",
+          "key": "F"
+        }
+      ]
+    },
+    "func-fs-camera-switch": {
+      "id": "func-fs-camera-switch",
+      "name": "Kamera wechseln",
+      "categories": [
+        "Kamera"
+      ],
+      "icon": null,
+      "actions": [
+        {
+          "type": "keyboard",
+          "key": "C"
+        }
+      ]
+    },
+    "func-fs-activate-object": {
+      "id": "func-fs-activate-object",
+      "name": "Objekt aktivieren",
+      "categories": [
+        "Zu Fuß › Interaktion"
+      ],
+      "icon": null,
+      "actions": [
+        {
+          "type": "keyboard",
+          "key": "R"
+        }
+      ]
+    },
+    "func-fs-animal-pet": {
+      "id": "func-fs-animal-pet",
+      "name": "Tier streicheln",
+      "categories": [
+        "Zu Fuß › Interaktion"
+      ],
+      "icon": null,
+      "actions": [
+        {
+          "type": "keyboard",
+          "key": "R"
+        }
+      ]
+    },
+    "func-fs-pause": {
+      "id": "func-fs-pause",
+      "name": "Pause",
+      "categories": [
+        "Spiel"
+      ],
+      "icon": null,
+      "actions": [
+        {
+          "type": "keyboard",
+          "key": "PAUSE"
+        }
+      ]
+    },
+    "func-fs-skip-message-box": {
+      "id": "func-fs-skip-message-box",
+      "name": "Nachricht überspringen",
+      "categories": [
+        "Spiel"
+      ],
+      "icon": null,
+      "actions": []
+    },
+    "func-fs-camera-zoom-in-out": {
+      "id": "func-fs-camera-zoom-in-out",
+      "name": "Kamera Zoom",
+      "categories": [
+        "Kamera"
+      ],
+      "icon": null,
+      "actions": [
+        {
+          "type": "keyboard",
+          "key": "PAGEUP"
+        }
+      ]
+    },
+    "func-fs-camera-zoom-in-out-minus": {
+      "id": "func-fs-camera-zoom-in-out-minus",
+      "name": "Kamera Zoom (−)",
+      "categories": [
+        "Kamera"
+      ],
+      "icon": null,
+      "actions": [
+        {
+          "type": "keyboard",
+          "key": "PAGEDOWN"
+        }
+      ]
+    },
+    "func-fs-switch-vehicle": {
+      "id": "func-fs-switch-vehicle",
+      "name": "Fahrzeug wechseln",
+      "categories": [
+        "Fahrzeug"
+      ],
+      "icon": null,
+      "actions": [
+        {
+          "type": "keyboard",
+          "key": "TAB"
+        }
+      ]
+    },
+    "func-fs-switch-vehicle-back": {
+      "id": "func-fs-switch-vehicle-back",
+      "name": "Vorheriges Fahrzeug",
+      "categories": [
+        "Fahrzeug"
+      ],
+      "icon": null,
+      "actions": [
+        {
+          "type": "keyboard",
+          "key": "LSHIFT"
+        },
+        {
+          "type": "keyboard",
+          "key": "TAB"
+        }
+      ]
+    },
+    "func-fs-menu": {
+      "id": "func-fs-menu",
+      "name": "Menü",
+      "categories": [
+        "Spiel"
+      ],
+      "icon": null,
+      "actions": [
+        {
+          "type": "keyboard",
+          "key": "ESC"
+        }
+      ]
+    },
+    "func-fs-toggle-store": {
+      "id": "func-fs-toggle-store",
+      "name": "Shop öffnen",
+      "categories": [
+        "Spiel"
+      ],
+      "icon": null,
+      "actions": [
+        {
+          "type": "keyboard",
+          "key": "P"
+        }
+      ]
+    },
+    "func-fs-toggle-character-creation": {
+      "id": "func-fs-toggle-character-creation",
+      "name": "Charaktererstellung",
+      "categories": [
+        "Spiel"
+      ],
+      "icon": null,
+      "actions": [
+        {
+          "type": "keyboard",
+          "key": "LALT"
+        },
+        {
+          "type": "keyboard",
+          "key": "P"
+        }
+      ]
+    },
+    "func-fs-toggle-construction": {
+      "id": "func-fs-toggle-construction",
+      "name": "Baumodus",
+      "categories": [
+        "Spiel"
+      ],
+      "icon": null,
+      "actions": [
+        {
+          "type": "keyboard",
+          "key": "LSHIFT"
+        },
+        {
+          "type": "keyboard",
+          "key": "P"
+        }
+      ]
+    },
+    "func-fs-attach": {
+      "id": "func-fs-attach",
+      "name": "Anhängen",
+      "categories": [
+        "Fahrzeug"
+      ],
+      "icon": null,
+      "actions": [
+        {
+          "type": "keyboard",
+          "key": "Q"
+        }
+      ]
+    },
+    "func-fs-detach": {
+      "id": "func-fs-detach",
+      "name": "Abhängen",
+      "categories": [
+        "Fahrzeug"
+      ],
+      "icon": null,
+      "actions": [
+        {
+          "type": "keyboard",
+          "key": "LCTRL"
+        },
+        {
+          "type": "keyboard",
+          "key": "Q"
+        }
+      ]
+    },
+    "func-fs-switch-implement": {
+      "id": "func-fs-switch-implement",
+      "name": "Gerät wechseln",
+      "categories": [
+        "Fahrzeug"
+      ],
+      "icon": null,
+      "actions": [
+        {
+          "type": "keyboard",
+          "key": "G"
+        }
+      ]
+    },
+    "func-fs-switch-implement-back": {
+      "id": "func-fs-switch-implement-back",
+      "name": "Vorheriges Gerät",
+      "categories": [
+        "Fahrzeug"
+      ],
+      "icon": null,
+      "actions": [
+        {
+          "type": "keyboard",
+          "key": "LSHIFT"
+        },
+        {
+          "type": "keyboard",
+          "key": "G"
+        }
+      ]
+    },
+    "func-fs-toggle-ai": {
+      "id": "func-fs-toggle-ai",
+      "name": "Helfer ein/aus",
+      "categories": [
+        "Fahrzeug"
+      ],
+      "icon": null,
+      "actions": [
+        {
+          "type": "keyboard",
+          "key": "H"
+        }
+      ]
+    },
+    "func-fs-toggle-ai-steering": {
+      "id": "func-fs-toggle-ai-steering",
+      "name": "Lenkhilfe ein/aus",
+      "categories": [
+        "Fahrzeug"
+      ],
+      "icon": null,
+      "actions": []
+    },
+    "func-fs-toggle-ai-steering-lines": {
+      "id": "func-fs-toggle-ai-steering-lines",
+      "name": "Lenklinien ein/aus",
+      "categories": [
+        "Fahrzeug"
+      ],
+      "icon": null,
+      "actions": [
+        {
+          "type": "keyboard",
+          "key": "LCTRL"
+        },
+        {
+          "type": "keyboard",
+          "key": "LSHIFT"
+        },
+        {
+          "type": "keyboard",
+          "key": "W"
+        }
+      ]
+    },
+    "func-fs-honk": {
+      "id": "func-fs-honk",
+      "name": "Hupen",
+      "categories": [
+        "Fahrzeug"
+      ],
+      "icon": null,
+      "actions": [
+        {
+          "type": "keyboard",
+          "key": "0"
+        }
+      ]
+    },
+    "func-fs-toggle-motor-state": {
+      "id": "func-fs-toggle-motor-state",
+      "name": "Motor an/aus",
+      "categories": [
+        "Fahrzeug › Fahren"
+      ],
+      "icon": null,
+      "actions": [
+        {
+          "type": "keyboard",
+          "key": "ENTER"
+        }
+      ]
+    },
+    "func-fs-motor-state-on": {
+      "id": "func-fs-motor-state-on",
+      "name": "Motor an",
+      "categories": [
+        "Fahrzeug › Fahren"
+      ],
+      "icon": null,
+      "actions": []
+    },
+    "func-fs-motor-state-off": {
+      "id": "func-fs-motor-state-off",
+      "name": "Motor aus",
+      "categories": [
+        "Fahrzeug › Fahren"
+      ],
+      "icon": null,
+      "actions": []
+    },
+    "func-fs-motor-state-ignition": {
+      "id": "func-fs-motor-state-ignition",
+      "name": "Zündung",
+      "categories": [
+        "Fahrzeug › Fahren"
+      ],
+      "icon": null,
+      "actions": []
+    },
+    "func-fs-shift-gear-up": {
+      "id": "func-fs-shift-gear-up",
+      "name": "Gang hoch",
+      "categories": [
+        "Fahrzeug › Fahren"
+      ],
+      "icon": null,
+      "actions": [
+        {
+          "type": "keyboard",
+          "key": "KPPLUS"
+        }
+      ]
+    },
+    "func-fs-shift-gear-down": {
+      "id": "func-fs-shift-gear-down",
+      "name": "Gang runter",
+      "categories": [
+        "Fahrzeug › Fahren"
+      ],
+      "icon": null,
+      "actions": [
+        {
+          "type": "keyboard",
+          "key": "KPMINUS"
+        }
+      ]
+    },
+    "func-fs-shift-group-up": {
+      "id": "func-fs-shift-group-up",
+      "name": "Gruppe hoch",
+      "categories": [
+        "Fahrzeug › Fahren"
+      ],
+      "icon": null,
+      "actions": [
+        {
+          "type": "keyboard",
+          "key": "KP9"
+        }
+      ]
+    },
+    "func-fs-shift-group-down": {
+      "id": "func-fs-shift-group-down",
+      "name": "Gruppe runter",
+      "categories": [
+        "Fahrzeug › Fahren"
+      ],
+      "icon": null,
+      "actions": [
+        {
+          "type": "keyboard",
+          "key": "KP7"
+        }
+      ]
+    },
+    "func-fs-direction-change": {
+      "id": "func-fs-direction-change",
+      "name": "Fahrtrichtung wechseln",
+      "categories": [
+        "Fahrzeug › Fahren"
+      ],
+      "icon": null,
+      "actions": [
+        {
+          "type": "keyboard",
+          "key": "SPACE"
+        }
+      ]
+    },
+    "func-fs-toggle-tipstate": {
+      "id": "func-fs-toggle-tipstate",
+      "name": "Kippen",
+      "categories": [
+        "Fahrzeug › Arbeit"
+      ],
+      "icon": null,
+      "actions": [
+        {
+          "type": "keyboard",
+          "key": "I"
+        }
+      ]
+    },
+    "func-fs-toggle-lights": {
+      "id": "func-fs-toggle-lights",
+      "name": "Beleuchtung",
+      "categories": [
+        "Fahrzeug › Beleuchtung"
+      ],
+      "icon": null,
+      "actions": [
+        {
+          "type": "keyboard",
+          "key": "F"
+        }
+      ]
+    },
+    "func-fs-toggle-lights-back": {
+      "id": "func-fs-toggle-lights-back",
+      "name": "Rückbeleuchtung",
+      "categories": [
+        "Fahrzeug › Beleuchtung"
+      ],
+      "icon": null,
+      "actions": [
+        {
+          "type": "keyboard",
+          "key": "LSHIFT"
+        },
+        {
+          "type": "keyboard",
+          "key": "F"
+        }
+      ]
+    },
+    "func-fs-toggle-lights-external": {
+      "id": "func-fs-toggle-lights-external",
+      "name": "Zusatzbeleuchtung",
+      "categories": [
+        "Fahrzeug › Beleuchtung"
+      ],
+      "icon": null,
+      "actions": [
+        {
+          "type": "keyboard",
+          "key": "LALT"
+        },
+        {
+          "type": "keyboard",
+          "key": "F"
+        }
+      ]
+    },
+    "func-fs-toggle-beacon-lights": {
+      "id": "func-fs-toggle-beacon-lights",
+      "name": "Rundumleuchte",
+      "categories": [
+        "Fahrzeug › Beleuchtung"
+      ],
+      "icon": null,
+      "actions": [
+        {
+          "type": "keyboard",
+          "key": "HOME"
+        }
+      ]
+    },
+    "func-fs-toggle-tipside": {
+      "id": "func-fs-toggle-tipside",
+      "name": "Kippseite wechseln",
+      "categories": [
+        "Fahrzeug › Arbeit"
+      ],
+      "icon": null,
+      "actions": [
+        {
+          "type": "keyboard",
+          "key": "U"
+        }
+      ]
+    },
+    "func-fs-toggle-turnlight-left": {
+      "id": "func-fs-toggle-turnlight-left",
+      "name": "Blinker links",
+      "categories": [
+        "Fahrzeug › Beleuchtung"
+      ],
+      "icon": null,
+      "actions": [
+        {
+          "type": "keyboard",
+          "key": "KP1"
+        }
+      ]
+    },
+    "func-fs-toggle-turnlight-right": {
+      "id": "func-fs-toggle-turnlight-right",
+      "name": "Blinker rechts",
+      "categories": [
+        "Fahrzeug › Beleuchtung"
+      ],
+      "icon": null,
+      "actions": [
+        {
+          "type": "keyboard",
+          "key": "KP3"
+        }
+      ]
+    },
+    "func-fs-toggle-crabsteering": {
+      "id": "func-fs-toggle-crabsteering",
+      "name": "Hundegang ein/aus",
+      "categories": [
+        "Fahrzeug"
+      ],
+      "icon": null,
+      "actions": [
+        {
+          "type": "keyboard",
+          "key": "LCTRL"
+        },
+        {
+          "type": "keyboard",
+          "key": "Y"
+        }
+      ]
+    },
+    "func-fs-toggle-crabsteering-back": {
+      "id": "func-fs-toggle-crabsteering-back",
+      "name": "Hundegang zurück",
+      "categories": [
+        "Fahrzeug"
+      ],
+      "icon": null,
+      "actions": [
+        {
+          "type": "keyboard",
+          "key": "LSHIFT"
+        },
+        {
+          "type": "keyboard",
+          "key": "LCTRL"
+        },
+        {
+          "type": "keyboard",
+          "key": "Y"
+        }
+      ]
+    },
+    "func-fs-toggle-workmode": {
+      "id": "func-fs-toggle-workmode",
+      "name": "Arbeitsmodus wechseln",
+      "categories": [
+        "Fahrzeug"
+      ],
+      "icon": null,
+      "actions": [
+        {
+          "type": "keyboard",
+          "key": "LCTRL"
+        },
+        {
+          "type": "keyboard",
+          "key": "Y"
+        }
+      ]
+    },
+    "func-fs-toggle-tension-belts": {
+      "id": "func-fs-toggle-tension-belts",
+      "name": "Spanngurte",
+      "categories": [
+        "Fahrzeug › Arbeit"
+      ],
+      "icon": null,
+      "actions": [
+        {
+          "type": "keyboard",
+          "key": "L"
+        }
+      ]
+    },
+    "func-fs-toggle-bale-types": {
+      "id": "func-fs-toggle-bale-types",
+      "name": "Ballenart wechseln",
+      "categories": [
+        "Fahrzeug › Arbeit"
+      ],
+      "icon": null,
+      "actions": [
+        {
+          "type": "keyboard",
+          "key": "L"
+        }
+      ]
+    },
+    "func-fs-bale-counter-reset": {
+      "id": "func-fs-bale-counter-reset",
+      "name": "Ballenzähler zurücksetzen",
+      "categories": [
+        "Fahrzeug › Arbeit"
+      ],
+      "icon": null,
+      "actions": [
+        {
+          "type": "keyboard",
+          "key": "LALT"
+        },
+        {
+          "type": "keyboard",
+          "key": "X"
+        }
+      ]
+    },
+    "func-fs-bale-wrapper-drop-custom": {
+      "id": "func-fs-bale-wrapper-drop-custom",
+      "name": "Ballen abwerfen",
+      "categories": [
+        "Fahrzeug › Arbeit"
+      ],
+      "icon": null,
+      "actions": [
+        {
+          "type": "keyboard",
+          "key": "LCTRL"
+        },
+        {
+          "type": "keyboard",
+          "key": "Y"
+        }
+      ]
+    },
+    "func-fs-vehicle-action-control": {
+      "id": "func-fs-vehicle-action-control",
+      "name": "Fahrzeugaktion",
+      "categories": [
+        "Fahrzeug › Arbeit"
+      ],
+      "icon": null,
+      "actions": [
+        {
+          "type": "keyboard",
+          "key": "B"
+        }
+      ]
+    },
+    "func-fs-lower-implement": {
+      "id": "func-fs-lower-implement",
+      "name": "Anbaugerät senken/heben",
+      "categories": [
+        "Fahrzeug › Arbeit"
+      ],
+      "icon": null,
+      "actions": [
+        {
+          "type": "keyboard",
+          "key": "V"
+        }
+      ]
+    },
+    "func-fs-implement-extra": {
+      "id": "func-fs-implement-extra",
+      "name": "Zusatzfunktion",
+      "categories": [
+        "Fahrzeug › Arbeit"
+      ],
+      "icon": null,
+      "actions": [
+        {
+          "type": "keyboard",
+          "key": "B"
+        }
+      ]
+    },
+    "func-fs-implement-extra2": {
+      "id": "func-fs-implement-extra2",
+      "name": "Zusatzfunktion 2",
+      "categories": [
+        "Fahrzeug › Arbeit"
+      ],
+      "icon": null,
+      "actions": [
+        {
+          "type": "keyboard",
+          "key": "X"
+        }
+      ]
+    },
+    "func-fs-implement-extra3": {
+      "id": "func-fs-implement-extra3",
+      "name": "Zusatzfunktion 3",
+      "categories": [
+        "Fahrzeug › Arbeit"
+      ],
+      "icon": null,
+      "actions": [
+        {
+          "type": "keyboard",
+          "key": "Y"
+        }
+      ]
+    },
+    "func-fs-implement-extra4": {
+      "id": "func-fs-implement-extra4",
+      "name": "Zusatzfunktion 4",
+      "categories": [
+        "Fahrzeug › Arbeit"
+      ],
+      "icon": null,
+      "actions": [
+        {
+          "type": "keyboard",
+          "key": "Z"
+        }
+      ]
+    },
+    "func-fs-foldablesteps-next-pos": {
+      "id": "func-fs-foldablesteps-next-pos",
+      "name": "Stufe vor",
+      "categories": [
+        "Fahrzeug › Arbeit"
+      ],
+      "icon": null,
+      "actions": [
+        {
+          "type": "keyboard",
+          "key": "V"
+        }
+      ]
+    },
+    "func-fs-foldablesteps-next-neg": {
+      "id": "func-fs-foldablesteps-next-neg",
+      "name": "Stufe zurück",
+      "categories": [
+        "Fahrzeug › Arbeit"
+      ],
+      "icon": null,
+      "actions": [
+        {
+          "type": "keyboard",
+          "key": "LSHIFT"
+        },
+        {
+          "type": "keyboard",
+          "key": "V"
+        }
+      ]
+    },
+    "func-fs-doubled-spray-amount": {
+      "id": "func-fs-doubled-spray-amount",
+      "name": "Spritzmenge verdoppeln",
+      "categories": [
+        "Fahrzeug › Arbeit"
+      ],
+      "icon": null,
+      "actions": [
+        {
+          "type": "keyboard",
+          "key": "COMMA"
+        }
+      ]
+    },
+    "func-fs-toggle-seeds": {
+      "id": "func-fs-toggle-seeds",
+      "name": "Saatgut wechseln",
+      "categories": [
+        "Fahrzeug › Arbeit"
+      ],
+      "icon": null,
+      "actions": [
+        {
+          "type": "keyboard",
+          "key": "Y"
+        }
+      ]
+    },
+    "func-fs-toggle-seeds-back": {
+      "id": "func-fs-toggle-seeds-back",
+      "name": "Vorheriges Saatgut",
+      "categories": [
+        "Fahrzeug › Arbeit"
+      ],
+      "icon": null,
+      "actions": [
+        {
+          "type": "keyboard",
+          "key": "LSHIFT"
+        },
+        {
+          "type": "keyboard",
+          "key": "Y"
+        }
+      ]
+    },
+    "func-fs-toggle-pipe": {
+      "id": "func-fs-toggle-pipe",
+      "name": "Entladerohr ein/aus",
+      "categories": [
+        "Fahrzeug › Arbeit"
+      ],
+      "icon": null,
+      "actions": [
+        {
+          "type": "keyboard",
+          "key": "O"
+        }
+      ]
+    },
+    "func-fs-toggle-cover": {
+      "id": "func-fs-toggle-cover",
+      "name": "Abdeckung",
+      "categories": [
+        "Fahrzeug › Arbeit"
+      ],
+      "icon": null,
+      "actions": [
+        {
+          "type": "keyboard",
+          "key": "N"
+        }
+      ]
+    },
+    "func-fs-toggle-chopper": {
+      "id": "func-fs-toggle-chopper",
+      "name": "Häcksler ein/aus",
+      "categories": [
+        "Fahrzeug › Arbeit"
+      ],
+      "icon": null,
+      "actions": [
+        {
+          "type": "keyboard",
+          "key": "COMMA"
+        }
+      ]
+    },
+    "func-fs-toggle-map-size": {
+      "id": "func-fs-toggle-map-size",
+      "name": "Kartengröße",
+      "categories": [
+        "Spiel"
+      ],
+      "icon": null,
+      "actions": [
+        {
+          "type": "keyboard",
+          "key": "9"
+        }
+      ]
+    },
+    "func-fs-variable-work-width-left": {
+      "id": "func-fs-variable-work-width-left",
+      "name": "Teilbreite links aus",
+      "categories": [
+        "Fahrzeug › Arbeit"
+      ],
+      "icon": null,
+      "actions": [
+        {
+          "type": "keyboard",
+          "key": "LCTRL"
+        },
+        {
+          "type": "keyboard",
+          "key": "LSHIFT"
+        },
+        {
+          "type": "keyboard",
+          "key": "I"
+        }
+      ]
+    },
+    "func-fs-variable-work-width-left-minus": {
+      "id": "func-fs-variable-work-width-left-minus",
+      "name": "Teilbreite links an",
+      "categories": [
+        "Fahrzeug › Arbeit"
+      ],
+      "icon": null,
+      "actions": [
+        {
+          "type": "keyboard",
+          "key": "LCTRL"
+        },
+        {
+          "type": "keyboard",
+          "key": "LSHIFT"
+        },
+        {
+          "type": "keyboard",
+          "key": "U"
+        }
+      ]
+    },
+    "func-fs-variable-work-width-right": {
+      "id": "func-fs-variable-work-width-right",
+      "name": "Teilbreite rechts aus",
+      "categories": [
+        "Fahrzeug › Arbeit"
+      ],
+      "icon": null,
+      "actions": [
+        {
+          "type": "keyboard",
+          "key": "LCTRL"
+        },
+        {
+          "type": "keyboard",
+          "key": "LSHIFT"
+        },
+        {
+          "type": "keyboard",
+          "key": "J"
+        }
+      ]
+    },
+    "func-fs-variable-work-width-right-minus": {
+      "id": "func-fs-variable-work-width-right-minus",
+      "name": "Teilbreite rechts an",
+      "categories": [
+        "Fahrzeug › Arbeit"
+      ],
+      "icon": null,
+      "actions": [
+        {
+          "type": "keyboard",
+          "key": "LCTRL"
+        },
+        {
+          "type": "keyboard",
+          "key": "LSHIFT"
+        },
+        {
+          "type": "keyboard",
+          "key": "K"
+        }
+      ]
+    },
+    "func-fs-variable-work-width-toggle": {
+      "id": "func-fs-variable-work-width-toggle",
+      "name": "Teilbreiten umschalten",
+      "categories": [
+        "Fahrzeug › Arbeit"
+      ],
+      "icon": null,
+      "actions": [
+        {
+          "type": "keyboard",
+          "key": "LCTRL"
+        },
+        {
+          "type": "keyboard",
+          "key": "Z"
+        }
+      ]
+    },
+    "func-fs-toggle-cut-length-back": {
+      "id": "func-fs-toggle-cut-length-back",
+      "name": "Schnittlänge zurück",
+      "categories": [
+        "Fahrzeug › Arbeit"
+      ],
+      "icon": null,
+      "actions": [
+        {
+          "type": "keyboard",
+          "key": "LSHIFT"
+        },
+        {
+          "type": "keyboard",
+          "key": "Y"
+        }
+      ]
+    },
+    "func-fs-wood-harvester-drop": {
+      "id": "func-fs-wood-harvester-drop",
+      "name": "Holz ablegen",
+      "categories": [
+        "Fahrzeug › Arbeit"
+      ],
+      "icon": null,
+      "actions": [
+        {
+          "type": "keyboard",
+          "key": "LSHIFT"
+        },
+        {
+          "type": "keyboard",
+          "key": "X"
+        }
+      ]
+    },
+    "func-fs-tree-automatic-align": {
+      "id": "func-fs-tree-automatic-align",
+      "name": "Baum automatisch ausrichten",
+      "categories": [
+        "Fahrzeug › Arbeit"
+      ],
+      "icon": null,
+      "actions": [
+        {
+          "type": "keyboard",
+          "key": "O"
+        }
+      ]
+    },
+    "func-fs-toggle-wood-harvester-tilt": {
+      "id": "func-fs-toggle-wood-harvester-tilt",
+      "name": "Harvester neigen",
+      "categories": [
+        "Fahrzeug › Arbeit"
+      ],
+      "icon": null,
+      "actions": [
+        {
+          "type": "keyboard",
+          "key": "COMMA"
+        }
+      ]
+    },
+    "func-fs-yarder-control-leftright": {
+      "id": "func-fs-yarder-control-leftright",
+      "name": "Seilkran links/rechts",
+      "categories": [
+        "Kran"
+      ],
+      "icon": null,
+      "actions": [
+        {
+          "type": "keyboard",
+          "key": "K"
+        }
+      ]
+    },
+    "func-fs-yarder-control-leftright-minus": {
+      "id": "func-fs-yarder-control-leftright-minus",
+      "name": "Seilkran links/rechts (−)",
+      "categories": [
+        "Kran"
+      ],
+      "icon": null,
+      "actions": [
+        {
+          "type": "keyboard",
+          "key": "M"
+        }
+      ]
+    },
+    "func-fs-yarder-control-updown": {
+      "id": "func-fs-yarder-control-updown",
+      "name": "Seilkran auf/ab",
+      "categories": [
+        "Kran"
+      ],
+      "icon": null,
+      "actions": [
+        {
+          "type": "keyboard",
+          "key": "J"
+        }
+      ]
+    },
+    "func-fs-yarder-control-updown-minus": {
+      "id": "func-fs-yarder-control-updown-minus",
+      "name": "Seilkran auf/ab (−)",
+      "categories": [
+        "Kran"
+      ],
+      "icon": null,
+      "actions": [
+        {
+          "type": "keyboard",
+          "key": "N"
+        }
+      ]
+    },
+    "func-fs-yarder-follow-me": {
+      "id": "func-fs-yarder-follow-me",
+      "name": "Folge mir",
+      "categories": [
+        "Kran"
+      ],
+      "icon": null,
+      "actions": [
+        {
+          "type": "keyboard",
+          "key": "R"
+        }
+      ]
+    },
+    "func-fs-yarder-follow-home": {
+      "id": "func-fs-yarder-follow-home",
+      "name": "Zurück zur Basis",
+      "categories": [
+        "Kran"
+      ],
+      "icon": null,
+      "actions": [
+        {
+          "type": "keyboard",
+          "key": "X"
+        }
+      ]
+    },
+    "func-fs-yarder-follow-pickup": {
+      "id": "func-fs-yarder-follow-pickup",
+      "name": "Holz aufnehmen",
+      "categories": [
+        "Kran"
+      ],
+      "icon": null,
+      "actions": [
+        {
+          "type": "keyboard",
+          "key": "Y"
+        }
+      ]
+    },
+    "func-fs-yarder-attach": {
+      "id": "func-fs-yarder-attach",
+      "name": "Seilkran anhängen",
+      "categories": [
+        "Fahrzeug"
+      ],
+      "icon": null,
+      "actions": [
+        {
+          "type": "keyboard",
+          "key": "B"
+        }
+      ]
+    },
+    "func-fs-yarder-detach": {
+      "id": "func-fs-yarder-detach",
+      "name": "Seilkran lösen",
+      "categories": [
+        "Fahrzeug"
+      ],
+      "icon": null,
+      "actions": [
+        {
+          "type": "keyboard",
+          "key": "V"
+        }
+      ]
+    },
+    "func-fs-yarder-setup-rope": {
+      "id": "func-fs-yarder-setup-rope",
+      "name": "Seil einrichten",
+      "categories": [
+        "Kran"
+      ],
+      "icon": null,
+      "actions": []
+    },
+    "func-fs-winch-control": {
+      "id": "func-fs-winch-control",
+      "name": "Seilwinde",
+      "categories": [
+        "Kran"
+      ],
+      "icon": null,
+      "actions": [
+        {
+          "type": "keyboard",
+          "key": "K"
+        }
+      ]
+    },
+    "func-fs-winch-control-minus": {
+      "id": "func-fs-winch-control-minus",
+      "name": "Seilwinde (−)",
+      "categories": [
+        "Kran"
+      ],
+      "icon": null,
+      "actions": [
+        {
+          "type": "keyboard",
+          "key": "M"
+        }
+      ]
+    },
+    "func-fs-winch-control-vehicle": {
+      "id": "func-fs-winch-control-vehicle",
+      "name": "Seilwinde Fahrzeug",
+      "categories": [
+        "Kran"
+      ],
+      "icon": null,
+      "actions": [
+        {
+          "type": "keyboard",
+          "key": "LCTRL"
+        },
+        {
+          "type": "keyboard",
+          "key": "K"
+        }
+      ]
+    },
+    "func-fs-winch-control-vehicle-minus": {
+      "id": "func-fs-winch-control-vehicle-minus",
+      "name": "Seilwinde Fahrzeug (−)",
+      "categories": [
+        "Kran"
+      ],
+      "icon": null,
+      "actions": [
+        {
+          "type": "keyboard",
+          "key": "LCTRL"
+        },
+        {
+          "type": "keyboard",
+          "key": "M"
+        }
+      ]
+    },
+    "func-fs-winch-attach-mode": {
+      "id": "func-fs-winch-attach-mode",
+      "name": "Seilwinde Anhängemodus",
+      "categories": [
+        "Fahrzeug"
+      ],
+      "icon": null,
+      "actions": [
+        {
+          "type": "keyboard",
+          "key": "R"
+        }
+      ]
+    },
+    "func-fs-winch-attach": {
+      "id": "func-fs-winch-attach",
+      "name": "Seilwinde anhängen",
+      "categories": [
+        "Fahrzeug"
+      ],
+      "icon": null,
+      "actions": [
+        {
+          "type": "keyboard",
+          "key": "B"
+        }
+      ]
+    },
+    "func-fs-winch-detach": {
+      "id": "func-fs-winch-detach",
+      "name": "Seilwinde lösen",
+      "categories": [
+        "Fahrzeug"
+      ],
+      "icon": null,
+      "actions": [
+        {
+          "type": "keyboard",
+          "key": "Y"
+        }
+      ]
+    },
+    "func-fs-pallet-filler-buy-pallets": {
+      "id": "func-fs-pallet-filler-buy-pallets",
+      "name": "Paletten kaufen",
+      "categories": [
+        "Fahrzeug › Arbeit"
+      ],
+      "icon": null,
+      "actions": [
+        {
+          "type": "keyboard",
+          "key": "COMMA"
+        }
+      ]
+    },
+    "func-fs-change-driving-direction": {
+      "id": "func-fs-change-driving-direction",
+      "name": "Fahrrichtung ändern",
+      "categories": [
+        "Fahrzeug › Fahren"
+      ],
+      "icon": null,
+      "actions": [
+        {
+          "type": "keyboard",
+          "key": "LSHIFT"
+        },
+        {
+          "type": "keyboard",
+          "key": "B"
+        }
+      ]
+    },
+    "func-fs-toggle-tipstate-ground": {
+      "id": "func-fs-toggle-tipstate-ground",
+      "name": "Auf Boden kippen",
+      "categories": [
+        "Fahrzeug › Arbeit"
+      ],
+      "icon": null,
+      "actions": [
+        {
+          "type": "keyboard",
+          "key": "LCTRL"
+        },
+        {
+          "type": "keyboard",
+          "key": "I"
+        }
+      ]
+    },
+    "func-fs-toggle-cruise-control": {
+      "id": "func-fs-toggle-cruise-control",
+      "name": "Tempomat",
+      "categories": [
+        "Fahrzeug › Fahren"
+      ],
+      "icon": null,
+      "actions": [
+        {
+          "type": "keyboard",
+          "key": "3"
+        }
+      ]
+    },
+    "func-fs-radio-toggle": {
+      "id": "func-fs-radio-toggle",
+      "name": "Radio ein/aus",
+      "categories": [
+        "Fahrzeug"
+      ],
+      "icon": null,
+      "actions": [
+        {
+          "type": "keyboard",
+          "key": "5"
+        }
+      ]
+    },
+    "func-fs-radio-next-channel": {
+      "id": "func-fs-radio-next-channel",
+      "name": "Nächster Sender",
+      "categories": [
+        "Fahrzeug"
+      ],
+      "icon": null,
+      "actions": [
+        {
+          "type": "keyboard",
+          "key": "6"
+        }
+      ]
+    },
+    "func-fs-radio-previous-channel": {
+      "id": "func-fs-radio-previous-channel",
+      "name": "Vorheriger Sender",
+      "categories": [
+        "Fahrzeug"
+      ],
+      "icon": null,
+      "actions": [
+        {
+          "type": "keyboard",
+          "key": "4"
+        }
+      ]
+    },
+    "func-fs-introduction-help-skip": {
+      "id": "func-fs-introduction-help-skip",
+      "name": "Tutorial überspringen",
+      "categories": [
+        "Spiel"
+      ],
+      "icon": null,
+      "actions": [
+        {
+          "type": "keyboard",
+          "key": "ENTER"
+        }
+      ]
+    },
+    "func-fs-conversation-skip": {
+      "id": "func-fs-conversation-skip",
+      "name": "Dialog überspringen",
+      "categories": [
+        "Spiel"
+      ],
+      "icon": null,
+      "actions": []
+    },
+    "func-fs-take-screenshot": {
+      "id": "func-fs-take-screenshot",
+      "name": "Screenshot",
+      "categories": [
+        "Spiel"
+      ],
+      "icon": null,
+      "actions": [
+        {
+          "type": "keyboard",
+          "key": "PRINTSCREEN"
+        }
+      ]
+    },
+    "func-fs-chat": {
+      "id": "func-fs-chat",
+      "name": "Chat",
+      "categories": [
+        "Spiel"
+      ],
+      "icon": null,
+      "actions": [
+        {
+          "type": "keyboard",
+          "key": "T"
+        }
+      ]
+    },
+    "func-fs-push-to-talk": {
+      "id": "func-fs-push-to-talk",
+      "name": "Push-to-Talk",
+      "categories": [
+        "Spiel"
+      ],
+      "icon": null,
+      "actions": [
+        {
+          "type": "keyboard",
+          "key": "PERIOD"
+        }
+      ]
+    },
+    "func-fs-toggle-turnlight-hazard": {
+      "id": "func-fs-toggle-turnlight-hazard",
+      "name": "Warnblinker",
+      "categories": [
+        "Fahrzeug › Beleuchtung"
+      ],
+      "icon": null,
+      "actions": [
+        {
+          "type": "keyboard",
+          "key": "KP2"
+        }
+      ]
+    },
+    "func-fs-toggle-work-light-back": {
+      "id": "func-fs-toggle-work-light-back",
+      "name": "Arbeitsscheinwerfer hinten",
+      "categories": [
+        "Spiel"
+      ],
+      "icon": null,
+      "actions": [
+        {
+          "type": "keyboard",
+          "key": "KP6"
+        }
+      ]
+    },
+    "func-fs-toggle-work-light-front": {
+      "id": "func-fs-toggle-work-light-front",
+      "name": "Arbeitsscheinwerfer vorne",
+      "categories": [
+        "Spiel"
+      ],
+      "icon": null,
+      "actions": [
+        {
+          "type": "keyboard",
+          "key": "KP5"
+        }
+      ]
+    },
+    "func-fs-toggle-high-beam-light": {
+      "id": "func-fs-toggle-high-beam-light",
+      "name": "Fernlicht",
+      "categories": [
+        "Fahrzeug › Beleuchtung"
+      ],
+      "icon": null,
+      "actions": [
+        {
+          "type": "keyboard",
+          "key": "LCTRL"
+        },
+        {
+          "type": "keyboard",
+          "key": "F"
+        }
+      ]
+    },
+    "func-fs-lower-all-implements": {
+      "id": "func-fs-lower-all-implements",
+      "name": "Alle Geräte senken",
+      "categories": [
+        "Fahrzeug › Arbeit"
+      ],
+      "icon": null,
+      "actions": [
+        {
+          "type": "keyboard",
+          "key": "LCTRL"
+        },
+        {
+          "type": "keyboard",
+          "key": "V"
+        }
+      ]
+    },
+    "func-fs-turn-on-all-implements": {
+      "id": "func-fs-turn-on-all-implements",
+      "name": "Alle Geräte einschalten",
+      "categories": [
+        "Fahrzeug › Arbeit"
+      ],
+      "icon": null,
+      "actions": [
+        {
+          "type": "keyboard",
+          "key": "LCTRL"
+        },
+        {
+          "type": "keyboard",
+          "key": "B"
+        }
+      ]
+    },
+    "func-fs-fold-all-implements": {
+      "id": "func-fs-fold-all-implements",
+      "name": "Alle Geräte einklappen",
+      "categories": [
+        "Fahrzeug › Arbeit"
+      ],
+      "icon": null,
+      "actions": [
+        {
+          "type": "keyboard",
+          "key": "LCTRL"
+        },
+        {
+          "type": "keyboard",
+          "key": "X"
+        }
+      ]
+    },
+    "func-fs-toggle-help-text": {
+      "id": "func-fs-toggle-help-text",
+      "name": "Hilfe ein/aus",
+      "categories": [
+        "Spiel"
+      ],
+      "icon": null,
+      "actions": [
+        {
+          "type": "keyboard",
+          "key": "F1"
+        }
+      ]
+    },
+    "func-fs-increase-timescale": {
+      "id": "func-fs-increase-timescale",
+      "name": "Zeit beschleunigen",
+      "categories": [
+        "Spiel"
+      ],
+      "icon": null,
+      "actions": [
+        {
+          "type": "keyboard",
+          "key": "8"
+        }
+      ]
+    },
+    "func-fs-decrease-timescale": {
+      "id": "func-fs-decrease-timescale",
+      "name": "Zeit verlangsamen",
+      "categories": [
+        "Spiel"
+      ],
+      "icon": null,
+      "actions": [
+        {
+          "type": "keyboard",
+          "key": "7"
+        }
+      ]
+    },
+    "func-fs-crabsteering-allwheel": {
+      "id": "func-fs-crabsteering-allwheel",
+      "name": "Hundegang alle Räder",
+      "categories": [
+        "Fahrzeug"
+      ],
+      "icon": null,
+      "actions": [
+        {
+          "type": "keyboard",
+          "key": "LSHIFT"
+        },
+        {
+          "type": "keyboard",
+          "key": "I"
+        }
+      ]
+    },
+    "func-fs-crabsteering-crableft": {
+      "id": "func-fs-crabsteering-crableft",
+      "name": "Hundegang links",
+      "categories": [
+        "Fahrzeug"
+      ],
+      "icon": null,
+      "actions": [
+        {
+          "type": "keyboard",
+          "key": "LSHIFT"
+        },
+        {
+          "type": "keyboard",
+          "key": "U"
+        }
+      ]
+    },
+    "func-fs-crabsteering-crabright": {
+      "id": "func-fs-crabsteering-crabright",
+      "name": "Hundegang rechts",
+      "categories": [
+        "Fahrzeug"
+      ],
+      "icon": null,
+      "actions": [
+        {
+          "type": "keyboard",
+          "key": "LSHIFT"
+        },
+        {
+          "type": "keyboard",
+          "key": "O"
+        }
+      ]
+    },
+    "func-fs-workmode-middle": {
+      "id": "func-fs-workmode-middle",
+      "name": "Arbeitsmodus Mitte",
+      "categories": [
+        "Fahrzeug"
+      ],
+      "icon": null,
+      "actions": [
+        {
+          "type": "keyboard",
+          "key": "LSHIFT"
+        },
+        {
+          "type": "keyboard",
+          "key": "I"
+        }
+      ]
+    },
+    "func-fs-workmode-left": {
+      "id": "func-fs-workmode-left",
+      "name": "Arbeitsmodus Links",
+      "categories": [
+        "Fahrzeug"
+      ],
+      "icon": null,
+      "actions": [
+        {
+          "type": "keyboard",
+          "key": "LSHIFT"
+        },
+        {
+          "type": "keyboard",
+          "key": "U"
+        }
+      ]
+    },
+    "func-fs-workmode-right": {
+      "id": "func-fs-workmode-right",
+      "name": "Arbeitsmodus Rechts",
+      "categories": [
+        "Fahrzeug"
+      ],
+      "icon": null,
+      "actions": [
+        {
+          "type": "keyboard",
+          "key": "LSHIFT"
+        },
+        {
+          "type": "keyboard",
+          "key": "O"
+        }
+      ]
+    },
+    "func-fs-reset-head-tracking": {
+      "id": "func-fs-reset-head-tracking",
+      "name": "Kopf-Tracking zurücksetzen",
+      "categories": [
+        "Kamera"
+      ],
+      "icon": null,
+      "actions": [
+        {
+          "type": "keyboard",
+          "key": "F8"
+        }
+      ]
+    },
+    "func-fs-unload": {
+      "id": "func-fs-unload",
+      "name": "Entladen",
+      "categories": [
+        "Fahrzeug › Arbeit"
+      ],
+      "icon": null,
+      "actions": [
+        {
+          "type": "keyboard",
+          "key": "I"
+        }
+      ]
+    },
+    "func-fs-axis-run": {
+      "id": "func-fs-axis-run",
+      "name": "Rennen (Achse)",
+      "categories": [
+        "Zu Fuß › Bewegung"
+      ],
+      "icon": null,
+      "actions": [
+        {
+          "type": "keyboard",
+          "key": "LSHIFT"
+        }
+      ]
+    },
+    "func-fs-axis-move-forward-player": {
+      "id": "func-fs-axis-move-forward-player",
+      "name": "Axis Move Forward Player",
+      "categories": [
+        "Zu Fuß › Bewegung"
+      ],
+      "icon": null,
+      "actions": [
+        {
+          "type": "keyboard",
+          "key": "S"
+        }
+      ]
+    },
+    "func-fs-axis-move-forward-player-minus": {
+      "id": "func-fs-axis-move-forward-player-minus",
+      "name": "Axis Move Forward Player (−)",
+      "categories": [
+        "Zu Fuß › Bewegung"
+      ],
+      "icon": null,
+      "actions": [
+        {
+          "type": "keyboard",
+          "key": "W"
+        }
+      ]
+    },
+    "func-fs-axis-move-side-player": {
+      "id": "func-fs-axis-move-side-player",
+      "name": "Axis Move Side Player",
+      "categories": [
+        "Zu Fuß › Bewegung"
+      ],
+      "icon": null,
+      "actions": [
+        {
+          "type": "keyboard",
+          "key": "D"
+        }
+      ]
+    },
+    "func-fs-axis-move-side-player-minus": {
+      "id": "func-fs-axis-move-side-player-minus",
+      "name": "Axis Move Side Player (−)",
+      "categories": [
+        "Zu Fuß › Bewegung"
+      ],
+      "icon": null,
+      "actions": [
+        {
+          "type": "keyboard",
+          "key": "A"
+        }
+      ]
+    },
+    "func-fs-axis-rotate-handtool": {
+      "id": "func-fs-axis-rotate-handtool",
+      "name": "Werkzeug drehen (Achse)",
+      "categories": [
+        "Zu Fuß › Interaktion"
+      ],
+      "icon": null,
+      "actions": []
+    },
+    "func-fs-axis-pitch-handtool": {
+      "id": "func-fs-axis-pitch-handtool",
+      "name": "Werkzeug neigen (Achse)",
+      "categories": [
+        "Zu Fuß › Interaktion"
+      ],
+      "icon": null,
+      "actions": []
+    },
+    "func-fs-axis-brake-vehicle": {
+      "id": "func-fs-axis-brake-vehicle",
+      "name": "Axis Brake Vehicle",
+      "categories": [
+        "Fahrzeug › Fahren"
+      ],
+      "icon": null,
+      "actions": [
+        {
+          "type": "keyboard",
+          "key": "S"
+        }
+      ]
+    },
+    "func-fs-axis-accelerate-vehicle": {
+      "id": "func-fs-axis-accelerate-vehicle",
+      "name": "Axis Accelerate Vehicle",
+      "categories": [
+        "Fahrzeug › Fahren"
+      ],
+      "icon": null,
+      "actions": [
+        {
+          "type": "keyboard",
+          "key": "W"
+        }
+      ]
+    },
+    "func-fs-axis-clutch-vehicle": {
+      "id": "func-fs-axis-clutch-vehicle",
+      "name": "Axis Clutch Vehicle",
+      "categories": [
+        "Fahrzeug › Fahren"
+      ],
+      "icon": null,
+      "actions": [
+        {
+          "type": "keyboard",
+          "key": "LSHIFT"
+        }
+      ]
+    },
+    "func-fs-axis-move-side-vehicle": {
+      "id": "func-fs-axis-move-side-vehicle",
+      "name": "Axis Move Side Vehicle",
+      "categories": [
+        "Fahrzeug › Fahren"
+      ],
+      "icon": null,
+      "actions": [
+        {
+          "type": "keyboard",
+          "key": "D"
+        }
+      ]
+    },
+    "func-fs-axis-move-side-vehicle-minus": {
+      "id": "func-fs-axis-move-side-vehicle-minus",
+      "name": "Axis Move Side Vehicle (−)",
+      "categories": [
+        "Fahrzeug › Fahren"
+      ],
+      "icon": null,
+      "actions": [
+        {
+          "type": "keyboard",
+          "key": "A"
+        }
+      ]
+    },
+    "func-fs-axis-hydraulicattacher1": {
+      "id": "func-fs-axis-hydraulicattacher1",
+      "name": "Hydraulik 1",
+      "categories": [
+        "Fahrzeug"
+      ],
+      "icon": null,
+      "actions": [
+        {
+          "type": "keyboard",
+          "key": "J"
+        }
+      ]
+    },
+    "func-fs-axis-hydraulicattacher1-minus": {
+      "id": "func-fs-axis-hydraulicattacher1-minus",
+      "name": "Hydraulik 1 (−)",
+      "categories": [
+        "Fahrzeug"
+      ],
+      "icon": null,
+      "actions": [
+        {
+          "type": "keyboard",
+          "key": "N"
+        }
+      ]
+    },
+    "func-fs-axis-hydraulicattacher2": {
+      "id": "func-fs-axis-hydraulicattacher2",
+      "name": "Hydraulik 2",
+      "categories": [
+        "Fahrzeug"
+      ],
+      "icon": null,
+      "actions": [
+        {
+          "type": "keyboard",
+          "key": "K"
+        }
+      ]
+    },
+    "func-fs-axis-hydraulicattacher2-minus": {
+      "id": "func-fs-axis-hydraulicattacher2-minus",
+      "name": "Hydraulik 2 (−)",
+      "categories": [
+        "Fahrzeug"
+      ],
+      "icon": null,
+      "actions": [
+        {
+          "type": "keyboard",
+          "key": "M"
+        }
+      ]
+    },
+    "func-fs-axis-frontloader-arm": {
+      "id": "func-fs-axis-frontloader-arm",
+      "name": "Frontlader Arm",
+      "categories": [
+        "Fahrzeug › Frontlader"
+      ],
+      "icon": null,
+      "actions": [
+        {
+          "type": "keyboard",
+          "key": "J"
+        }
+      ]
+    },
+    "func-fs-axis-frontloader-arm-minus": {
+      "id": "func-fs-axis-frontloader-arm-minus",
+      "name": "Frontlader Arm (−)",
+      "categories": [
+        "Fahrzeug › Frontlader"
+      ],
+      "icon": null,
+      "actions": [
+        {
+          "type": "keyboard",
+          "key": "N"
+        }
+      ]
+    },
+    "func-fs-axis-frontloader-arm2": {
+      "id": "func-fs-axis-frontloader-arm2",
+      "name": "Frontlader Arm 2",
+      "categories": [
+        "Fahrzeug › Frontlader"
+      ],
+      "icon": null,
+      "actions": [
+        {
+          "type": "keyboard",
+          "key": "LSHIFT"
+        },
+        {
+          "type": "keyboard",
+          "key": "J"
+        }
+      ]
+    },
+    "func-fs-axis-frontloader-arm2-minus": {
+      "id": "func-fs-axis-frontloader-arm2-minus",
+      "name": "Frontlader Arm 2 (−)",
+      "categories": [
+        "Fahrzeug › Frontlader"
+      ],
+      "icon": null,
+      "actions": [
+        {
+          "type": "keyboard",
+          "key": "LSHIFT"
+        },
+        {
+          "type": "keyboard",
+          "key": "N"
+        }
+      ]
+    },
+    "func-fs-axis-frontloader-tool": {
+      "id": "func-fs-axis-frontloader-tool",
+      "name": "Frontlader Werkzeug",
+      "categories": [
+        "Fahrzeug › Frontlader"
+      ],
+      "icon": null,
+      "actions": [
+        {
+          "type": "keyboard",
+          "key": "K"
+        }
+      ]
+    },
+    "func-fs-axis-frontloader-tool-minus": {
+      "id": "func-fs-axis-frontloader-tool-minus",
+      "name": "Frontlader Werkzeug (−)",
+      "categories": [
+        "Fahrzeug › Frontlader"
+      ],
+      "icon": null,
+      "actions": [
+        {
+          "type": "keyboard",
+          "key": "M"
+        }
+      ]
+    },
+    "func-fs-axis-frontloader-tool2": {
+      "id": "func-fs-axis-frontloader-tool2",
+      "name": "Frontlader Werkzeug 2",
+      "categories": [
+        "Fahrzeug › Frontlader"
+      ],
+      "icon": null,
+      "actions": [
+        {
+          "type": "keyboard",
+          "key": "LSHIFT"
+        },
+        {
+          "type": "keyboard",
+          "key": "K"
+        }
+      ]
+    },
+    "func-fs-axis-frontloader-tool2-minus": {
+      "id": "func-fs-axis-frontloader-tool2-minus",
+      "name": "Frontlader Werkzeug 2 (−)",
+      "categories": [
+        "Fahrzeug › Frontlader"
+      ],
+      "icon": null,
+      "actions": [
+        {
+          "type": "keyboard",
+          "key": "LSHIFT"
+        },
+        {
+          "type": "keyboard",
+          "key": "M"
+        }
+      ]
+    },
+    "func-fs-axis-frontloader-tool3": {
+      "id": "func-fs-axis-frontloader-tool3",
+      "name": "Frontlader Werkzeug 3",
+      "categories": [
+        "Fahrzeug › Frontlader"
+      ],
+      "icon": null,
+      "actions": [
+        {
+          "type": "keyboard",
+          "key": "LSHIFT"
+        },
+        {
+          "type": "keyboard",
+          "key": "LCTRL"
+        },
+        {
+          "type": "keyboard",
+          "key": "J"
+        }
+      ]
+    },
+    "func-fs-axis-frontloader-tool3-minus": {
+      "id": "func-fs-axis-frontloader-tool3-minus",
+      "name": "Frontlader Werkzeug 3 (−)",
+      "categories": [
+        "Fahrzeug › Frontlader"
+      ],
+      "icon": null,
+      "actions": [
+        {
+          "type": "keyboard",
+          "key": "LSHIFT"
+        },
+        {
+          "type": "keyboard",
+          "key": "LCTRL"
+        },
+        {
+          "type": "keyboard",
+          "key": "N"
+        }
+      ]
+    },
+    "func-fs-axis-frontloader-tool4": {
+      "id": "func-fs-axis-frontloader-tool4",
+      "name": "Frontlader Werkzeug 4",
+      "categories": [
+        "Fahrzeug › Frontlader"
+      ],
+      "icon": null,
+      "actions": [
+        {
+          "type": "keyboard",
+          "key": "LSHIFT"
+        },
+        {
+          "type": "keyboard",
+          "key": "LCTRL"
+        },
+        {
+          "type": "keyboard",
+          "key": "K"
+        }
+      ]
+    },
+    "func-fs-axis-frontloader-tool4-minus": {
+      "id": "func-fs-axis-frontloader-tool4-minus",
+      "name": "Frontlader Werkzeug 4 (−)",
+      "categories": [
+        "Fahrzeug › Frontlader"
+      ],
+      "icon": null,
+      "actions": [
+        {
+          "type": "keyboard",
+          "key": "LSHIFT"
+        },
+        {
+          "type": "keyboard",
+          "key": "LCTRL"
+        },
+        {
+          "type": "keyboard",
+          "key": "M"
+        }
+      ]
+    },
+    "func-fs-axis-frontloader-tool5": {
+      "id": "func-fs-axis-frontloader-tool5",
+      "name": "Frontlader Werkzeug 5",
+      "categories": [
+        "Fahrzeug › Frontlader"
+      ],
+      "icon": null,
+      "actions": [
+        {
+          "type": "keyboard",
+          "key": "LCTRL"
+        },
+        {
+          "type": "keyboard",
+          "key": "K"
+        }
+      ]
+    },
+    "func-fs-axis-frontloader-tool5-minus": {
+      "id": "func-fs-axis-frontloader-tool5-minus",
+      "name": "Frontlader Werkzeug 5 (−)",
+      "categories": [
+        "Fahrzeug › Frontlader"
+      ],
+      "icon": null,
+      "actions": [
+        {
+          "type": "keyboard",
+          "key": "LCTRL"
+        },
+        {
+          "type": "keyboard",
+          "key": "M"
+        }
+      ]
+    },
+    "func-fs-axis-crane-arm": {
+      "id": "func-fs-axis-crane-arm",
+      "name": "Kran Arm",
+      "categories": [
+        "Fahrzeug › Frontlader"
+      ],
+      "icon": null,
+      "actions": [
+        {
+          "type": "keyboard",
+          "key": "K"
+        }
+      ]
+    },
+    "func-fs-axis-crane-arm-minus": {
+      "id": "func-fs-axis-crane-arm-minus",
+      "name": "Kran Arm (−)",
+      "categories": [
+        "Fahrzeug › Frontlader"
+      ],
+      "icon": null,
+      "actions": [
+        {
+          "type": "keyboard",
+          "key": "M"
+        }
+      ]
+    },
+    "func-fs-axis-crane-arm2": {
+      "id": "func-fs-axis-crane-arm2",
+      "name": "Kran Arm 2",
+      "categories": [
+        "Fahrzeug › Frontlader"
+      ],
+      "icon": null,
+      "actions": [
+        {
+          "type": "keyboard",
+          "key": "J"
+        }
+      ]
+    },
+    "func-fs-axis-crane-arm2-minus": {
+      "id": "func-fs-axis-crane-arm2-minus",
+      "name": "Kran Arm 2 (−)",
+      "categories": [
+        "Fahrzeug › Frontlader"
+      ],
+      "icon": null,
+      "actions": [
+        {
+          "type": "keyboard",
+          "key": "N"
+        }
+      ]
+    },
+    "func-fs-axis-crane-arm3": {
+      "id": "func-fs-axis-crane-arm3",
+      "name": "Kran Arm 3",
+      "categories": [
+        "Fahrzeug › Frontlader"
+      ],
+      "icon": null,
+      "actions": [
+        {
+          "type": "keyboard",
+          "key": "LSHIFT"
+        },
+        {
+          "type": "keyboard",
+          "key": "J"
+        }
+      ]
+    },
+    "func-fs-axis-crane-arm3-minus": {
+      "id": "func-fs-axis-crane-arm3-minus",
+      "name": "Kran Arm 3 (−)",
+      "categories": [
+        "Fahrzeug › Frontlader"
+      ],
+      "icon": null,
+      "actions": [
+        {
+          "type": "keyboard",
+          "key": "LSHIFT"
+        },
+        {
+          "type": "keyboard",
+          "key": "N"
+        }
+      ]
+    },
+    "func-fs-axis-crane-arm4": {
+      "id": "func-fs-axis-crane-arm4",
+      "name": "Kran Arm 4",
+      "categories": [
+        "Fahrzeug › Frontlader"
+      ],
+      "icon": null,
+      "actions": [
+        {
+          "type": "keyboard",
+          "key": "LSHIFT"
+        },
+        {
+          "type": "keyboard",
+          "key": "K"
+        }
+      ]
+    },
+    "func-fs-axis-crane-arm4-minus": {
+      "id": "func-fs-axis-crane-arm4-minus",
+      "name": "Kran Arm 4 (−)",
+      "categories": [
+        "Fahrzeug › Frontlader"
+      ],
+      "icon": null,
+      "actions": [
+        {
+          "type": "keyboard",
+          "key": "LSHIFT"
+        },
+        {
+          "type": "keyboard",
+          "key": "M"
+        }
+      ]
+    },
+    "func-fs-axis-crane-tool": {
+      "id": "func-fs-axis-crane-tool",
+      "name": "Kran Werkzeug",
+      "categories": [
+        "Fahrzeug › Frontlader"
+      ],
+      "icon": null,
+      "actions": [
+        {
+          "type": "keyboard",
+          "key": "LSHIFT"
+        },
+        {
+          "type": "keyboard",
+          "key": "LCTRL"
+        },
+        {
+          "type": "keyboard",
+          "key": "K"
+        }
+      ]
+    },
+    "func-fs-axis-crane-tool-minus": {
+      "id": "func-fs-axis-crane-tool-minus",
+      "name": "Kran Werkzeug (−)",
+      "categories": [
+        "Fahrzeug › Frontlader"
+      ],
+      "icon": null,
+      "actions": [
+        {
+          "type": "keyboard",
+          "key": "LSHIFT"
+        },
+        {
+          "type": "keyboard",
+          "key": "LCTRL"
+        },
+        {
+          "type": "keyboard",
+          "key": "M"
+        }
+      ]
+    },
+    "func-fs-axis-crane-tool2": {
+      "id": "func-fs-axis-crane-tool2",
+      "name": "Kran Werkzeug 2",
+      "categories": [
+        "Fahrzeug › Frontlader"
+      ],
+      "icon": null,
+      "actions": [
+        {
+          "type": "keyboard",
+          "key": "LSHIFT"
+        },
+        {
+          "type": "keyboard",
+          "key": "LCTRL"
+        },
+        {
+          "type": "keyboard",
+          "key": "J"
+        }
+      ]
+    },
+    "func-fs-axis-crane-tool2-minus": {
+      "id": "func-fs-axis-crane-tool2-minus",
+      "name": "Kran Werkzeug 2 (−)",
+      "categories": [
+        "Fahrzeug › Frontlader"
+      ],
+      "icon": null,
+      "actions": [
+        {
+          "type": "keyboard",
+          "key": "LSHIFT"
+        },
+        {
+          "type": "keyboard",
+          "key": "LCTRL"
+        },
+        {
+          "type": "keyboard",
+          "key": "N"
+        }
+      ]
+    },
+    "func-fs-axis-crane-tool3": {
+      "id": "func-fs-axis-crane-tool3",
+      "name": "Kran Werkzeug 3",
+      "categories": [
+        "Fahrzeug › Frontlader"
+      ],
+      "icon": null,
+      "actions": [
+        {
+          "type": "keyboard",
+          "key": "LCTRL"
+        },
+        {
+          "type": "keyboard",
+          "key": "K"
+        }
+      ]
+    },
+    "func-fs-axis-crane-tool3-minus": {
+      "id": "func-fs-axis-crane-tool3-minus",
+      "name": "Kran Werkzeug 3 (−)",
+      "categories": [
+        "Fahrzeug › Frontlader"
+      ],
+      "icon": null,
+      "actions": [
+        {
+          "type": "keyboard",
+          "key": "LCTRL"
+        },
+        {
+          "type": "keyboard",
+          "key": "M"
+        }
+      ]
+    },
+    "func-fs-axis-crane-support": {
+      "id": "func-fs-axis-crane-support",
+      "name": "Kran Abstützung",
+      "categories": [
+        "Fahrzeug › Frontlader"
+      ],
+      "icon": null,
+      "actions": [
+        {
+          "type": "keyboard",
+          "key": "LCTRL"
+        },
+        {
+          "type": "keyboard",
+          "key": "D"
+        }
+      ]
+    },
+    "func-fs-axis-crane-support-minus": {
+      "id": "func-fs-axis-crane-support-minus",
+      "name": "Kran Abstützung (−)",
+      "categories": [
+        "Fahrzeug › Frontlader"
+      ],
+      "icon": null,
+      "actions": [
+        {
+          "type": "keyboard",
+          "key": "LCTRL"
+        },
+        {
+          "type": "keyboard",
+          "key": "A"
+        }
+      ]
+    },
+    "func-fs-axis-cutter-reel": {
+      "id": "func-fs-axis-cutter-reel",
+      "name": "Mähhaspel",
+      "categories": [
+        "Fahrzeug › Arbeit"
+      ],
+      "icon": null,
+      "actions": [
+        {
+          "type": "keyboard",
+          "key": "K"
+        }
+      ]
+    },
+    "func-fs-axis-cutter-reel-minus": {
+      "id": "func-fs-axis-cutter-reel-minus",
+      "name": "Mähhaspel (−)",
+      "categories": [
+        "Fahrzeug › Arbeit"
+      ],
+      "icon": null,
+      "actions": [
+        {
+          "type": "keyboard",
+          "key": "M"
+        }
+      ]
+    },
+    "func-fs-axis-cutter-reel2": {
+      "id": "func-fs-axis-cutter-reel2",
+      "name": "Mähhaspel 2",
+      "categories": [
+        "Fahrzeug › Arbeit"
+      ],
+      "icon": null,
+      "actions": [
+        {
+          "type": "keyboard",
+          "key": "J"
+        }
+      ]
+    },
+    "func-fs-axis-cutter-reel2-minus": {
+      "id": "func-fs-axis-cutter-reel2-minus",
+      "name": "Mähhaspel 2 (−)",
+      "categories": [
+        "Fahrzeug › Arbeit"
+      ],
+      "icon": null,
+      "actions": [
+        {
+          "type": "keyboard",
+          "key": "N"
+        }
+      ]
+    },
+    "func-fs-axis-pipe": {
+      "id": "func-fs-axis-pipe",
+      "name": "Entladerohr",
+      "categories": [
+        "Spiel"
+      ],
+      "icon": null,
+      "actions": [
+        {
+          "type": "keyboard",
+          "key": "LSHIFT"
+        },
+        {
+          "type": "keyboard",
+          "key": "K"
+        }
+      ]
+    },
+    "func-fs-axis-pipe-minus": {
+      "id": "func-fs-axis-pipe-minus",
+      "name": "Entladerohr (−)",
+      "categories": [
+        "Spiel"
+      ],
+      "icon": null,
+      "actions": [
+        {
+          "type": "keyboard",
+          "key": "LSHIFT"
+        },
+        {
+          "type": "keyboard",
+          "key": "M"
+        }
+      ]
+    },
+    "func-fs-axis-pipe2": {
+      "id": "func-fs-axis-pipe2",
+      "name": "Entladerohr 2",
+      "categories": [
+        "Spiel"
+      ],
+      "icon": null,
+      "actions": [
+        {
+          "type": "keyboard",
+          "key": "LSHIFT"
+        },
+        {
+          "type": "keyboard",
+          "key": "J"
+        }
+      ]
+    },
+    "func-fs-axis-pipe2-minus": {
+      "id": "func-fs-axis-pipe2-minus",
+      "name": "Entladerohr 2 (−)",
+      "categories": [
+        "Spiel"
+      ],
+      "icon": null,
+      "actions": [
+        {
+          "type": "keyboard",
+          "key": "LSHIFT"
+        },
+        {
+          "type": "keyboard",
+          "key": "N"
+        }
+      ]
+    },
+    "func-fs-axis-door": {
+      "id": "func-fs-axis-door",
+      "name": "Tür",
+      "categories": [
+        "Spiel"
+      ],
+      "icon": null,
+      "actions": [
+        {
+          "type": "keyboard",
+          "key": "J"
+        }
+      ]
+    },
+    "func-fs-axis-door-minus": {
+      "id": "func-fs-axis-door-minus",
+      "name": "Tür (−)",
+      "categories": [
+        "Spiel"
+      ],
+      "icon": null,
+      "actions": [
+        {
+          "type": "keyboard",
+          "key": "N"
+        }
+      ]
+    },
+    "func-fs-axis-door-2": {
+      "id": "func-fs-axis-door-2",
+      "name": "Tür 2",
+      "categories": [
+        "Spiel"
+      ],
+      "icon": null,
+      "actions": [
+        {
+          "type": "keyboard",
+          "key": "K"
+        }
+      ]
+    },
+    "func-fs-axis-door-2-minus": {
+      "id": "func-fs-axis-door-2-minus",
+      "name": "Tür 2 (−)",
+      "categories": [
+        "Spiel"
+      ],
+      "icon": null,
+      "actions": [
+        {
+          "type": "keyboard",
+          "key": "M"
+        }
+      ]
+    },
+    "func-fs-axis-door-3": {
+      "id": "func-fs-axis-door-3",
+      "name": "Tür 3",
+      "categories": [
+        "Spiel"
+      ],
+      "icon": null,
+      "actions": [
+        {
+          "type": "keyboard",
+          "key": "LSHIFT"
+        },
+        {
+          "type": "keyboard",
+          "key": "K"
+        }
+      ]
+    },
+    "func-fs-axis-door-3-minus": {
+      "id": "func-fs-axis-door-3-minus",
+      "name": "Tür 3 (−)",
+      "categories": [
+        "Spiel"
+      ],
+      "icon": null,
+      "actions": [
+        {
+          "type": "keyboard",
+          "key": "LSHIFT"
+        },
+        {
+          "type": "keyboard",
+          "key": "M"
+        }
+      ]
+    },
+    "func-fs-axis-drawbar": {
+      "id": "func-fs-axis-drawbar",
+      "name": "Deichsel",
+      "categories": [
+        "Fahrzeug › Arbeit"
+      ],
+      "icon": null,
+      "actions": [
+        {
+          "type": "keyboard",
+          "key": "LSHIFT"
+        },
+        {
+          "type": "keyboard",
+          "key": "J"
+        }
+      ]
+    },
+    "func-fs-axis-drawbar-minus": {
+      "id": "func-fs-axis-drawbar-minus",
+      "name": "Deichsel (−)",
+      "categories": [
+        "Fahrzeug › Arbeit"
+      ],
+      "icon": null,
+      "actions": [
+        {
+          "type": "keyboard",
+          "key": "LSHIFT"
+        },
+        {
+          "type": "keyboard",
+          "key": "N"
+        }
+      ]
+    },
+    "func-fs-axis-drawbar2": {
+      "id": "func-fs-axis-drawbar2",
+      "name": "Deichsel 2",
+      "categories": [
+        "Fahrzeug › Arbeit"
+      ],
+      "icon": null,
+      "actions": [
+        {
+          "type": "keyboard",
+          "key": "LSHIFT"
+        },
+        {
+          "type": "keyboard",
+          "key": "K"
+        }
+      ]
+    },
+    "func-fs-axis-drawbar2-minus": {
+      "id": "func-fs-axis-drawbar2-minus",
+      "name": "Deichsel 2 (−)",
+      "categories": [
+        "Fahrzeug › Arbeit"
+      ],
+      "icon": null,
+      "actions": [
+        {
+          "type": "keyboard",
+          "key": "LSHIFT"
+        },
+        {
+          "type": "keyboard",
+          "key": "M"
+        }
+      ]
+    },
+    "func-fs-axis-sprayer-arm": {
+      "id": "func-fs-axis-sprayer-arm",
+      "name": "Spritze Arm",
+      "categories": [
+        "Fahrzeug › Arbeit"
+      ],
+      "icon": null,
+      "actions": [
+        {
+          "type": "keyboard",
+          "key": "J"
+        }
+      ]
+    },
+    "func-fs-axis-sprayer-arm-minus": {
+      "id": "func-fs-axis-sprayer-arm-minus",
+      "name": "Spritze Arm (−)",
+      "categories": [
+        "Fahrzeug › Arbeit"
+      ],
+      "icon": null,
+      "actions": [
+        {
+          "type": "keyboard",
+          "key": "N"
+        }
+      ]
+    },
+    "func-fs-axis-wheel-base": {
+      "id": "func-fs-axis-wheel-base",
+      "name": "Radstand",
+      "categories": [
+        "Fahrzeug › Arbeit"
+      ],
+      "icon": null,
+      "actions": [
+        {
+          "type": "keyboard",
+          "key": "K"
+        }
+      ]
+    },
+    "func-fs-axis-wheel-base-minus": {
+      "id": "func-fs-axis-wheel-base-minus",
+      "name": "Radstand (−)",
+      "categories": [
+        "Fahrzeug › Arbeit"
+      ],
+      "icon": null,
+      "actions": [
+        {
+          "type": "keyboard",
+          "key": "M"
+        }
+      ]
+    },
+    "func-fs-axis-cruise-control": {
+      "id": "func-fs-axis-cruise-control",
+      "name": "Tempomat (Achse)",
+      "categories": [
+        "Fahrzeug › Fahren"
+      ],
+      "icon": null,
+      "actions": [
+        {
+          "type": "keyboard",
+          "key": "2"
+        }
+      ]
+    },
+    "func-fs-axis-cruise-control-minus": {
+      "id": "func-fs-axis-cruise-control-minus",
+      "name": "Tempomat (Achse) (−)",
+      "categories": [
+        "Fahrzeug › Fahren"
+      ],
+      "icon": null,
+      "actions": [
+        {
+          "type": "keyboard",
+          "key": "1"
+        }
+      ]
+    },
+    "func-fs-radio-next-item": {
+      "id": "func-fs-radio-next-item",
+      "name": "Radio Next Item",
+      "categories": [
+        "Fahrzeug"
+      ],
+      "icon": null,
+      "actions": []
+    },
+    "func-fs-radio-previous-item": {
+      "id": "func-fs-radio-previous-item",
+      "name": "Radio Previous Item",
+      "categories": [
+        "Fahrzeug"
+      ],
+      "icon": null,
+      "actions": []
+    },
+    "func-fs-toggle-light-front": {
+      "id": "func-fs-toggle-light-front",
+      "name": "Frontlicht ein/aus",
+      "categories": [
+        "Fahrzeug › Beleuchtung"
+      ],
+      "icon": null,
+      "actions": []
+    },
+    "func-fs-sh-grab-bales": {
+      "id": "func-fs-sh-grab-bales",
+      "name": "Sh Grab Bales",
+      "categories": [
+        "Fahrzeug › Arbeit"
+      ],
+      "icon": null,
+      "actions": [
+        {
+          "type": "keyboard",
+          "key": "Y"
+        }
+      ]
+    },
+    "func-fs-sh-drop-bales": {
+      "id": "func-fs-sh-drop-bales",
+      "name": "Sh Drop Bales",
+      "categories": [
+        "Fahrzeug › Arbeit"
+      ],
+      "icon": null,
+      "actions": [
+        {
+          "type": "keyboard",
+          "key": "Z"
+        }
+      ]
+    },
+    "func-fs-sh-toggle-crane-tool": {
+      "id": "func-fs-sh-toggle-crane-tool",
+      "name": "Sh Toggle Crane Tool",
+      "categories": [
+        "Fahrzeug › Frontlader"
+      ],
+      "icon": null,
+      "actions": [
+        {
+          "type": "keyboard",
+          "key": "X"
+        }
+      ]
+    },
+    "func-fs-sh-move-crane-bridge": {
+      "id": "func-fs-sh-move-crane-bridge",
+      "name": "Sh Move Crane Bridge",
+      "categories": [
+        "Fahrzeug › Frontlader"
+      ],
+      "icon": null,
+      "actions": [
+        {
+          "type": "keyboard",
+          "key": "S"
+        }
+      ]
+    },
+    "func-fs-sh-move-crane-bridge-minus": {
+      "id": "func-fs-sh-move-crane-bridge-minus",
+      "name": "Sh Move Crane Bridge (−)",
+      "categories": [
+        "Fahrzeug › Frontlader"
+      ],
+      "icon": null,
+      "actions": [
+        {
+          "type": "keyboard",
+          "key": "W"
+        }
+      ]
+    },
+    "func-fs-sh-move-crane-trolley": {
+      "id": "func-fs-sh-move-crane-trolley",
+      "name": "Sh Move Crane Trolley",
+      "categories": [
+        "Fahrzeug › Frontlader"
+      ],
+      "icon": null,
+      "actions": [
+        {
+          "type": "keyboard",
+          "key": "D"
+        }
+      ]
+    },
+    "func-fs-sh-move-crane-trolley-minus": {
+      "id": "func-fs-sh-move-crane-trolley-minus",
+      "name": "Sh Move Crane Trolley (−)",
+      "categories": [
+        "Fahrzeug › Frontlader"
+      ],
+      "icon": null,
+      "actions": [
+        {
+          "type": "keyboard",
+          "key": "A"
+        }
+      ]
+    },
+    "func-fs-sh-move-crane-tool": {
+      "id": "func-fs-sh-move-crane-tool",
+      "name": "Sh Move Crane Tool",
+      "categories": [
+        "Fahrzeug › Frontlader"
+      ],
+      "icon": null,
+      "actions": [
+        {
+          "type": "keyboard",
+          "key": "J"
+        }
+      ]
+    },
+    "func-fs-sh-move-crane-tool-minus": {
+      "id": "func-fs-sh-move-crane-tool-minus",
+      "name": "Sh Move Crane Tool (−)",
+      "categories": [
+        "Fahrzeug › Frontlader"
+      ],
+      "icon": null,
+      "actions": [
+        {
+          "type": "keyboard",
+          "key": "N"
+        }
+      ]
+    },
+    "func-fs-sh-rotate-crane-tool": {
+      "id": "func-fs-sh-rotate-crane-tool",
+      "name": "Sh Rotate Crane Tool",
+      "categories": [
+        "Fahrzeug › Frontlader"
+      ],
+      "icon": null,
+      "actions": [
+        {
+          "type": "keyboard",
+          "key": "LSHIFT"
+        },
+        {
+          "type": "keyboard",
+          "key": "LCTRL"
+        },
+        {
+          "type": "keyboard",
+          "key": "J"
+        }
+      ]
+    },
+    "func-fs-sh-rotate-crane-tool-minus": {
+      "id": "func-fs-sh-rotate-crane-tool-minus",
+      "name": "Sh Rotate Crane Tool (−)",
+      "categories": [
+        "Fahrzeug › Frontlader"
+      ],
+      "icon": null,
+      "actions": [
+        {
+          "type": "keyboard",
+          "key": "LSHIFT"
+        },
+        {
+          "type": "keyboard",
+          "key": "LCTRL"
+        },
+        {
+          "type": "keyboard",
+          "key": "N"
+        }
+      ]
+    },
+    "func-fs-sh-open-crane-tool": {
+      "id": "func-fs-sh-open-crane-tool",
+      "name": "Sh Open Crane Tool",
+      "categories": [
+        "Fahrzeug › Frontlader"
+      ],
+      "icon": null,
+      "actions": [
+        {
+          "type": "keyboard",
+          "key": "LSHIFT"
+        },
+        {
+          "type": "keyboard",
+          "key": "LCTRL"
+        },
+        {
+          "type": "keyboard",
+          "key": "K"
+        }
+      ]
+    },
+    "func-fs-sh-open-crane-tool-minus": {
+      "id": "func-fs-sh-open-crane-tool-minus",
+      "name": "Sh Open Crane Tool (−)",
+      "categories": [
+        "Fahrzeug › Frontlader"
+      ],
+      "icon": null,
+      "actions": [
+        {
+          "type": "keyboard",
+          "key": "LSHIFT"
+        },
+        {
+          "type": "keyboard",
+          "key": "LCTRL"
+        },
+        {
+          "type": "keyboard",
+          "key": "M"
+        }
+      ]
+    },
+    "func-fs-module-attach-assist": {
+      "id": "func-fs-module-attach-assist",
+      "name": "Anhänge-Assistent",
+      "categories": [
+        "Fahrzeug"
+      ],
+      "icon": null,
+      "actions": [
+        {
+          "type": "keyboard",
+          "key": "O"
+        }
+      ]
+    },
+    "func-fs-liftable-axle": {
+      "id": "func-fs-liftable-axle",
+      "name": "Hubachse",
+      "categories": [
+        "Fahrzeug"
+      ],
+      "icon": null,
+      "actions": [
+        {
+          "type": "keyboard",
+          "key": "Z"
+        }
+      ]
+    },
+    "func-fs-toggle-field-creation": {
+      "id": "func-fs-toggle-field-creation",
+      "name": "Feld anlegen",
+      "categories": [
+        "Spiel"
+      ],
+      "icon": null,
+      "actions": [
+        {
+          "type": "keyboard",
+          "key": "Y"
+        }
+      ]
+    },
+    "func-fs-edc-player-run-speed": {
+      "id": "func-fs-edc-player-run-speed",
+      "name": "Edc Player Run Speed",
+      "categories": [
+        "Zu Fuß › Bewegung"
+      ],
+      "icon": null,
+      "actions": [
+        {
+          "type": "keyboard",
+          "key": "END"
+        }
+      ]
+    },
+    "func-fs-fs25-enhancedvehicle-menu": {
+      "id": "func-fs-fs25-enhancedvehicle-menu",
+      "name": "Fs25 Enhanced Vehicle Menu",
+      "categories": [
+        "Spiel"
+      ],
+      "icon": null,
+      "actions": [
+        {
+          "type": "keyboard",
+          "key": "RCTRL"
+        },
+        {
+          "type": "keyboard",
+          "key": "KPDIV"
+        }
+      ]
+    },
+    "func-fs-follow-pause-resume": {
+      "id": "func-fs-follow-pause-resume",
+      "name": "Follow Pause Resume",
+      "categories": [
+        "Spiel"
+      ],
+      "icon": null,
+      "actions": [
+        {
+          "type": "keyboard",
+          "key": "RCTRL"
+        },
+        {
+          "type": "keyboard",
+          "key": "H"
+        }
+      ]
+    },
+    "func-fs-follow-chaser-pause-resume": {
+      "id": "func-fs-follow-chaser-pause-resume",
+      "name": "Follow Chaser Pause Resume",
+      "categories": [
+        "Spiel"
+      ],
+      "icon": null,
+      "actions": [
+        {
+          "type": "keyboard",
+          "key": "RSHIFT"
+        },
+        {
+          "type": "keyboard",
+          "key": "RCTRL"
+        },
+        {
+          "type": "keyboard",
+          "key": "H"
+        }
+      ]
+    },
+    "func-fs-ma-attach-vehicle": {
+      "id": "func-fs-ma-attach-vehicle",
+      "name": "Ma Attach Vehicle",
+      "categories": [
+        "Fahrzeug"
+      ],
+      "icon": null,
+      "actions": [
+        {
+          "type": "keyboard",
+          "key": "Q"
+        }
+      ]
+    },
+    "func-fs-ma-attach-pto-hose": {
+      "id": "func-fs-ma-attach-pto-hose",
+      "name": "Ma Attach Pto Hose",
+      "categories": [
+        "Fahrzeug"
+      ],
+      "icon": null,
+      "actions": [
+        {
+          "type": "keyboard",
+          "key": "Z"
+        }
+      ]
+    },
+    "func-fs-powertoolsmenu": {
+      "id": "func-fs-powertoolsmenu",
+      "name": "Powertoolsmenu",
+      "categories": [
+        "Spiel"
+      ],
+      "icon": null,
+      "actions": [
+        {
+          "type": "keyboard",
+          "key": "F12"
+        }
+      ]
+    },
+    "func-fs-powertoolsmenu-alternative": {
+      "id": "func-fs-powertoolsmenu-alternative",
+      "name": "Powertoolsmenu Alternative",
+      "categories": [
+        "Spiel"
+      ],
+      "icon": null,
+      "actions": [
+        {
+          "type": "keyboard",
+          "key": "RCTRL"
+        },
+        {
+          "type": "keyboard",
+          "key": "F12"
+        }
+      ]
+    },
+    "func-fs-precisionfarming-spray-amount": {
+      "id": "func-fs-precisionfarming-spray-amount",
+      "name": "Spritzmenge",
+      "categories": [
+        "DLC › Precision Farming"
+      ],
+      "icon": null,
+      "actions": [
+        {
+          "type": "keyboard",
+          "key": "K"
+        }
+      ]
+    },
+    "func-fs-precisionfarming-spray-amount-minus": {
+      "id": "func-fs-precisionfarming-spray-amount-minus",
+      "name": "Spritzmenge (−)",
+      "categories": [
+        "DLC › Precision Farming"
+      ],
+      "icon": null,
+      "actions": [
+        {
+          "type": "keyboard",
+          "key": "M"
+        }
+      ]
+    },
+    "func-fs-precisionfarming-spray-amount-mode": {
+      "id": "func-fs-precisionfarming-spray-amount-mode",
+      "name": "Spritzmenge-Modus",
+      "categories": [
+        "DLC › Precision Farming"
+      ],
+      "icon": null,
+      "actions": [
+        {
+          "type": "keyboard",
+          "key": "COMMA"
+        }
+      ]
+    },
+    "func-fs-precisionfarming-seed-rate": {
+      "id": "func-fs-precisionfarming-seed-rate",
+      "name": "Saatmenge",
+      "categories": [
+        "DLC › Precision Farming"
+      ],
+      "icon": null,
+      "actions": [
+        {
+          "type": "keyboard",
+          "key": "LSHIFT"
+        },
+        {
+          "type": "keyboard",
+          "key": "J"
+        }
+      ]
+    },
+    "func-fs-precisionfarming-seed-rate-minus": {
+      "id": "func-fs-precisionfarming-seed-rate-minus",
+      "name": "Saatmenge (−)",
+      "categories": [
+        "DLC › Precision Farming"
+      ],
+      "icon": null,
+      "actions": [
+        {
+          "type": "keyboard",
+          "key": "LSHIFT"
+        },
+        {
+          "type": "keyboard",
+          "key": "N"
+        }
+      ]
+    },
+    "func-fs-precisionfarming-seed-rate-mode": {
+      "id": "func-fs-precisionfarming-seed-rate-mode",
+      "name": "Saatmenge-Modus",
+      "categories": [
+        "DLC › Precision Farming"
+      ],
+      "icon": null,
+      "actions": [
+        {
+          "type": "keyboard",
+          "key": "U"
+        }
+      ]
+    },
+    "func-fs-precisionfarming-toggle-crop-sensor": {
+      "id": "func-fs-precisionfarming-toggle-crop-sensor",
+      "name": "Feldsensor umschalten",
+      "categories": [
+        "DLC › Precision Farming"
+      ],
+      "icon": null,
+      "actions": [
+        {
+          "type": "keyboard",
+          "key": "LALT"
+        },
+        {
+          "type": "keyboard",
+          "key": "B"
+        }
+      ]
+    },
+    "func-fs-toggle-unload-on-foot": {
+      "id": "func-fs-toggle-unload-on-foot",
+      "name": "Toggle Unload On Foot",
+      "categories": [
+        "Fahrzeug › Arbeit"
+      ],
+      "icon": null,
+      "actions": [
+        {
+          "type": "keyboard",
+          "key": "I"
+        }
+      ]
+    },
+    "func-fs-quick-screenshot-mode-toggle": {
+      "id": "func-fs-quick-screenshot-mode-toggle",
+      "name": "Quick Screenshot Mode Toggle",
+      "categories": [
+        "Spiel"
+      ],
+      "icon": null,
+      "actions": [
+        {
+          "type": "keyboard",
+          "key": "LALT"
+        },
+        {
+          "type": "keyboard",
+          "key": "H"
+        }
+      ]
+    },
+    "func-fs-pm-toggle-reel-unload": {
+      "id": "func-fs-pm-toggle-reel-unload",
+      "name": "Pm Toggle Reel Unload",
+      "categories": [
+        "Fahrzeug › Arbeit"
+      ],
+      "icon": null,
+      "actions": [
+        {
+          "type": "keyboard",
+          "key": "L"
+        }
+      ]
+    },
+    "func-fs-pm-attach": {
+      "id": "func-fs-pm-attach",
+      "name": "Pm Attach",
+      "categories": [
+        "Fahrzeug"
+      ],
+      "icon": null,
+      "actions": [
+        {
+          "type": "keyboard",
+          "key": "LSHIFT"
+        },
+        {
+          "type": "keyboard",
+          "key": "Q"
+        }
+      ]
+    },
+    "func-fs-pm-lower-implement": {
+      "id": "func-fs-pm-lower-implement",
+      "name": "Pm Lower Implement",
+      "categories": [
+        "Fahrzeug › Arbeit"
+      ],
+      "icon": null,
+      "actions": [
+        {
+          "type": "keyboard",
+          "key": "V"
+        }
+      ]
+    },
+    "func-fs-dbl-radio-vol-up": {
+      "id": "func-fs-dbl-radio-vol-up",
+      "name": "Dbl Radio Vol Up",
+      "categories": [
+        "Fahrzeug"
+      ],
+      "icon": null,
+      "actions": []
+    },
+    "func-fs-dbl-radio-vol-down": {
+      "id": "func-fs-dbl-radio-vol-down",
+      "name": "Dbl Radio Vol Down",
+      "categories": [
+        "Fahrzeug"
+      ],
+      "icon": null,
+      "actions": []
+    }
+  }
+}
